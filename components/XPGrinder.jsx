@@ -3456,7 +3456,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
       </div>
 
       {/* ─── NAV BAR ─── */}
-      {!playing && <div style={{
+      <div style={{
         position: "fixed", bottom: 0, left: 0, right: 0,
         background: "linear-gradient(180deg, #0a0a1aee, #050510)",
         borderTop: "1px solid #1a1a3e", padding: "8px 0",
@@ -3479,7 +3479,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             }}>{nav.label}</div>
           </button>
         ))}
-      </div>}
+      </div>
     </div>
   );
 }
