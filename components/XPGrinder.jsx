@@ -2115,8 +2115,12 @@ function PvPBattle({ playerWeapons, onComplete }) {
 export default function XPGrinder({ user, initialState, onSave, onLogout }) {
   const [screen, setScreen] = useState("hub");
   const [coins, setCoins] = useState(4000);
+  const coinsRef = useRef(4000);
+  const debtRef = useRef(0);
   const [debt, setDebt] = useState(0);
   const getToday = () => new Date().toLocaleDateString();
+  useEffect(() => { coinsRef.current = coins; }, [coins]);
+  useEffect(() => { debtRef.current = debt; }, [debt]);
   const [gamesLeft, setGamesLeft] = useState({ math: 4, trivia: 4, word: 4, memory: 4 });
   const totalGamesLeft = Object.values(gamesLeft).reduce((a, b) => a + b, 0);
   const [xp, setXp] = useState(0);
@@ -2167,55 +2171,70 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     setTimeout(() => setNotification(null), 2500);
   };
   const loseCoins = (amount) => {
-    if (coins >= amount) {
-      setCoins(c => c - amount);
-      return { type: "coins", amount };
-    }
-    const remaining = amount - coins;
-    setCoins(0);
-    const allWeapons = [...inventory];
-    if (allWeapons.length === 0) {
-      setDebt(d => d + remaining);
-      notify(`💀 Debt increased by ${remaining.toLocaleString()}! Total debt: ${(debt + remaining).toLocaleString()}`, "#f44");
-      return { type: "debt", amount: remaining };
-    }
-    const best = allWeapons.reduce((a, b) => getWeaponStats(a).damage > getWeaponStats(b).damage ? a : b);
-    if (best.rarity === "pet") {
-      setInventory(inv => inv.filter(w => w.id !== best.id));
-      notify(`💀 Can't pay! ${best.emoji} ${best.name} was DESTROYED!`, "#f44");
-      return { type: "destroyed", weapon: best };
-    }
-    if ((best.level || 1) > 2) {
-      setInventory(inv => inv.map(w => w.id === best.id ? { ...w, level: w.level - 2 } : w));
-      notify(`💀 Can't pay! ${best.emoji} ${best.name} lost 2 levels!`, "#f44");
-      return { type: "levelLoss", weapon: best, levels: 2 };
-    } else {
-      setInventory(inv => inv.filter(w => w.id !== best.id));
-      notify(`💀 Can't pay! ${best.emoji} ${best.name} was DESTROYED!`, "#f44");
-      return { type: "destroyed", weapon: best };
-    }
+    let resultRef = { current: null };
+    setCoins(currentCoins => {
+      if (currentCoins >= amount) {
+        coinsRef.current = currentCoins - amount;
+        resultRef.current = { type: "coins", amount };
+        return currentCoins - amount;
+      }
+      const remaining = amount - currentCoins;
+      coinsRef.current = 0;
+      // Check weapons
+      const allWeapons = [...inventory];
+      if (allWeapons.length === 0) {
+        setDebt(d => { debtRef.current = d + remaining; return d + remaining; });
+        notify(`💀 Debt increased by ${remaining.toLocaleString()}!`, "#f44");
+        resultRef.current = { type: "debt", amount: remaining };
+        return 0;
+      }
+      const best = allWeapons.reduce((a, b) => getWeaponStats(a).damage > getWeaponStats(b).damage ? a : b);
+      if (best.rarity === "pet") {
+        setInventory(inv => inv.filter(w => w.id !== best.id));
+        notify(`💀 Can't pay! ${best.emoji} ${best.name} was DESTROYED!`, "#f44");
+        resultRef.current = { type: "destroyed", weapon: best };
+        return 0;
+      }
+      if ((best.level || 1) > 2) {
+        setInventory(inv => inv.map(w => w.id === best.id ? { ...w, level: w.level - 2 } : w));
+        notify(`💀 Can't pay! ${best.emoji} ${best.name} lost 2 levels!`, "#f44");
+        resultRef.current = { type: "levelLoss", weapon: best, levels: 2 };
+        return 0;
+      } else {
+        setInventory(inv => inv.filter(w => w.id !== best.id));
+        notify(`💀 Can't pay! ${best.emoji} ${best.name} was DESTROYED!`, "#f44");
+        resultRef.current = { type: "destroyed", weapon: best };
+        return 0;
+      }
+    });
+    return resultRef.current;
   };
   const earnCoins = (amount) => {
     if (amount <= 0) return;
     setTotalCoinsEarned(t => t + amount);
-    if (debt > 0) {
-      if (amount >= debt) {
-        const leftover = amount - debt;
-        notify(`💀 Debt collected: -${debt.toLocaleString()} coins. ${leftover > 0 ? `+${leftover.toLocaleString()} remaining.` : "Debt cleared!"}`, "#f44");
-        setDebt(0);
-        unlockAchievement("survive_debt");
-        setCoins(c => c + leftover);
+    setDebt(currentDebt => {
+      if (currentDebt > 0) {
+        if (amount >= currentDebt) {
+          const leftover = amount - currentDebt;
+          notify(`💀 Debt collected: -${currentDebt.toLocaleString()} coins. ${leftover > 0 ? `+${leftover.toLocaleString()} remaining.` : "Debt cleared!"}`, "#f44");
+          debtRef.current = 0;
+          setCoins(c => { coinsRef.current = c + leftover; return c + leftover; });
+          unlockAchievement("survive_debt");
+          return 0;
+        } else {
+          notify(`💀 Debt collected: -${amount.toLocaleString()} coins. Remaining debt: ${(currentDebt - amount).toLocaleString()}`, "#f44");
+          debtRef.current = currentDebt - amount;
+          return currentDebt - amount;
+        }
       } else {
-        setDebt(d => d - amount);
-        notify(`💀 Debt collected: -${amount.toLocaleString()} coins. Remaining debt: ${(debt - amount).toLocaleString()}`, "#f44");
+        setCoins(c => { coinsRef.current = c + amount; return c + amount; });
+        return 0;
       }
-    } else {
-      setCoins(c => c + amount);
-    }
+    });
   };
   const openPack = () => {
     if (coins < 3000 || packOpening) return;
-    setCoins(c => c - 3000);
+    setCoins(c => { coinsRef.current = c - 3000; return c - 3000; });
     setPackOpening(true);
     setPackResult(null);
     setPacksOpened(p => p + 1);
