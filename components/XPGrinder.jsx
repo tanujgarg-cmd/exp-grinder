@@ -259,6 +259,11 @@ const TRIVIA_CATEGORIES = [
       ],
     }},
   { id: "history", name: "HISTORY & WORLD", icon: "🏛️", color: "#fbbf24", desc: "Ancient & modern history",
+    levels: [
+      { diff: "easy", coins: 800, time: 75 },
+      { diff: "medium", coins: 2000, time: 55 },
+      { diff: "hard", coins: 4000, time: 40 },
+    ],
     questions: {
       easy: [
         { q: "Who was the first President of the USA?", options: ["Lincoln", "Washington", "Adams", "Jefferson"], answer: 1 },
@@ -283,6 +288,11 @@ const TRIVIA_CATEGORIES = [
       ],
     }},
   { id: "geography", name: "GEOGRAPHY", icon: "🌍", color: "#0ff", desc: "Countries, capitals, landmarks",
+    levels: [
+      { diff: "easy", coins: 800, time: 75 },
+      { diff: "medium", coins: 2400, time: 55 },
+      { diff: "hard", coins: 4800, time: 40 },
+    ],
     questions: {
       easy: [
         { q: "What is the largest ocean?", options: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
@@ -307,6 +317,11 @@ const TRIVIA_CATEGORIES = [
       ],
     }},
   { id: "general", name: "GENERAL KNOWLEDGE", icon: "🧠", color: "#f0f", desc: "Random fun facts",
+    levels: [
+      { diff: "easy", coins: 600, time: 75 },
+      { diff: "medium", coins: 1800, time: 55 },
+      { diff: "hard", coins: 3600, time: 40 },
+    ],
     questions: {
       easy: [
         { q: "How many legs does a spider have?", options: ["6", "8", "10", "12"], answer: 1 },
@@ -331,6 +346,11 @@ const TRIVIA_CATEGORIES = [
       ],
     }},
   { id: "entertainment", name: "MOVIES & TV", icon: "🎬", color: "#ef4444", desc: "Films, TV, music",
+    levels: [
+      { diff: "easy", coins: 800, time: 75 },
+      { diff: "medium", coins: 2000, time: 55 },
+      { diff: "hard", coins: 4000, time: 40 },
+    ],
     questions: {
       easy: [
         { q: "Who directed Jurassic Park?", options: ["Cameron", "Spielberg", "Lucas", "Nolan"], answer: 1 },
@@ -355,6 +375,11 @@ const TRIVIA_CATEGORIES = [
       ],
     }},
   { id: "sports", name: "SPORTS", icon: "⚽", color: "#6ee7b7", desc: "Athletes, records, games",
+    levels: [
+      { diff: "easy", coins: 800, time: 75 },
+      { diff: "medium", coins: 2000, time: 55 },
+      { diff: "hard", coins: 4000, time: 40 },
+    ],
     questions: {
       easy: [
         { q: "How many players on a basketball court per team?", options: ["4", "5", "6", "7"], answer: 1 },
