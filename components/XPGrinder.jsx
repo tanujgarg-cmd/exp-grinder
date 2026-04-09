@@ -1880,64 +1880,28 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
   const [notification, setNotification] = useState(null);
   const [lastClaimDate, setLastClaimDate] = useState(null);
   const [lastLoginDate, setLastLoginDate] = useState(getToday());
-  const [dailyFeePaid, setDailyFeePaid] = useState(false);
-  const [missedDays, setMissedDays] = useState(0);
-  const [penaltyApplied, setPenaltyApplied] = useState(false);
   const [streak, setStreak] = useState(1);
   const [coinDoubler, setCoinDoubler] = useState(false);
   const [wheelSpun, setWheelSpun] = useState(false);
   const [wheelResult, setWheelResult] = useState(null);
   const [wheelSpinning, setWheelSpinning] = useState(false);
-  const [feeMultiplierDays, setFeeMultiplierDays] = useState(0);
   const dailyClaimed = lastClaimDate === getToday();
-  const dailyFee = (5000 + (missedDays * 5000)) * (feeMultiplierDays > 0 ? 2 : 1);
-  const payDailyFee = () => {
-    if (dailyFeePaid) return;
-    if (coins < dailyFee) { notify("Not enough coins!", "#f44"); return; }
-    setCoins(c => c - dailyFee);
-    setDailyFeePaid(true);
-    setMissedDays(0);
-    setPenaltyApplied(false);
-    notify(`✅ Daily fee paid! Debt cleared.`, "#0f0");
-  };
   useEffect(() => {
     const checkReset = () => {
       const today = getToday();
       if (lastLoginDate !== today) {
-        if (!dailyFeePaid && !penaltyApplied) {
-          const newMissed = missedDays + 1;
-          setMissedDays(newMissed);
-          if (newMissed >= 5) {
-            setInventory(prev => {
-              if (prev.length === 0) return prev;
-              const best = prev.reduce((a, b) => getWeaponStats(a).damage > getWeaponStats(b).damage ? a : b);
-              if (best.rarity === "pet") {
-                return prev.filter(w => w.id !== best.id);
-              }
-              if ((best.level || 1) > 3) {
-                return prev.map(w => w.id === best.id ? { ...w, level: w.level - 3 } : w);
-              } else {
-                return prev.filter(w => w.id !== best.id);
-              }
-            });
-            setPenaltyApplied(true);
-            setMissedDays(0);
-          }
-        }
-        setDailyFeePaid(false);
         setGamesLeft({ math: 4, trivia: 4, word: 4, memory: 4 });
         setWheelSpun(false);
         setWheelResult(null);
         setCoinDoubler(false);
-        if (feeMultiplierDays > 0) setFeeMultiplierDays(d => d - 1);
-        if (dailyFeePaid) setStreak(s => s + 1); else setStreak(1);
+        setStreak(s => s + 1);
         setLastLoginDate(today);
       }
     };
     checkReset();
     const interval = setInterval(checkReset, 30000);
     return () => clearInterval(interval);
-  }, [lastLoginDate, dailyFeePaid, missedDays, penaltyApplied]);
+  }, [lastLoginDate]);
 
   const [packResult, setPackResult] = useState(null);
   const [packOpening, setPackOpening] = useState(false);
@@ -2035,8 +1999,8 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             result = { type: "bad", icon: "💀", title: "BAD LUCK", desc: "Nothing to downgrade... Lost 5,000 coins!", color: "#f44" };
           }
         } else if (badRoll === 3) {
-          setFeeMultiplierDays(4);
-          result = { type: "bad", icon: "📈", title: "FEE DOUBLED!", desc: "Daily fee is DOUBLED for the next 4 days!", color: "#f44" };
+          loseCoins(8000);
+          result = { type: "bad", icon: "📈", title: "TAX RAID!", desc: "Lost 8,000 coins to a surprise raid!", color: "#f44" };
         } else if (badRoll === 4) {
           if (inventory.length > 0) {
             const target = inventory[Math.floor(Math.random() * inventory.length)];
@@ -2342,9 +2306,6 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
       if (s.inventory) setInventory(s.inventory);
       if (s.gamesLeft) setGamesLeft(s.gamesLeft);
       if (s.streak !== undefined) setStreak(s.streak);
-      if (s.missedDays !== undefined) setMissedDays(s.missedDays);
-      if (s.dailyFeePaid !== undefined) setDailyFeePaid(s.dailyFeePaid);
-      if (s.feeMultiplierDays !== undefined) setFeeMultiplierDays(s.feeMultiplierDays);
       if (s.lastClaimDate) setLastClaimDate(s.lastClaimDate);
       if (s.lastLoginDate) setLastLoginDate(s.lastLoginDate);
       if (s.achievements) setAchievements(s.achievements);
@@ -2362,8 +2323,8 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     if (!onSave) return;
     const saveInterval = setInterval(() => {
       const state = {
-        coins, debt, xp, level, inventory, gamesLeft, streak, missedDays,
-        dailyFeePaid, feeMultiplierDays, lastClaimDate, lastLoginDate,
+        coins, debt, xp, level, inventory, gamesLeft, streak,
+        lastClaimDate, lastLoginDate,
         achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened,
         materials, potions,
       };
@@ -2573,7 +2534,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             {user ? user.email?.split("@")[0] : "NEON ARENA v1.0"}
           </div>
           <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, missedDays, dailyFeePaid, feeMultiplierDays, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
+            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
             {onLogout && <button onClick={onLogout} style={{ background: "none", border: "1px solid #f4430", color: "#f44", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>LOGOUT</button>}
           </div>
         </div>
@@ -2631,34 +2592,6 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                 </div>
               </div>
               {!dailyClaimed && <NeonText size="1rem" color="#fbbf24">💰 1,000</NeonText>}
-            </button>
-            {}
-            <button onClick={payDailyFee} disabled={dailyFeePaid || coins < dailyFee} style={{
-              width: "100%", padding: "14px 20px", marginBottom: 16,
-              cursor: dailyFeePaid ? "default" : coins < dailyFee ? "not-allowed" : "pointer",
-              display: "flex", alignItems: "center", gap: 14,
-              background: dailyFeePaid ? "linear-gradient(135deg, #0a1a0a, #0d1117)" : missedDays >= 3 ? "linear-gradient(135deg, #2a0a0a, #1a0505)" : "linear-gradient(135deg, #0a0a1a, #0d1117)",
-              border: dailyFeePaid ? "1px solid #0f030" : missedDays >= 3 ? "1px solid #f4440" : "1px solid #0ff40",
-              borderRadius: 12,
-              boxShadow: dailyFeePaid ? "none" : missedDays >= 3 ? "0 0 15px #f4420" : "0 0 15px #0ff15",
-              opacity: !dailyFeePaid && coins < dailyFee ? 0.5 : 1,
-            }}>
-              <div style={{
-                width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center",
-                background: dailyFeePaid ? "#00ff0011" : missedDays >= 3 ? "#ff444411" : "#00ffff11",
-                borderRadius: 10,
-                border: `1px solid ${dailyFeePaid ? "#00ff0044" : missedDays >= 3 ? "#ff444444" : "#00ffff44"}`,
-                fontSize: "1.4rem",
-              }}>{dailyFeePaid ? "🎮" : missedDays >= 3 ? "⚠️" : "🎟️"}</div>
-              <div style={{ flex: 1, textAlign: "left" }}>
-                <NeonText size="0.85rem" color={dailyFeePaid ? "#0f0" : missedDays >= 3 ? "#f44" : "#0ff"}>
-                  {dailyFeePaid ? "DAILY FEE PAID ✓" : missedDays >= 3 ? `⚠ ${missedDays} DAYS OVERDUE!` : feeMultiplierDays > 0 ? `📈 FEE DOUBLED (${feeMultiplierDays}d left)` : "PAY DAILY FEE"}
-                </NeonText>
-                <div style={{ color: "#ccc", fontSize: "0.65rem", marginTop: 2 }}>
-                  {dailyFeePaid ? "You're in good standing!" : missedDays >= 4 ? "PAY NOW or best weapon loses 3 levels tomorrow!" : missedDays > 0 ? `${5 - missedDays} day${5 - missedDays !== 1 ? "s" : ""} until pay to clear debt!` : "Daily fee — pay before midnight!"}
-                </div>
-              </div>
-              {!dailyFeePaid && <NeonText size="0.85rem" color={missedDays >= 3 ? "#f44" : "#fbbf24"}>💰 {dailyFee.toLocaleString()}</NeonText>}
             </button>
             {}
             {packResult ? (
@@ -2852,7 +2785,78 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             </div>
           </div>
         )}
-        {}
+
+        {/* ─── SHOP ─── */}
+        {screen === "shop" && (
+          <div>
+            <NeonText size="1.2rem" color="#fbbf24">🛒 WEAPON SHOP</NeonText>
+            <p style={{ color: "#888", fontSize: "0.75rem", margin: "8px 0 16px" }}>
+              {WEAPONS.length} weapons available. Buy, collect, dominate.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {["common", "rare", "epic", "legendary", "mythic", "glitched"].map(rarity => (
+                <div key={rarity}>
+                  <NeonText size="0.75rem" color={RARITY_COLORS[rarity]} style={{ marginBottom: 6, textTransform: "uppercase" }}>
+                    ── {rarity} ──
+                  </NeonText>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {WEAPONS.filter(w => w.rarity === rarity).map(w => {
+                      const owned = inventory.find(i => i.id === w.id);
+                      return (
+                        <div key={w.id} style={{
+                          display: "flex", alignItems: "center", gap: 10, padding: "10px 12px",
+                          background: owned ? "#0f008" : "#05050f", borderRadius: 8,
+                          border: `1px solid ${owned ? "#0f030" : RARITY_COLORS[rarity] + "20"}`,
+                        }}>
+                          <span style={{ fontSize: "1.3rem" }}>{w.emoji}</span>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ color: RARITY_COLORS[rarity], fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>{w.name}</div>
+                            <div style={{ color: "#666", fontSize: "0.6rem" }}>
+                              DMG: {w.damage} • SPD: {w.speed}{(w.type === "defense" || w.type === "both") ? ` • DEF: ${w.type === "defense" ? 8 : 5}` : ""} • {w.type === "attack" ? "⚔ ATK" : w.type === "defense" ? "🛡 DEF" : "⚔🛡 BOTH"}
+                            </div>
+                          </div>
+                          {owned ? (
+                            <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>OWNED</span>
+                          ) : (
+                            <button onClick={() => buyWeapon(w)} disabled={coins < w.price} style={{
+                              padding: "6px 12px", borderRadius: 6, cursor: coins >= w.price ? "pointer" : "not-allowed",
+                              background: coins >= w.price ? `${RARITY_COLORS[rarity]}15` : "#111",
+                              border: `1px solid ${coins >= w.price ? RARITY_COLORS[rarity] + "40" : "#222"}`,
+                              color: coins >= w.price ? "#fbbf24" : "#333",
+                              fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                            }}>💰 {w.price.toLocaleString()}</button>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ─── BATTLE ─── */}
+        {screen === "battle" && (
+          <div>
+            <NeonText size="1.2rem" color="#f0f">⚔️ PVP ARENA</NeonText>
+            <p style={{ color: "#666", fontSize: "0.8rem", margin: "8px 0 16px" }}>
+              Challenge other grinders in combat.
+            </p>
+            {inventory.length === 0 ? (
+              <Panel style={{ textAlign: "center", padding: 30 }}>
+                <div style={{ fontSize: "2rem", marginBottom: 10 }}>🗡️</div>
+                <NeonText size="0.9rem" color="#888">You need a weapon to battle!</NeonText>
+                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>Buy one from the Shop first.</div>
+              </Panel>
+            ) : (
+              <Panel>
+                <PvPBattle playerWeapons={inventory} onComplete={onBattleComplete} />
+              </Panel>
+            )}
+          </div>
+        )}
+
         {screen === "craft" && (
           <div>
             <NeonText size="1.2rem" color="#f90">⚒️ CRAFTING FORGE</NeonText>
