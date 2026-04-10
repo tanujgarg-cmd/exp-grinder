@@ -76,67 +76,43 @@ const MATERIALS = [
   { id: "glitch", name: "Glitch Code", emoji: "👾", price: 12000, color: "#ff00ff", desc: "Corrupted data strand" },
   { id: "dark", name: "Dark Matter", emoji: "🌑", price: 2000, color: "#888", desc: "Universal binding agent" },
 ];
-const CRAFT_WEAPONS = [
-  { id: "craft_1", name: "Plasma Edge", damage: 14, speed: 9, type: "attack", rarity: "common", emoji: "🔪", craftOnly: true },
-  { id: "craft_2", name: "Frost Fang", damage: 18, speed: 7, type: "attack", rarity: "rare", emoji: "🦷", craftOnly: true },
-  { id: "craft_3", name: "Inferno Blade", damage: 24, speed: 8, type: "attack", rarity: "epic", emoji: "🗡️", craftOnly: true },
-  { id: "craft_4", name: "Void Sentinel", damage: 14, speed: 8, type: "both", rarity: "epic", emoji: "🛡️", craftOnly: true },
-  { id: "craft_5", name: "Nova Striker", damage: 30, speed: 9, type: "attack", rarity: "legendary", emoji: "💫", craftOnly: true },
-  { id: "craft_6", name: "Eclipse Barrier", damage: 18, speed: 10, type: "defense", rarity: "legendary", emoji: "🌗", craftOnly: true },
-  { id: "craft_7", name: "Omega Cannon", damage: 36, speed: 7, type: "attack", rarity: "mythic", emoji: "💥", craftOnly: true },
-  { id: "craft_8", name: "GLITCH::Blade", damage: 25, speed: 10, type: "both", rarity: "glitched", emoji: "⚠️", craftOnly: true },
-];
-const RECIPES = [
-  { weapon: "craft_1", name: "Plasma Edge", rarity: "common", materials: { plasma: 5, dark: 2 } },
-  { weapon: "craft_2", name: "Frost Fang", rarity: "rare", materials: { cryo: 4, plasma: 3, dark: 2 } },
-  { weapon: "craft_3", name: "Inferno Blade", rarity: "epic", materials: { inferno: 5, cryo: 3, dark: 3 } },
-  { weapon: "craft_4", name: "Void Sentinel", rarity: "epic", materials: { voidF: 3, dark: 4, plasma: 2 } },
-  { weapon: "craft_5", name: "Nova Striker", rarity: "legendary", materials: { star: 4, inferno: 3, voidF: 2, dark: 3 } },
-  { weapon: "craft_6", name: "Eclipse Barrier", rarity: "legendary", materials: { star: 3, cryo: 4, voidF: 3, dark: 2 } },
-  { weapon: "craft_7", name: "Omega Cannon", rarity: "mythic", materials: { star: 6, inferno: 4, voidF: 3, dark: 4 } },
-  { weapon: "craft_8", name: "GLITCH::Blade", rarity: "glitched", materials: { glitch: 5, star: 3, voidF: 4, dark: 5 } },
-];
 const POTIONS = [
   { id: "fire", name: "Fire Aspect", emoji: "🔥", color: "#f90",
-    desc: "Burns enemy + bonus weapon damage",
+    desc: "Burns enemy for extra damage each turn",
     craft: { inferno: 3, plasma: 2, dark: 1 },
-    upgradeCraft: { inferno: 2, dark: 1 },
     effects: [
-      { level: 1, burnDmg: 3, bonusDmg: 2 }, { level: 2, burnDmg: 5, bonusDmg: 4 },
-      { level: 3, burnDmg: 8, bonusDmg: 6 }, { level: 4, burnDmg: 12, bonusDmg: 8 }, { level: 5, burnDmg: 18, bonusDmg: 10 },
+      { merge: 1, burnDmg: 3 }, { merge: 2, burnDmg: 6 },
+      { merge: 3, burnDmg: 10 }, { merge: 4, burnDmg: 15 }, { merge: 5, burnDmg: 22 },
     ],
   },
   { id: "ice", name: "Ice Aspect", emoji: "❄️", color: "#60a5fa",
-    desc: "Slows enemy + bonus weapon damage",
+    desc: "Reduces enemy damage output",
     craft: { cryo: 3, plasma: 2, dark: 1 },
-    upgradeCraft: { cryo: 2, dark: 1 },
     effects: [
-      { level: 1, slowPct: 10, bonusDmg: 2 }, { level: 2, slowPct: 15, bonusDmg: 4 },
-      { level: 3, slowPct: 22, bonusDmg: 6 }, { level: 4, slowPct: 30, bonusDmg: 8 }, { level: 5, slowPct: 40, bonusDmg: 10 },
+      { merge: 1, slowPct: 10 }, { merge: 2, slowPct: 18 },
+      { merge: 3, slowPct: 26 }, { merge: 4, slowPct: 35 }, { merge: 5, slowPct: 45 },
     ],
   },
   { id: "lightning", name: "Lightning Aspect", emoji: "⚡", color: "#fbbf24",
-    desc: "Stun chance + bonus weapon damage",
+    desc: "Chance to stun enemy, skipping their turn",
     craft: { plasma: 4, inferno: 1, dark: 2 },
-    upgradeCraft: { plasma: 3, dark: 1 },
     effects: [
-      { level: 1, stunPct: 10, bonusDmg: 2 }, { level: 2, stunPct: 15, bonusDmg: 4 },
-      { level: 3, stunPct: 22, bonusDmg: 6 }, { level: 4, stunPct: 30, bonusDmg: 8 }, { level: 5, stunPct: 40, bonusDmg: 10 },
+      { merge: 1, stunPct: 10 }, { merge: 2, stunPct: 18 },
+      { merge: 3, stunPct: 26 }, { merge: 4, stunPct: 35 }, { merge: 5, stunPct: 45 },
     ],
   },
   { id: "poison", name: "Poison Aspect", emoji: "☠️", color: "#0f0",
-    desc: "Stacking poison + bonus weapon damage",
+    desc: "Stacking poison damage each turn",
     craft: { voidF: 2, cryo: 2, dark: 2 },
-    upgradeCraft: { voidF: 2, dark: 1 },
     effects: [
-      { level: 1, poisonDmg: 2, bonusDmg: 2 }, { level: 2, poisonDmg: 3, bonusDmg: 4 },
-      { level: 3, poisonDmg: 4, bonusDmg: 6 }, { level: 4, poisonDmg: 6, bonusDmg: 8 }, { level: 5, poisonDmg: 9, bonusDmg: 10 },
+      { merge: 1, poisonDmg: 2 }, { merge: 2, poisonDmg: 4 },
+      { merge: 3, poisonDmg: 7 }, { merge: 4, poisonDmg: 11 }, { merge: 5, poisonDmg: 16 },
     ],
   },
 ];
-function getPotionEffect(potionId, level) {
+function getPotionEffect(potionId, merge) {
   const p = POTIONS.find(p => p.id === potionId);
-  return p ? p.effects[Math.min((level || 1) - 1, 4)] : {};
+  return p ? p.effects[Math.min((merge || 1) - 1, 4)] : {};
 }
 function getUpgradeCost(currentLevel) {
   if (currentLevel >= 50) return null;
@@ -1719,18 +1695,13 @@ function PvPBattle({ playerWeapons, onComplete }) {
     const iceLvl = pPotions.find(p => p.id === "ice");
     const lightLvl = pPotions.find(p => p.id === "lightning");
     const poisonLvl = pPotions.find(p => p.id === "poison");
-    const fireEff = fireLvl ? getPotionEffect("fire", fireLvl.level) : null;
-    const iceEff = iceLvl ? getPotionEffect("ice", iceLvl.level) : null;
-    const lightEff = lightLvl ? getPotionEffect("lightning", lightLvl.level) : null;
-    const poisonEff = poisonLvl ? getPotionEffect("poison", poisonLvl.level) : null;
+    const fireEff = fireLvl ? getPotionEffect("fire", fireLvl.merge) : null;
+    const iceEff = iceLvl ? getPotionEffect("ice", iceLvl.merge) : null;
+    const lightEff = lightLvl ? getPotionEffect("lightning", lightLvl.merge) : null;
+    const poisonEff = poisonLvl ? getPotionEffect("poison", poisonLvl.merge) : null;
     let poisonStack = 0;
     while (ph > 0 && eh > 0 && turn < 20) {
-      let potionBonusDmg = 0;
-      if (fireEff) potionBonusDmg += fireEff.bonusDmg || 0;
-      if (iceEff) potionBonusDmg += iceEff.bonusDmg || 0;
-      if (lightEff) potionBonusDmg += lightEff.bonusDmg || 0;
-      if (poisonEff) potionBonusDmg += poisonEff.bonusDmg || 0;
-      const rawPDmg = Math.floor(getWeaponStats(pw).damage * (0.7 + Math.random() * 0.6)) + potionBonusDmg;
+      const rawPDmg = Math.floor(getWeaponStats(pw).damage * (0.7 + Math.random() * 0.6));
       let pDmg = Math.max(1, rawPDmg - botDef);
       let pEffect = "";
       if (fireEff) { pDmg += fireEff.burnDmg; pEffect = "🔥"; }
@@ -2444,21 +2415,6 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     setMaterials(m => ({ ...m, [matId]: (m[matId] || 0) + qty }));
     notify(`Bought ${qty}x ${mat.emoji} ${mat.name}!`, mat.color);
   };
-  const canCraft = (recipe) => {
-    return Object.entries(recipe.materials).every(([matId, qty]) => (materials[matId] || 0) >= qty);
-  };
-  const craftWeapon = (recipe) => {
-    if (!canCraft(recipe)) { notify("Not enough materials!", "#f44"); return; }
-    const weapon = CRAFT_WEAPONS.find(w => w.id === recipe.weapon);
-    if (!weapon) return;
-    setMaterials(m => {
-      const updated = { ...m };
-      Object.entries(recipe.materials).forEach(([matId, qty]) => { updated[matId] -= qty; });
-      return updated;
-    });
-    setInventory(inv => [...inv, { ...weapon, level: 1, price: 0 }]);
-    notify(`⚒️ Crafted ${weapon.emoji} ${weapon.name}!`, RARITY_COLORS[weapon.rarity]);
-  };
   const craftPotion = (potionId) => {
     const potion = POTIONS.find(p => p.id === potionId);
     if (!potion) return;
@@ -2469,25 +2425,21 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
       Object.entries(potion.craft).forEach(([matId, qty]) => { u[matId] -= qty; });
       return u;
     });
-    setPotions(p => [...p, { id: potionId, level: 1 }]);
+    setPotions(p => [...p, { id: potionId, merge: 1 }]);
     notify(`🧪 Crafted ${potion.emoji} ${potion.name}!`, potion.color);
   };
-  const upgradePotion = (index) => {
-    const pot = potions[index];
-    if (!pot || pot.level >= 5) { notify("Already max level!", "#f44"); return; }
-    const potion = POTIONS.find(p => p.id === pot.id);
-    if (!potion) return;
-    const cost = {};
-    Object.entries(potion.upgradeCraft).forEach(([m, q]) => { cost[m] = q * pot.level; });
-    const hasAll = Object.entries(cost).every(([m, q]) => (materials[m] || 0) >= q);
-    if (!hasAll) { notify("Not enough materials to upgrade!", "#f44"); return; }
-    setMaterials(m => {
-      const u = { ...m };
-      Object.entries(cost).forEach(([matId, qty]) => { u[matId] -= qty; });
-      return u;
+  const mergePotion = (index1, index2) => {
+    const pot1 = potions[index1];
+    const pot2 = potions[index2];
+    if (!pot1 || !pot2 || pot1.id !== pot2.id) { notify("Must merge same potion type!", "#f44"); return; }
+    if (pot1.merge >= 5) { notify("Already max merge!", "#f44"); return; }
+    const newMerge = Math.min((pot1.merge || 1) + 1, 5);
+    setPotions(p => {
+      const updated = p.filter((_, i) => i !== index1 && i !== index2);
+      return [...updated, { id: pot1.id, merge: newMerge }];
     });
-    setPotions(p => p.map((pt, i) => i === index ? { ...pt, level: pt.level + 1 } : pt));
-    notify(`⬆️ ${potion.emoji} ${potion.name} → LVL ${pot.level + 1}!`, potion.color);
+    const potion = POTIONS.find(p => p.id === pot1.id);
+    notify(`🔀 Merged ${potion.emoji} ${potion.name} → Merge ${newMerge}!`, potion.color);
   };
   const applyPotion = (potionIndex, weaponId) => {
     const weapon = inventory.find(w => w.id === weaponId);
@@ -2499,7 +2451,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     setInventory(inv => inv.map(w => w.id === weaponId ? { ...w, potions: [...appliedPotions, { ...pot }] } : w));
     setPotions(p => p.filter((_, i) => i !== potionIndex));
     const potion = POTIONS.find(p => p.id === pot.id);
-    notify(`🧪 Applied ${potion.emoji} ${potion.name} LV${pot.level} to ${weapon.emoji} ${weapon.name}!`, potion.color);
+    notify(`🧪 Applied ${potion.emoji} ${potion.name} M${pot.merge} to ${weapon.emoji} ${weapon.name}!`, potion.color);
   };
   const removePotion = (weaponId, potionId) => {
     const weapon = inventory.find(w => w.id === weaponId);
@@ -3129,7 +3081,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
           <div>
             <NeonText size="1.2rem" color="#f90">⚒️ CRAFTING FORGE</NeonText>
             <p style={{ color: "#bbb", fontSize: "0.75rem", margin: "8px 0 16px" }}>
-              Buy materials and craft exclusive weapons.
+              Buy materials and craft potions for your weapons.
             </p>
             {}
             <Panel style={{ marginBottom: 16 }}>
@@ -3174,57 +3126,129 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                 ))}
               </div>
             </Panel>
-            {}
-            <Panel>
-              <NeonText size="0.8rem" color="#f90">📜 RECIPES</NeonText>
-              <div style={{ color: "#888", fontSize: "0.6rem", margin: "6px 0 12px" }}>Craft-exclusive weapons not available in the shop!</div>
+
+            {/* Potion Crafting */}
+            <Panel style={{ marginTop: 16 }}>
+              <NeonText size="0.8rem" color="#c084fc">🧪 CRAFT POTIONS</NeonText>
+              <div style={{ color: "#bbb", fontSize: "0.6rem", margin: "6px 0 12px" }}>Craft potions, merge 2 of the same type to power up (max M5). Apply up to 2 per weapon.</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {RECIPES.map(recipe => {
-                  const weapon = CRAFT_WEAPONS.find(w => w.id === recipe.weapon);
-                  const craftable = canCraft(recipe);
-                  const owned = inventory.find(w => w.id === recipe.weapon);
+                {POTIONS.map(pot => {
+                  const canCraftPot = Object.entries(pot.craft).every(([m, q]) => (materials[m] || 0) >= q);
                   return (
-                    <div key={recipe.weapon} style={{ padding: 14, borderRadius: 10, background: craftable ? `${RARITY_COLORS[recipe.rarity]}08` : "#05050f", border: `1px solid ${craftable ? RARITY_COLORS[recipe.rarity] + "50" : "#1a1a3e"}`, }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                        <span style={{ fontSize: "1.5rem" }}>{weapon?.emoji}</span>
+                    <div key={pot.id} style={{
+                      padding: 12, borderRadius: 10,
+                      background: canCraftPot ? `${pot.color}08` : "#05050f",
+                      border: `1px solid ${canCraftPot ? pot.color + "40" : "#1a1a3e"}`,
+                    }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                        <span style={{ fontSize: "1.4rem" }}>{pot.emoji}</span>
                         <div style={{ flex: 1 }}>
-                          <NeonText size="0.85rem" color={RARITY_COLORS[recipe.rarity]}>{recipe.name}</NeonText>
-                          <div style={{ color: "#888", fontSize: "0.6rem" }}>
-                            DMG: {weapon?.damage} • SPD: {weapon?.speed} • {weapon?.type === "attack" ? "⚔ ATK" : weapon?.type === "defense" ? "🛡 DEF" : "⚔🛡 BOTH"} • {recipe.rarity.toUpperCase()}
-                          </div>
+                          <NeonText size="0.8rem" color={pot.color}>{pot.name}</NeonText>
+                          <div style={{ color: "#888", fontSize: "0.55rem" }}>{pot.desc}</div>
                         </div>
-                        {owned && <span style={{ color: "#0f0", fontSize: "0.6rem" }}>OWNED</span>}
                       </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
-                        {Object.entries(recipe.materials).map(([matId, qty]) => {
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 8 }}>
+                        {Object.entries(pot.craft).map(([matId, qty]) => {
                           const mat = MATERIALS.find(m => m.id === matId);
                           const have = materials[matId] || 0;
-                          const enough = have >= qty;
                           return (
-                            <div key={matId} style={{ display: "flex", alignItems: "center", gap: 4, padding: "4px 8px", borderRadius: 6, background: enough ? "#00ff0011" : "#ff444400", border: `1px solid ${enough ? "#00ff0033" : "#ff444422"}`, }}>
-                              <span style={{ fontSize: "0.8rem" }}>{mat?.emoji}</span>
-                              <span style={{ color: enough ? "#0f0" : "#f44", fontSize: "0.65rem" }}>
-                                {have}/{qty}
-                              </span>
-                            </div>
+                            <span key={matId} style={{
+                              padding: "2px 6px", borderRadius: 4, fontSize: "0.6rem",
+                              background: have >= qty ? "#0f010" : "#f4408",
+                              border: `1px solid ${have >= qty ? "#0f030" : "#f4420"}`,
+                              color: have >= qty ? "#0f0" : "#f44", fontFamily: "'Orbitron', sans-serif",
+                            }}>{mat?.emoji} {have}/{qty}</span>
                           );
                         })}
                       </div>
-                      <button onClick={() => craftWeapon(recipe)} disabled={!craftable} style={{
-                        width: "100%", padding: "10px", borderRadius: 8,
-                        background: craftable ? `linear-gradient(135deg, ${RARITY_COLORS[recipe.rarity]}30, ${RARITY_COLORS[recipe.rarity]}10)` : "#111",
-                        border: `1px solid ${craftable ? RARITY_COLORS[recipe.rarity] : "#222"}`,
-                        color: craftable ? RARITY_COLORS[recipe.rarity] : "#333",
-                        fontSize: "0.8rem",
-                        cursor: craftable ? "pointer" : "not-allowed",
-                      }}>
-                        {craftable ? `⚒️ CRAFT ${recipe.name.toUpperCase()}` : "MISSING MATERIALS"}
-                      </button>
+                      <div style={{ display: "flex", gap: 6, fontSize: "0.5rem", color: "#666", marginBottom: 8, flexWrap: "wrap" }}>
+                        {pot.effects.map((e, i) => (
+                          <span key={i} style={{ padding: "2px 6px", borderRadius: 4, background: "#111", border: "1px solid #222" }}>
+                            M{e.merge}: {e.burnDmg ? `+${e.burnDmg} burn` : e.slowPct ? `-${e.slowPct}% DMG` : e.stunPct ? `${e.stunPct}% stun` : `+${e.poisonDmg} stack`}
+                          </span>
+                        ))}
+                      </div>
+                      <button onClick={() => craftPotion(pot.id)} disabled={!canCraftPot} style={{
+                        width: "100%", padding: 8, borderRadius: 6,
+                        background: canCraftPot ? `${pot.color}20` : "#111",
+                        border: `1px solid ${canCraftPot ? pot.color : "#222"}`,
+                        color: canCraftPot ? pot.color : "#333",
+                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif", cursor: canCraftPot ? "pointer" : "not-allowed",
+                      }}>🧪 CRAFT {pot.name.toUpperCase()}</button>
                     </div>
                   );
                 })}
               </div>
             </Panel>
+
+            {/* Potion Inventory + Merge + Apply */}
+            {potions.length > 0 && (
+              <Panel style={{ marginTop: 16 }}>
+                <NeonText size="0.8rem" color="#c084fc">🧪 YOUR POTIONS ({potions.length})</NeonText>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 10 }}>
+                  {potions.map((pot, idx) => {
+                    const potion = POTIONS.find(p => p.id === pot.id);
+                    const eff = getPotionEffect(pot.id, pot.merge);
+                    const canMerge = potions.filter((p, i) => i !== idx && p.id === pot.id).length > 0 && pot.merge < 5;
+                    return (
+                      <div key={idx} style={{
+                        padding: 10, borderRadius: 8,
+                        background: "#05050f", border: `1px solid ${potion.color}30`,
+                      }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <span style={{ fontSize: "1.3rem" }}>{potion.emoji}</span>
+                          <div style={{ flex: 1 }}>
+                            <NeonText size="0.75rem" color={potion.color}>{potion.name} M{pot.merge}{pot.merge >= 5 ? " (MAX)" : ""}</NeonText>
+                            <div style={{ color: "#888", fontSize: "0.55rem" }}>
+                              {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
+                            </div>
+                          </div>
+                          {canMerge && (
+                            <button onClick={() => {
+                              const other = potions.findIndex((p, i) => i !== idx && p.id === pot.id);
+                              if (other >= 0) mergePotion(idx, other);
+                            }} style={{
+                              padding: "4px 10px", borderRadius: 4, fontSize: "0.55rem",
+                              background: `${potion.color}15`, border: `1px solid ${potion.color}40`,
+                              color: potion.color, cursor: "pointer", fontFamily: "'Orbitron', sans-serif",
+                            }}>🔀 MERGE → M{Math.min(pot.merge + 1, 5)}</button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Apply to weapon */}
+                {inventory.filter(w => w.rarity !== "pet").length > 0 && (
+                  <div style={{ marginTop: 12, padding: 10, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e" }}>
+                    <NeonText size="0.7rem" color="#888">APPLY POTION TO WEAPON</NeonText>
+                    <div style={{ color: "#666", fontSize: "0.55rem", margin: "4px 0 8px" }}>Max 2 per weapon. Same type can't stack.</div>
+                    {potions.map((pot, pIdx) => {
+                      const potion = POTIONS.find(p => p.id === pot.id);
+                      const eligible = inventory.filter(w => w.rarity !== "pet" && ((w.potions || []).length < 2) && !(w.potions || []).find(p => p.id === pot.id));
+                      if (eligible.length === 0) return null;
+                      return (
+                        <div key={pIdx} style={{ marginBottom: 8 }}>
+                          <div style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif", marginBottom: 4 }}>
+                            {potion.emoji} {potion.name} M{pot.merge} →
+                          </div>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                            {eligible.map(w => (
+                              <button key={w.id} onClick={() => applyPotion(pIdx, w.id)} style={{
+                                padding: "4px 8px", borderRadius: 4, fontSize: "0.55rem",
+                                background: `${RARITY_COLORS[w.rarity]}10`, border: `1px solid ${RARITY_COLORS[w.rarity]}30`,
+                                color: RARITY_COLORS[w.rarity], cursor: "pointer", fontFamily: "'Orbitron', sans-serif",
+                              }}>{w.emoji} {w.name}</button>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </Panel>
+            )}
           </div>
         )}
         {}
@@ -3405,6 +3429,36 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                         </div>
                       )}
                     </div>
+
+                    {/* Applied Potions */}
+                    {(w.potions || []).length > 0 && (
+                      <div style={{ marginBottom: 16, padding: 12, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e" }}>
+                        <NeonText size="0.7rem" color="#c084fc">🧪 APPLIED POTIONS</NeonText>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
+                          {w.potions.map(pot => {
+                            const potion = POTIONS.find(p => p.id === pot.id);
+                            const eff = getPotionEffect(pot.id, pot.merge);
+                            return (
+                              <div key={pot.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 8px", background: `${potion.color}08`, borderRadius: 6, border: `1px solid ${potion.color}30` }}>
+                                <span style={{ fontSize: "1.1rem" }}>{potion.emoji}</span>
+                                <div style={{ flex: 1 }}>
+                                  <span style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
+                                  <div style={{ color: "#888", fontSize: "0.55rem" }}>
+                                    {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
+                                  </div>
+                                </div>
+                                <button onClick={() => removePotion(w.id, pot.id)} style={{
+                                  padding: "3px 8px", borderRadius: 4, fontSize: "0.5rem",
+                                  background: "none", border: "1px solid #f4430", color: "#f44",
+                                  cursor: "pointer", fontFamily: "'Orbitron', sans-serif",
+                                }}>REMOVE</button>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {w.potions.length < 2 && <div style={{ color: "#555", fontSize: "0.5rem", marginTop: 6 }}>Can add {2 - w.potions.length} more potion</div>}
+                      </div>
+                    )}
 
                     {/* Level progress */}
                     {w.rarity !== "pet" && (
@@ -3696,7 +3750,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                           <div style={{ display: "flex", gap: 4, marginTop: 3 }}>
                             {w.potions.map(p => {
                               const pot = POTIONS.find(pp => pp.id === p.id);
-                              return <span key={p.id} style={{ fontSize: "0.55rem", padding: "1px 5px", borderRadius: 3, background: `${pot?.color}15`, border: `1px solid ${pot?.color}30`, color: pot?.color }}>{pot?.emoji} LV{p.level}</span>;
+                              return <span key={p.id} style={{ fontSize: "0.55rem", padding: "1px 5px", borderRadius: 3, background: `${pot?.color}15`, border: `1px solid ${pot?.color}30`, color: pot?.color }}>{pot?.emoji} M{p.merge}</span>;
                             })}
                           </div>
                         )}
