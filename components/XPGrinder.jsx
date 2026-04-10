@@ -68,13 +68,13 @@ const RARITY_COLORS = {
   pet: "#ff69b4",
 };
 const MATERIALS = [
-  { id: "plasma", name: "Plasma Shard", emoji: "⚡", price: 400, color: "#0ff", desc: "Basic energy fragment" },
-  { id: "cryo", name: "Cryo Crystal", emoji: "❄️", price: 800, color: "#60a5fa", desc: "Frozen power core" },
-  { id: "inferno", name: "Inferno Core", emoji: "🔥", price: 1500, color: "#f90", desc: "Volatile fire essence" },
-  { id: "voidF", name: "Void Fragment", emoji: "🕳️", price: 3000, color: "#c084fc", desc: "Dimensional rift shard" },
-  { id: "star", name: "Star Dust", emoji: "✨", price: 6000, color: "#fbbf24", desc: "Cosmic particle" },
-  { id: "glitch", name: "Glitch Code", emoji: "👾", price: 12000, color: "#ff00ff", desc: "Corrupted data strand" },
-  { id: "dark", name: "Dark Matter", emoji: "🌑", price: 2000, color: "#888", desc: "Universal binding agent" },
+  { id: "plasma", name: "Plasma Shard", emoji: "⚡", price: 1600, color: "#0ff", desc: "Basic energy fragment" },
+  { id: "cryo", name: "Cryo Crystal", emoji: "❄️", price: 3200, color: "#60a5fa", desc: "Frozen power core" },
+  { id: "inferno", name: "Inferno Core", emoji: "🔥", price: 6000, color: "#f90", desc: "Volatile fire essence" },
+  { id: "voidF", name: "Void Fragment", emoji: "🕳️", price: 12000, color: "#c084fc", desc: "Dimensional rift shard" },
+  { id: "star", name: "Star Dust", emoji: "✨", price: 24000, color: "#fbbf24", desc: "Cosmic particle" },
+  { id: "glitch", name: "Glitch Code", emoji: "👾", price: 48000, color: "#ff00ff", desc: "Corrupted data strand" },
+  { id: "dark", name: "Dark Matter", emoji: "🌑", price: 8000, color: "#888", desc: "Universal binding agent" },
 ];
 const POTIONS = [
   { id: "fire", name: "Fire Aspect", emoji: "🔥", color: "#f90",
@@ -2092,7 +2092,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
   const getToday = () => new Date().toLocaleDateString();
   useEffect(() => { coinsRef.current = coins; }, [coins]);
   useEffect(() => { debtRef.current = debt; }, [debt]);
-  const [gamesLeft, setGamesLeft] = useState({ math: 4, trivia: 4, word: 4, memory: 4 });
+  const [gamesLeft, setGamesLeft] = useState({ math: 5, trivia: 5, word: 5, memory: 5 });
   const totalGamesLeft = Object.values(gamesLeft).reduce((a, b) => a + b, 0);
   const [xp, setXp] = useState(0);
   const [level, setLevel] = useState(1);
@@ -2114,7 +2114,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     const checkReset = () => {
       const today = getToday();
       if (lastLoginDate !== today) {
-        setGamesLeft({ math: 4, trivia: 4, word: 4, memory: 4 });
+        setGamesLeft({ math: 5, trivia: 5, word: 5, memory: 5 });
         setWheelSpun(false);
         setWheelResult(null);
         setCoinDoubler(false);
@@ -2483,17 +2483,49 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     setPlaying(true);
     setGamesLeft(g => ({ ...g, [game]: g[game] - 1 }));
   };
+  const getRandomMaterialDrop = (earned) => {
+    const drops = [];
+    // Drops scale with earnings: more coins = harder game = better drops
+    const dropCount = earned >= 2000 ? 3 : earned >= 800 ? 2 : 1;
+    // Material pool scales with earnings
+    const pool = earned >= 2000
+      ? ["plasma", "cryo", "inferno", "voidF", "star", "dark"]
+      : earned >= 800
+      ? ["plasma", "cryo", "inferno", "dark"]
+      : ["plasma", "dark"];
+    // Rare glitch drop chance on high earnings
+    if (earned >= 3000 && Math.random() < 0.15) pool.push("glitch");
+    for (let i = 0; i < dropCount; i++) {
+      const matId = pool[Math.floor(Math.random() * pool.length)];
+      const existing = drops.find(d => d.id === matId);
+      if (existing) existing.qty++;
+      else drops.push({ id: matId, qty: 1 });
+    }
+    return drops;
+  };
+
   const onGameComplete = (earned) => {
     const finalEarned = coinDoubler && earned > 0 ? earned * 2 : earned;
     if (coinDoubler && earned > 0) setCoinDoubler(false);
     if (finalEarned > 0) setTotalGamesWon(g => g + 1);
     earnCoins(finalEarned);
     addXP(finalEarned);
+    // Material drops on win
+    let dropMsg = "";
+    if (earned > 0) {
+      const drops = getRandomMaterialDrop(earned);
+      drops.forEach(drop => {
+        setMaterials(m => ({ ...m, [drop.id]: (m[drop.id] || 0) + drop.qty }));
+        const mat = MATERIALS.find(m => m.id === drop.id);
+        dropMsg += ` ${mat.emoji}x${drop.qty}`;
+      });
+    }
     setLastResult(finalEarned);
     setPlaying(false);
     setSelectedGame(null);
     setDifficulty(null);
-    if (coinDoubler && earned > 0) notify(`⚡ DOUBLED! +${finalEarned.toLocaleString()} coins!`, "#fbbf24");
+    if (coinDoubler && earned > 0) notify(`⚡ DOUBLED! +${finalEarned.toLocaleString()} coins! +${dropMsg.trim()}`, "#fbbf24");
+    else if (dropMsg && earned > 0) notify(`+${finalEarned.toLocaleString()} coins +${dropMsg.trim()} materials!`, "#c084fc");
   };
   const buyWeapon = (weapon) => {
     if (coins < weapon.price) { notify("Not enough coins!", "#f44"); return; }
@@ -2770,7 +2802,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
           </div>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "0.55rem", color: "#888" }}>GAMES</div>
-            <NeonText color={totalGamesLeft === 0 ? "#f44" : "#0ff"} size="1rem">{totalGamesLeft}/16</NeonText>
+            <NeonText color={totalGamesLeft === 0 ? "#f44" : "#0ff"} size="1rem">{totalGamesLeft}/20</NeonText>
           </div>
         </div>
       </div>
@@ -2790,7 +2822,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
               <div style={{ fontSize: "3rem", animation: "float 3s ease-in-out infinite" }}>⚡</div>
               <NeonText size="1.5rem" color="#fff" style={{ fontWeight: 700 }}>WELCOME TO EXP GRINDER</NeonText>
               <p style={{ color: "#666", fontSize: "0.8rem", marginTop: 8 }}>
-                {totalGamesLeft > 0 ? `${totalGamesLeft} game${totalGamesLeft !== 1 ? "s" : ""} remaining today (4 per category).` : "Daily limit reached. Return tomorrow!"}
+                {totalGamesLeft > 0 ? `${totalGamesLeft} game${totalGamesLeft !== 1 ? "s" : ""} remaining today (5 per category).` : "Daily limit reached. Return tomorrow!"}
               </p>
             </div>
             {}
@@ -3081,7 +3113,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
           <div>
             <NeonText size="1.2rem" color="#f90">⚒️ CRAFTING FORGE</NeonText>
             <p style={{ color: "#bbb", fontSize: "0.75rem", margin: "8px 0 16px" }}>
-              Buy materials and craft potions for your weapons.
+              Buy materials or earn them by winning mini-games!
             </p>
             {}
             <Panel style={{ marginBottom: 16 }}>
@@ -3268,7 +3300,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                     <div style={{ fontSize: "2rem", margin: "8px 0" }}>{g.icon}</div>
                     <NeonText size="0.8rem" color={g.color}>{g.name}</NeonText>
                     <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 4 }}>{g.desc}</div>
-                    <div style={{ marginTop: 6, fontSize: "0.6rem", color: left === 0 ? "#f44" : left <= 1 ? "#fbbf24" : "#0ff", }}>{left === 0 ? "NO GAMES LEFT" : `${left}/4 remaining`}</div>
+                    <div style={{ marginTop: 6, fontSize: "0.6rem", color: left === 0 ? "#f44" : left <= 1 ? "#fbbf24" : "#0ff", }}>{left === 0 ? "NO GAMES LEFT" : `${left}/5 remaining`}</div>
                   </Panel>
                   );
                 })}
