@@ -1872,6 +1872,19 @@ function PvPBattle({ playerWeapons, onComplete }) {
     if (phase !== "battle") return;
     setArenaPlayerX(x => Math.max(8, Math.min(92, x + dir * 15)));
   };
+
+  // Keyboard controls for arena
+  useEffect(() => {
+    if (phase !== "battle" || battleMode !== "realtime") return;
+    const handleKey = (e) => {
+      if (e.key === "ArrowLeft" || e.key === "a") { e.preventDefault(); moveArena(-1); }
+      if (e.key === "ArrowRight" || e.key === "d") { e.preventDefault(); moveArena(1); }
+      if (e.key === " " || e.key === "Enter") { e.preventDefault(); arenaShoot(); }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [phase, battleMode, canShoot, arenaPlayerX]);
+
   if (!playerWeapons.length) {
     return (
       <div style={{ textAlign: "center", padding: 40 }}>
@@ -2134,13 +2147,13 @@ function PvPBattle({ playerWeapons, onComplete }) {
 
             {/* Controls */}
             <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-              <GlowButton onClick={() => moveArena(-1)} color="#0ff" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
+              <GlowButton onClick={() => moveArena(-1)} color="#fbbf24" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
                 ← MOVE
               </GlowButton>
-              <GlowButton onClick={arenaShoot} disabled={!canShoot} color={canShoot ? getBallColor(selectedWeapon) : "#555"} style={{ flex: 2, fontSize: "0.85rem", padding: "14px 8px" }}>
+              <GlowButton onClick={arenaShoot} disabled={!canShoot} color={canShoot ? "#ef4444" : "#555"} style={{ flex: 2, fontSize: "0.85rem", padding: "14px 8px" }}>
                 {canShoot ? `🎯 ATTACK` : "⏳ RELOAD"}
               </GlowButton>
-              <GlowButton onClick={() => moveArena(1)} color="#0ff" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
+              <GlowButton onClick={() => moveArena(1)} color="#fbbf24" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
                 MOVE →
               </GlowButton>
             </div>
