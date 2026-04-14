@@ -1681,7 +1681,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
       setTurnLabel(miniBoss ? "⚠️ BOSS FIGHT!" : "FIGHT!");
       setTimeout(() => setTurnLabel(""), 1000);
       if (finalMode === "auto") runAutoBattle(selectedWeapon, botWeapon, bot);
-      else setTurnReady(true);
+      else { setTurnReady(true); startArena(); }
     }, miniBoss ? 3000 : 2000);
   };
   const runAutoBattle = (pw, ew, eName) => {
@@ -1754,52 +1754,124 @@ function PvPBattle({ playerWeapons, onComplete }) {
     };
     setTimeout(playNext, 800);
   };
-  const doRealtimeAction = (action) => {
-    if (!turnReady) return;
-    setTurnReady(false);
-    setTurnCount(c => c + 1);
-    const playerDef = getWeaponStats(selectedWeapon).defense || 0;
-    const playerAtk = getWeaponStats(selectedWeapon).attack || 0;
-    const botDef = (enemy.weapon.type === "defense" ? 8 : enemy.weapon.type === "both" ? 5 : 0);
-    const botAtk = (enemy.weapon.type === "attack" ? 6 : enemy.weapon.type === "both" ? 4 : 0);
-    let pDmg = 0;
-    if (action === "attack") pDmg = Math.max(1, Math.floor(getWeaponStats(selectedWeapon).damage * (0.8 + Math.random() * 0.4)) + playerAtk - botDef);
-    else if (action === "heavy") pDmg = Math.max(1, Math.floor(getWeaponStats(selectedWeapon).damage * (1.0 + Math.random() * 0.6)) + playerAtk - botDef);
-    const doPlayerTurn = (cb) => {
-      if (action === "defend") { animateDefend("player", cb); }
-      else {
-        setTurnLabel("YOUR TURN");
-        animateAttack("player", pDmg, () => {
-          const newEHP = Math.max(0, enemyHP - pDmg);
-          setEnemyHP(newEHP);
-          setTurnLabel("");
-          if (newEHP <= 0) { setResult({ won: true, coins: 4800, miniBoss }); setPhase("result"); return; }
-          cb();
+  // Arena state for realtime mode
+  const [arenaPlayerX, setArenaPlayerX] = useState(50);
+  const [arenaEnemyX, setArenaEnemyX] = useState(50);
+  const [projectiles, setProjectiles] = useState([]);
+  const [canShoot, setCanShoot] = useState(true);
+  const arenaRef = useRef(null);
+  const gameLoopRef = useRef(null);
+  const enemyAIRef = useRef(null);
+
+  // Get potion ball color
+  const getBallColor = (weapon) => {
+    const potions = weapon?.potions || [];
+    if (potions.find(p => p.id === "fire")) return "#f90";
+    if (potions.find(p => p.id === "ice")) return "#60a5fa";
+    if (potions.find(p => p.id === "lightning")) return "#fbbf24";
+    if (potions.find(p => p.id === "poison")) return "#0f0";
+    return "#0ff";
+  };
+
+  const startArena = () => {
+    setArenaPlayerX(50);
+    setArenaEnemyX(50);
+    setProjectiles([]);
+    setCanShoot(true);
+  };
+
+  // Game loop for projectiles
+  useEffect(() => {
+    if (phase !== "battle" || battleMode !== "realtime") return;
+    const loop = setInterval(() => {
+      setProjectiles(prev => {
+        const updated = prev.map(p => ({
+          ...p,
+          y: p.fromPlayer ? p.y - 2.5 : p.y + 2.5, // move toward target
+        })).filter(p => p.y > -5 && p.y < 105);
+        // Check hits
+        updated.forEach(p => {
+          if (p.fromPlayer && p.y <= 8) {
+            // Check if enemy is near the ball's x position
+            if (Math.abs(p.x - arenaEnemyX) < 12) {
+              p.hit = true;
+              const dmg = Math.max(1, Math.floor(getWeaponStats(selectedWeapon).damage * (0.8 + Math.random() * 0.3)));
+              setEnemyHP(h => {
+                const newHP = Math.max(0, h - dmg);
+                if (newHP <= 0) {
+                  setResult({ won: true, coins: 4800, miniBoss });
+                  setPhase("result");
+                }
+                return newHP;
+              });
+              showFloat(`-${dmg}`, "#0ff", "right");
+              triggerShake();
+            }
+          } else if (!p.fromPlayer && p.y >= 92) {
+            if (Math.abs(p.x - arenaPlayerX) < 12) {
+              p.hit = true;
+              const eDmg = Math.max(1, Math.floor(enemy.weapon.damage * (0.7 + Math.random() * 0.4)));
+              setPlayerHP(h => {
+                const newHP = Math.max(0, h - eDmg);
+                if (newHP <= 0) {
+                  setResult({ won: false, coins: -1000, miniBoss });
+                  setPhase("result");
+                }
+                return newHP;
+              });
+              showFloat(`-${eDmg}`, "#f44", "left");
+              triggerShake();
+            }
+          }
         });
+        return updated.filter(p => !p.hit);
+      });
+    }, 50);
+    gameLoopRef.current = loop;
+    return () => clearInterval(loop);
+  }, [phase, battleMode, arenaPlayerX, arenaEnemyX]);
+
+  // Enemy AI: move and shoot
+  useEffect(() => {
+    if (phase !== "battle" || battleMode !== "realtime") return;
+    const ai = setInterval(() => {
+      // Move randomly
+      setArenaEnemyX(x => {
+        const dir = (Math.random() - 0.5) * 20;
+        return Math.max(8, Math.min(92, x + dir));
+      });
+      // Shoot every ~2.5 seconds
+      if (Math.random() < 0.4) {
+        setProjectiles(prev => [...prev, {
+          id: Date.now() + Math.random(),
+          x: arenaEnemyX,
+          y: 8,
+          fromPlayer: false,
+          color: "#f0f",
+        }]);
       }
-    };
-    doPlayerTurn(() => {
-      setTimeout(() => {
-        const eAction = ["attack", "heavy", "defend"][Math.floor(Math.random() * 3)];
-        let eDmg = 0;
-        if (eAction === "attack") eDmg = Math.floor(enemy.weapon.damage * (0.7 + Math.random() * 0.5)) + botAtk;
-        else if (eAction === "heavy") eDmg = Math.floor(enemy.weapon.damage * (0.9 + Math.random() * 0.6)) + botAtk;
-        eDmg = Math.max(1, eDmg - playerDef);
-        if (action === "defend") eDmg = Math.floor(eDmg * 0.4);
-        if (eAction === "defend") {
-          animateDefend("enemy", () => { setTurnReady(true); });
-        } else {
-          setTurnLabel("ENEMY TURN");
-          animateAttack("enemy", eDmg, () => {
-            const newPHP = Math.max(0, playerHP - eDmg);
-            setPlayerHP(newPHP);
-            setTurnLabel("");
-            if (newPHP <= 0) { setResult({ won: false, coins: -1000, miniBoss }); setPhase("result"); }
-            else setTurnReady(true);
-          });
-        }
-      }, 500);
-    });
+    }, 600);
+    enemyAIRef.current = ai;
+    return () => clearInterval(ai);
+  }, [phase, battleMode, arenaEnemyX]);
+
+  const arenaShoot = () => {
+    if (!canShoot || phase !== "battle") return;
+    setCanShoot(false);
+    const ballColor = getBallColor(selectedWeapon);
+    setProjectiles(prev => [...prev, {
+      id: Date.now(),
+      x: arenaPlayerX,
+      y: 92,
+      fromPlayer: true,
+      color: ballColor,
+    }]);
+    setTimeout(() => setCanShoot(true), 2000);
+  };
+
+  const moveArena = (dir) => {
+    if (phase !== "battle") return;
+    setArenaPlayerX(x => Math.max(8, Math.min(92, x + dir * 15)));
   };
   if (!playerWeapons.length) {
     return (
@@ -1950,7 +2022,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
               </div>
             </div>
           </div>
-          {}
+          {battleMode === "auto" && (<>
           <div style={{ display: "flex", justifyContent: "space-around", alignItems: "flex-end", minHeight: 150, position: "relative", zIndex: 2, padding: "0 10px", }}>
             {}
             <div style={{ position: "relative" }}>
@@ -1983,23 +2055,96 @@ function PvPBattle({ playerWeapons, onComplete }) {
           </div>
           {}
           <div style={{ height: 2, borderRadius: 2, marginTop: 8, background: "linear-gradient(90deg, #0ff30, #fff20, #f0f30)", }} />
+          </>)}
         </div>
         {}
         <div style={{ fontSize: "0.65rem", color: "#555", textAlign: "center", margin: "10px 0 6px" }}>
-          {battleMode === "realtime" ? "⚡ REAL-TIME COMBAT" : "🤖 AUTO-BATTLE"}
+          {battleMode === "realtime" ? "⚡ ARENA BATTLE" : "🤖 AUTO-BATTLE"}
         </div>
         {}
         {battleMode === "realtime" && (
-          <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-            <GlowButton onClick={() => doRealtimeAction("attack")} disabled={!turnReady} color="#0ff" style={{ flex: 1, fontSize: "0.75rem", padding: "10px 8px" }}>
-              ⚔ ATTACK
-            </GlowButton>
-            <GlowButton onClick={() => doRealtimeAction("heavy")} disabled={!turnReady} color="#f0f" style={{ flex: 1, fontSize: "0.75rem", padding: "10px 8px" }}>
-              💥 HEAVY
-            </GlowButton>
-            <GlowButton onClick={() => doRealtimeAction("defend")} disabled={!turnReady} color="#0f0" style={{ flex: 1, fontSize: "0.75rem", padding: "10px 8px" }}>
-              🛡 DEFEND
-            </GlowButton>
+          <div>
+            {/* Arena */}
+            <div ref={arenaRef} style={{
+              position: "relative", width: "100%", height: 320, borderRadius: 12,
+              background: "linear-gradient(180deg, #0a001a, #050520, #0a001a)",
+              border: "1px solid #1a1a3e", overflow: "hidden", marginBottom: 12,
+            }}>
+              {/* Grid lines */}
+              <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "#ffffff08" }} />
+              <div style={{ position: "absolute", top: 0, bottom: 0, left: "25%", width: 1, background: "#ffffff05" }} />
+              <div style={{ position: "absolute", top: 0, bottom: 0, left: "50%", width: 1, background: "#ffffff05" }} />
+              <div style={{ position: "absolute", top: 0, bottom: 0, left: "75%", width: 1, background: "#ffffff05" }} />
+
+              {/* Enemy (top) */}
+              <div style={{
+                position: "absolute", top: 10, left: `${arenaEnemyX}%`, transform: "translateX(-50%)",
+                transition: "left 0.3s ease",
+              }}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "1.5rem" }}>{enemy?.weapon?.emoji || "🗡️"}</div>
+                  <div style={{ fontSize: "0.5rem", color: "#f0f", fontFamily: "'Orbitron', sans-serif", marginTop: 2 }}>{enemy?.name}</div>
+                </div>
+              </div>
+
+              {/* Player (bottom) */}
+              <div style={{
+                position: "absolute", bottom: 10, left: `${arenaPlayerX}%`, transform: "translateX(-50%)",
+                transition: "left 0.15s ease",
+              }}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ fontSize: "0.5rem", color: "#0ff", fontFamily: "'Orbitron', sans-serif", marginBottom: 2 }}>YOU</div>
+                  <div style={{ fontSize: "1.5rem" }}>{selectedWeapon?.emoji || "⚔️"}</div>
+                </div>
+              </div>
+
+              {/* Projectiles */}
+              {projectiles.map(p => (
+                <div key={p.id} style={{
+                  position: "absolute",
+                  left: `${p.x}%`, top: `${p.y}%`,
+                  transform: "translate(-50%, -50%)",
+                  width: 12, height: 12, borderRadius: "50%",
+                  background: p.color,
+                  boxShadow: `0 0 12px ${p.color}, 0 0 24px ${p.color}60`,
+                  transition: "top 0.05s linear",
+                }} />
+              ))}
+
+              {/* Float text */}
+              {floatText && (
+                <div style={{
+                  position: "absolute",
+                  top: floatText.side === "right" ? 40 : "auto",
+                  bottom: floatText.side === "left" ? 60 : "auto",
+                  left: "50%", transform: "translateX(-50%)",
+                  color: floatText.color, fontSize: "1.4rem", fontWeight: 900,
+                  animation: "floatUp 0.9s forwards",
+                  textShadow: `0 0 15px ${floatText.color}`, zIndex: 10,
+                }}>{floatText.text}</div>
+              )}
+
+              {/* Cooldown indicator */}
+              {!canShoot && (
+                <div style={{
+                  position: "absolute", bottom: 50, left: "50%", transform: "translateX(-50%)",
+                  color: "#f4480", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif",
+                }}>RELOADING...</div>
+              )}
+            </div>
+
+            {/* Controls */}
+            <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+              <GlowButton onClick={() => moveArena(-1)} color="#0ff" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
+                ← MOVE
+              </GlowButton>
+              <GlowButton onClick={arenaShoot} disabled={!canShoot} color={canShoot ? getBallColor(selectedWeapon) : "#555"} style={{ flex: 2, fontSize: "0.85rem", padding: "14px 8px" }}>
+                {canShoot ? `🎯 ATTACK` : "⏳ RELOAD"}
+              </GlowButton>
+              <GlowButton onClick={() => moveArena(1)} color="#0ff" style={{ flex: 1, fontSize: "0.85rem", padding: "14px 8px" }}>
+                MOVE →
+              </GlowButton>
+            </div>
           </div>
         )}
       </div>
@@ -2118,6 +2263,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
         setWheelSpun(false);
         setWheelResult(null);
         setCoinDoubler(false);
+        setCoinFlipsUsed(0);
         setStreak(s => s + 1);
         setLastLoginDate(today);
       }
@@ -2545,6 +2691,86 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
   const [packsOpened, setPacksOpened] = useState(0);
   const [materials, setMaterials] = useState({ plasma: 0, cryo: 0, inferno: 0, voidF: 0, star: 0, glitch: 0, dark: 0 });
   const [potions, setPotions] = useState([]);
+  const [bounties, setBounties] = useState([]);
+  const [bountyDate, setBountyDate] = useState(null);
+  const [coinFlipping, setCoinFlipping] = useState(false);
+  const [coinFlipsUsed, setCoinFlipsUsed] = useState(0);
+  const [coinFlipPot, setCoinFlipPot] = useState(0);
+  const [coinFlipPhase, setCoinFlipPhase] = useState("pick"); // pick, flipping, won, lost
+
+  const flipCoin = (amount) => {
+    if (amount > 5000 || amount < 1000) return;
+    const flipFee = coinFlipsUsed >= 2 ? 2000 : 0;
+    const totalNeeded = amount + flipFee;
+    if (coins < totalNeeded || coinFlipping) return;
+    setCoinFlipping(true);
+    setCoinFlipPhase("flipping");
+    setCoins(c => { coinsRef.current = c - totalNeeded; return c - totalNeeded; });
+    setCoinFlipsUsed(f => f + 1);
+    setTimeout(() => {
+      const won = Math.random() < 0.5;
+      setCoinFlipping(false);
+      if (won) {
+        const newPot = amount * 2;
+        setCoinFlipPot(newPot);
+        setCoinFlipPhase("won");
+        notify(`🪙 HEADS! Pot is now ${newPot.toLocaleString()} coins!`, "#0f0");
+      } else {
+        setCoinFlipPot(0);
+        setCoinFlipPhase("lost");
+        notify(`🪙 TAILS! You lost ${amount.toLocaleString()} coins!`, "#f44");
+      }
+    }, 1500);
+  };
+
+  const doubleOrNothing = () => {
+    if (coinFlipping || coinFlipPot <= 0) return;
+    setCoinFlipping(true);
+    setCoinFlipPhase("flipping");
+    setTimeout(() => {
+      const won = Math.random() < 0.5;
+      setCoinFlipping(false);
+      if (won) {
+        const newPot = coinFlipPot * 2;
+        setCoinFlipPot(newPot);
+        setCoinFlipPhase("won");
+        notify(`🪙 HEADS! Pot doubled to ${newPot.toLocaleString()} coins!`, "#0f0");
+      } else {
+        setCoinFlipPot(0);
+        setCoinFlipPhase("lost");
+        notify(`🪙 TAILS! You lost everything!`, "#f44");
+      }
+    }, 1500);
+  };
+
+  const cashOutFlip = () => {
+    earnCoins(coinFlipPot);
+    notify(`💰 Cashed out ${coinFlipPot.toLocaleString()} coins!`, "#fbbf24");
+    setCoinFlipPot(0);
+    setCoinFlipPhase("pick");
+  };  useEffect(() => {
+    const today = getToday();
+    if (bountyDate !== today) {
+      const bountyBots = ["N3bulaX", "CyberPh4ntom", "Gl1tchWolf", "NeonSh4dow", "Pix3lStorm", "V0idRaider", "ByteHunt3r", "D4rkPulse", "ZeroCool", "DarkByt3"];
+      const rewards = [5000, 8000, 12000, 15000, 20000];
+      const shuffled = bountyBots.sort(() => Math.random() - 0.5).slice(0, 3);
+      const newBounties = shuffled.map((name, i) => ({
+        id: i,
+        name,
+        reward: rewards[Math.floor(Math.random() * rewards.length)],
+        completed: false,
+        weapon: WEAPONS[Math.floor(Math.random() * WEAPONS.length)],
+      }));
+      setBounties(newBounties);
+      setBountyDate(today);
+    }
+  }, [bountyDate]);
+
+  const completeBounty = (bountyId) => {
+    setBounties(b => b.map(bn => bn.id === bountyId ? { ...bn, completed: true } : bn));
+    const bounty = bounties.find(b => b.id === bountyId);
+    if (bounty) earnCoins(bounty.reward);
+  };
 
   // Load saved state on mount
   useEffect(() => {
@@ -2567,6 +2793,8 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
       if (s.packsOpened !== undefined) setPacksOpened(s.packsOpened);
       if (s.materials) setMaterials(s.materials);
       if (s.potions) setPotions(s.potions);
+      if (s.bounties) setBounties(s.bounties);
+      if (s.bountyDate) setBountyDate(s.bountyDate);
     } catch (e) { console.error("Failed to load state:", e); }
   }, []);
 
@@ -2578,7 +2806,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
         coins, debt, xp, level, inventory, gamesLeft, streak,
         lastClaimDate, lastLoginDate,
         achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened,
-        materials, potions,
+        materials, potions, bounties, bountyDate,
       };
       onSave(JSON.stringify(state));
     }, 30000);
@@ -2786,7 +3014,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             {user ? user.email?.split("@")[0] : "NEON ARENA v1.0"}
           </div>
           <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
+            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions, bounties, bountyDate }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
             {onLogout && <button onClick={onLogout} style={{ background: "none", border: "1px solid #f4430", color: "#f44", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>LOGOUT</button>}
           </div>
         </div>
@@ -2940,6 +3168,117 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
               <NeonText size="1.2rem" color="#fbbf24">→</NeonText>
             </button>
             {}
+
+            {/* ─── BOUNTY BOARD ─── */}
+            <Panel style={{ marginTop: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                <NeonText size="0.85rem" color="#ef4444">🎯 BOUNTY BOARD</NeonText>
+                <span style={{ color: "#555", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>DAILY TARGETS</span>
+              </div>
+              <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 10 }}>Defeat these targets in PvP for bonus rewards!</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {bounties.map(bounty => (
+                  <div key={bounty.id} style={{
+                    display: "flex", alignItems: "center", gap: 10, padding: "10px 12px",
+                    background: bounty.completed ? "#0f008" : "#05050f", borderRadius: 8,
+                    border: `1px solid ${bounty.completed ? "#0f030" : "#ef444430"}`,
+                    opacity: bounty.completed ? 0.6 : 1,
+                  }}>
+                    <div style={{
+                      width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center",
+                      background: bounty.completed ? "#0f015" : "#ef444415", borderRadius: 8,
+                      border: `1px solid ${bounty.completed ? "#0f040" : "#ef444440"}`, fontSize: "1.2rem",
+                    }}>{bounty.completed ? "✅" : "🎯"}</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ color: bounty.completed ? "#0f0" : "#ef4444", fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>
+                        {bounty.completed ? `${bounty.name} ✓` : bounty.name}
+                      </div>
+                      <div style={{ color: "#666", fontSize: "0.55rem" }}>
+                        Using {bounty.weapon.emoji} {bounty.weapon.name} ({bounty.weapon.rarity})
+                      </div>
+                    </div>
+                    {bounty.completed ? (
+                      <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>CLAIMED</span>
+                    ) : (
+                      <button onClick={() => {
+                        if (inventory.length === 0) { notify("You need a weapon first!", "#f44"); return; }
+                        completeBounty(bounty.id);
+                        notify(`🎯 Bounty complete! ${bounty.name} defeated! +${bounty.reward.toLocaleString()} coins!`, "#ef4444");
+                      }} style={{
+                        padding: "6px 12px", borderRadius: 6, cursor: inventory.length > 0 ? "pointer" : "not-allowed",
+                        background: "#ef444420", border: "1px solid #ef444450",
+                        color: "#fbbf24", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                      }}>💰 {bounty.reward.toLocaleString()}</button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Panel>
+
+            {/* ─── COIN FLIP ─── */}
+            <Panel style={{ marginTop: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                <NeonText size="0.85rem" color="#fbbf24">🪙 COIN FLIP</NeonText>
+                <span style={{ color: coinFlipsUsed >= 2 ? "#f44" : "#0f0", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>
+                  {coinFlipsUsed >= 2 ? "💰 2,000/flip" : `${2 - coinFlipsUsed} FREE LEFT`}
+                </span>
+              </div>
+              <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 12 }}>
+                Heads = double. Tails = lose all. Keep flipping to multiply or cash out!
+              </div>
+              {coinFlipPhase === "flipping" ? (
+                <div style={{ textAlign: "center", padding: "16px 0" }}>
+                  <div style={{ fontSize: "2.5rem", animation: "pulse 0.3s infinite" }}>🪙</div>
+                  <NeonText size="0.9rem" color="#fbbf24">FLIPPING...</NeonText>
+                </div>
+              ) : coinFlipPhase === "won" ? (
+                <div style={{ textAlign: "center", padding: "12px 0" }}>
+                  <div style={{ fontSize: "2rem", marginBottom: 6 }}>🎉</div>
+                  <NeonText size="1.2rem" color="#0f0">POT: {coinFlipPot.toLocaleString()} coins</NeonText>
+                  <div style={{ color: "#888", fontSize: "0.65rem", margin: "8px 0" }}>Double to {(coinFlipPot * 2).toLocaleString()} or cash out?</div>
+                  <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 10 }}>
+                    <button onClick={cashOutFlip} style={{
+                      padding: "10px 20px", borderRadius: 8, cursor: "pointer",
+                      background: "#0f020", border: "1px solid #0f050",
+                      color: "#0f0", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif",
+                    }}>💰 CASH OUT</button>
+                    <button onClick={doubleOrNothing} style={{
+                      padding: "10px 20px", borderRadius: 8, cursor: "pointer",
+                      background: "#f4420", border: "1px solid #f4450",
+                      color: "#f44", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif",
+                    }}>🔥 DOUBLE OR NOTHING</button>
+                  </div>
+                </div>
+              ) : coinFlipPhase === "lost" ? (
+                <div style={{ textAlign: "center", padding: "12px 0" }}>
+                  <div style={{ fontSize: "2rem", marginBottom: 6 }}>💀</div>
+                  <NeonText size="1rem" color="#f44">YOU LOST EVERYTHING!</NeonText>
+                  <button onClick={() => setCoinFlipPhase("pick")} style={{
+                    marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
+                    background: "#fbbf2420", border: "1px solid #fbbf2440",
+                    color: "#fbbf24", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                  }}>TRY AGAIN</button>
+                </div>
+              ) : (
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                  {[1000, 2000, 3000, 5000].map(amt => {
+                    const fee = coinFlipsUsed >= 2 ? 2000 : 0;
+                    const canAfford = coins >= amt + fee;
+                    return (
+                      <button key={amt} onClick={() => flipCoin(amt)} disabled={!canAfford} style={{
+                        padding: "12px 8px", borderRadius: 8, cursor: canAfford ? "pointer" : "not-allowed",
+                        background: canAfford ? "#fbbf2410" : "#111",
+                        border: `1px solid ${canAfford ? "#fbbf2440" : "#222"}`,
+                        color: canAfford ? "#fbbf24" : "#333",
+                        fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif",
+                        opacity: !canAfford ? 0.4 : 1,
+                      }}>💰 {amt.toLocaleString()}</button>
+                    );
+                  })}
+                </div>
+              )}
+            </Panel>
+
             <Panel style={{ marginTop: 16 }}>
               <NeonText size="0.75rem" color="#888">PLAYER STATS</NeonText>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 10 }}>
