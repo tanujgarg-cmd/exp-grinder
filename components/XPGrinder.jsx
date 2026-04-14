@@ -1199,49 +1199,49 @@ function TriviaGame({ onComplete }) {
 const MEMORY_CATEGORIES = [
   { id: "emoji", name: "EMOJI PAIRS", icon: "😎", color: "#fbbf24", desc: "Faces & objects",
     levels: [
-      { diff: "easy", coins: 800, time: 45, grid: 12 },
-      { diff: "medium", coins: 2000, time: 35, grid: 16 },
-      { diff: "hard", coins: 4400, time: 25, grid: 24 },
+      { diff: "easy", coins: 800, time: 20, grid: 12 },
+      { diff: "medium", coins: 2000, time: 15, grid: 16 },
+      { diff: "hard", coins: 4400, time: 10, grid: 24 },
     ],
     symbols: { easy: ["😀", "😎", "🥳", "😱", "🤖", "👻"], medium: ["😀", "😎", "🥳", "😱", "🤖", "👻", "🎭", "💀"], hard: ["😀", "😎", "🥳", "😱", "🤖", "👻", "🎭", "💀", "🤡", "😈", "🥶", "🫠"] }
   },
   { id: "space", name: "SPACE SYMBOLS", icon: "🚀", color: "#60a5fa", desc: "Planets & rockets",
     levels: [
-      { diff: "easy", coins: 800, time: 45, grid: 12 },
-      { diff: "medium", coins: 2000, time: 35, grid: 16 },
-      { diff: "hard", coins: 4400, time: 25, grid: 24 },
+      { diff: "easy", coins: 800, time: 20, grid: 12 },
+      { diff: "medium", coins: 2000, time: 15, grid: 16 },
+      { diff: "hard", coins: 4400, time: 10, grid: 24 },
     ],
     symbols: { easy: ["🚀", "🌍", "⭐", "🌙", "☄️", "🛸"], medium: ["🚀", "🌍", "⭐", "🌙", "☄️", "🛸", "🪐", "🌌"], hard: ["🚀", "🌍", "⭐", "🌙", "☄️", "🛸", "🪐", "🌌", "🌕", "🔭", "🌠", "🛰️"] }
   },
   { id: "animals", name: "ANIMAL PAIRS", icon: "🐾", color: "#6ee7b7", desc: "Wildlife matching",
     levels: [
-      { diff: "easy", coins: 800, time: 45, grid: 12 },
-      { diff: "medium", coins: 2000, time: 35, grid: 16 },
-      { diff: "hard", coins: 4400, time: 25, grid: 24 },
+      { diff: "easy", coins: 800, time: 20, grid: 12 },
+      { diff: "medium", coins: 2000, time: 15, grid: 16 },
+      { diff: "hard", coins: 4400, time: 10, grid: 24 },
     ],
     symbols: { easy: ["🐶", "🐱", "🐻", "🦊", "🐸", "🦁"], medium: ["🐶", "🐱", "🐻", "🦊", "🐸", "🦁", "🐺", "🦅"], hard: ["🐶", "🐱", "🐻", "🦊", "🐸", "🦁", "🐺", "🦅", "🦈", "🐙", "🦋", "🐢"] }
   },
   { id: "numbers", name: "NUMBERS & MATH", icon: "🔢", color: "#c084fc", desc: "Numeric matching",
     levels: [
-      { diff: "easy", coins: 1000, time: 45, grid: 12 },
-      { diff: "medium", coins: 2400, time: 35, grid: 16 },
-      { diff: "hard", coins: 5200, time: 25, grid: 24 },
+      { diff: "easy", coins: 1000, time: 20, grid: 12 },
+      { diff: "medium", coins: 2400, time: 15, grid: 16 },
+      { diff: "hard", coins: 5200, time: 10, grid: 24 },
     ],
     symbols: { easy: ["π", "∞", "∑", "√", "Δ", "Ω"], medium: ["π", "∞", "∑", "√", "Δ", "Ω", "∫", "λ"], hard: ["π", "∞", "∑", "√", "Δ", "Ω", "∫", "λ", "θ", "φ", "ε", "σ"] }
   },
   { id: "shapes", name: "COLORS & SHAPES", icon: "🔷", color: "#0ff", desc: "Geometric matching",
     levels: [
-      { diff: "easy", coins: 800, time: 45, grid: 12 },
-      { diff: "medium", coins: 2000, time: 35, grid: 16 },
-      { diff: "hard", coins: 4400, time: 25, grid: 24 },
+      { diff: "easy", coins: 800, time: 20, grid: 12 },
+      { diff: "medium", coins: 2000, time: 15, grid: 16 },
+      { diff: "hard", coins: 4400, time: 10, grid: 24 },
     ],
     symbols: { easy: ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠"], medium: ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠", "⬛", "🔶"], hard: ["🔴", "🔵", "🟢", "🟡", "🟣", "🟠", "⬛", "🔶", "🔷", "⬜", "🟤", "💠"] }
   },
   { id: "flags", name: "FLAGS & COUNTRIES", icon: "🏳️", color: "#ef4444", desc: "National flag pairs",
     levels: [
-      { diff: "easy", coins: 1000, time: 45, grid: 12 },
-      { diff: "medium", coins: 2400, time: 35, grid: 16 },
-      { diff: "hard", coins: 5200, time: 25, grid: 24 },
+      { diff: "easy", coins: 1000, time: 20, grid: 12 },
+      { diff: "medium", coins: 2400, time: 15, grid: 16 },
+      { diff: "hard", coins: 5200, time: 10, grid: 24 },
     ],
     symbols: { easy: ["🇺🇸", "🇬🇧", "🇯🇵", "🇮🇳", "🇧🇷", "🇫🇷"], medium: ["🇺🇸", "🇬🇧", "🇯🇵", "🇮🇳", "🇧🇷", "🇫🇷", "🇩🇪", "🇰🇷"], hard: ["🇺🇸", "🇬🇧", "🇯🇵", "🇮🇳", "🇧🇷", "🇫🇷", "🇩🇪", "🇰🇷", "🇨🇦", "🇦🇺", "🇮🇹", "🇪🇸"] }
   },
@@ -2778,10 +2778,56 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     }
   }, [bountyDate]);
 
+  const [activeBounty, setActiveBounty] = useState(null);
+  const [bountyFightPhase, setBountyFightPhase] = useState(null); // null, fighting, won, lost
+  const [bountyFightHP, setBountyFightHP] = useState({ player: 100, enemy: 100 });
+
   const completeBounty = (bountyId) => {
     setBounties(b => b.map(bn => bn.id === bountyId ? { ...bn, completed: true } : bn));
     const bounty = bounties.find(b => b.id === bountyId);
     if (bounty) earnCoins(bounty.reward);
+  };
+
+  const startBountyFight = (bounty) => {
+    if (inventory.length === 0) { notify("You need a weapon first!", "#f44"); return; }
+    setActiveBounty(bounty);
+    setBountyFightPhase("fighting");
+    setBountyFightHP({ player: 100, enemy: 100 });
+    // Simulate a fight over 3 seconds
+    const bestWeapon = inventory.reduce((a, b) => getWeaponStats(a).damage > getWeaponStats(b).damage ? a : b);
+    const pDmg = getWeaponStats(bestWeapon).damage;
+    const eDmg = bounty.weapon.damage || 5;
+    let php = 100, ehp = 100;
+    let step = 0;
+    const fightInterval = setInterval(() => {
+      step++;
+      // Player attacks
+      const pHit = Math.floor(pDmg * (0.7 + Math.random() * 0.6));
+      ehp = Math.max(0, ehp - pHit);
+      setBountyFightHP(prev => ({ ...prev, enemy: ehp }));
+      if (ehp <= 0) {
+        clearInterval(fightInterval);
+        setTimeout(() => {
+          setBountyFightPhase("won");
+          completeBounty(bounty.id);
+          notify(`🎯 Bounty complete! +${bounty.reward.toLocaleString()} coins!`, "#0f0");
+        }, 500);
+        return;
+      }
+      // Enemy attacks
+      setTimeout(() => {
+        const eHit = Math.floor(eDmg * (0.6 + Math.random() * 0.5));
+        php = Math.max(0, php - eHit);
+        setBountyFightHP(prev => ({ ...prev, player: php }));
+        if (php <= 0) {
+          clearInterval(fightInterval);
+          setTimeout(() => {
+            setBountyFightPhase("lost");
+            notify(`💀 Bounty failed! ${bounty.name} defeated you!`, "#f44");
+          }, 500);
+        }
+      }, 300);
+    }, 800);
   };
 
   // Load saved state on mount
@@ -3187,44 +3233,98 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                 <NeonText size="0.85rem" color="#ef4444">🎯 BOUNTY BOARD</NeonText>
                 <span style={{ color: "#555", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>DAILY TARGETS</span>
               </div>
-              <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 10 }}>Defeat these targets in PvP for bonus rewards!</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {bounties.map(bounty => (
-                  <div key={bounty.id} style={{
-                    display: "flex", alignItems: "center", gap: 10, padding: "10px 12px",
-                    background: bounty.completed ? "#0f008" : "#05050f", borderRadius: 8,
-                    border: `1px solid ${bounty.completed ? "#0f030" : "#ef444430"}`,
-                    opacity: bounty.completed ? 0.6 : 1,
-                  }}>
-                    <div style={{
-                      width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center",
-                      background: bounty.completed ? "#0f015" : "#ef444415", borderRadius: 8,
-                      border: `1px solid ${bounty.completed ? "#0f040" : "#ef444440"}`, fontSize: "1.2rem",
-                    }}>{bounty.completed ? "✅" : "🎯"}</div>
+
+              {/* Active bounty fight */}
+              {activeBounty && bountyFightPhase ? (
+                <div style={{ padding: 16, background: "#05050f", borderRadius: 10, border: "1px solid #ef444440" }}>
+                  <div style={{ textAlign: "center", marginBottom: 10 }}>
+                    <NeonText size="0.9rem" color={bountyFightPhase === "won" ? "#0f0" : bountyFightPhase === "lost" ? "#f44" : "#ef4444"}>
+                      {bountyFightPhase === "fighting" ? `⚔️ VS ${activeBounty.name}` : bountyFightPhase === "won" ? `🎉 ${activeBounty.name} DEFEATED!` : `💀 YOU LOST!`}
+                    </NeonText>
+                  </div>
+                  {/* Health bars */}
+                  <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ color: bounty.completed ? "#0f0" : "#ef4444", fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>
-                        {bounty.completed ? `${bounty.name} ✓` : bounty.name}
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                        <span style={{ color: "#0ff", fontSize: "0.6rem" }}>YOU</span>
+                        <span style={{ color: "#0ff", fontSize: "0.55rem" }}>{bountyFightHP.player}/100</span>
                       </div>
-                      <div style={{ color: "#666", fontSize: "0.55rem" }}>
-                        Using {bounty.weapon.emoji} {bounty.weapon.name} ({bounty.weapon.rarity})
+                      <div style={{ background: "#111", borderRadius: 4, height: 8, overflow: "hidden" }}>
+                        <div style={{ width: `${bountyFightHP.player}%`, height: "100%", background: bountyFightHP.player > 50 ? "#0ff" : bountyFightHP.player > 25 ? "#f90" : "#f44", transition: "width 0.3s", borderRadius: 4 }} />
                       </div>
                     </div>
-                    {bounty.completed ? (
-                      <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>CLAIMED</span>
-                    ) : (
-                      <button onClick={() => {
-                        if (inventory.length === 0) { notify("You need a weapon first!", "#f44"); return; }
-                        completeBounty(bounty.id);
-                        notify(`🎯 Bounty complete! ${bounty.name} defeated! +${bounty.reward.toLocaleString()} coins!`, "#ef4444");
-                      }} style={{
-                        padding: "6px 12px", borderRadius: 6, cursor: inventory.length > 0 ? "pointer" : "not-allowed",
-                        background: "#ef444420", border: "1px solid #ef444450",
-                        color: "#fbbf24", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
-                      }}>💰 {bounty.reward.toLocaleString()}</button>
-                    )}
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                        <span style={{ color: "#f0f", fontSize: "0.6rem" }}>{activeBounty.name}</span>
+                        <span style={{ color: "#f0f", fontSize: "0.55rem" }}>{bountyFightHP.enemy}/100</span>
+                      </div>
+                      <div style={{ background: "#111", borderRadius: 4, height: 8, overflow: "hidden" }}>
+                        <div style={{ width: `${bountyFightHP.enemy}%`, height: "100%", background: bountyFightHP.enemy > 50 ? "#f0f" : bountyFightHP.enemy > 25 ? "#f90" : "#f44", transition: "width 0.3s", borderRadius: 4 }} />
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
+                  {bountyFightPhase === "fighting" && (
+                    <div style={{ textAlign: "center", fontSize: "1.5rem", animation: "pulse 0.5s infinite" }}>⚔️</div>
+                  )}
+                  {bountyFightPhase === "won" && (
+                    <div style={{ textAlign: "center" }}>
+                      <NeonText size="1rem" color="#fbbf24">+{activeBounty.reward.toLocaleString()} coins!</NeonText>
+                      <button onClick={() => { setActiveBounty(null); setBountyFightPhase(null); }} style={{
+                        marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
+                        background: "#0f020", border: "1px solid #0f050", color: "#0f0",
+                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                      }}>COLLECT</button>
+                    </div>
+                  )}
+                  {bountyFightPhase === "lost" && (
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ color: "#888", fontSize: "0.65rem" }}>Upgrade your weapons and try again!</div>
+                      <button onClick={() => { setActiveBounty(null); setBountyFightPhase(null); }} style={{
+                        marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
+                        background: "#f4420", border: "1px solid #f4450", color: "#f44",
+                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                      }}>BACK</button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 10 }}>Defeat these targets for bonus rewards!</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {bounties.map(bounty => (
+                      <div key={bounty.id} style={{
+                        display: "flex", alignItems: "center", gap: 10, padding: "10px 12px",
+                        background: bounty.completed ? "#0f008" : "#05050f", borderRadius: 8,
+                        border: `1px solid ${bounty.completed ? "#0f030" : "#ef444430"}`,
+                        opacity: bounty.completed ? 0.6 : 1,
+                      }}>
+                        <div style={{
+                          width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center",
+                          background: bounty.completed ? "#0f015" : "#ef444415", borderRadius: 8,
+                          border: `1px solid ${bounty.completed ? "#0f040" : "#ef444440"}`, fontSize: "1.2rem",
+                        }}>{bounty.completed ? "✅" : "🎯"}</div>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ color: bounty.completed ? "#0f0" : "#ef4444", fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>
+                            {bounty.completed ? `${bounty.name} ✓` : bounty.name}
+                          </div>
+                          <div style={{ color: "#666", fontSize: "0.55rem" }}>
+                            {bounty.weapon.emoji} {bounty.weapon.name} ({bounty.weapon.rarity}) • 💰 {bounty.reward.toLocaleString()}
+                          </div>
+                        </div>
+                        {bounty.completed ? (
+                          <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>DONE</span>
+                        ) : (
+                          <button onClick={() => startBountyFight(bounty)} style={{
+                            padding: "6px 14px", borderRadius: 6, cursor: inventory.length > 0 ? "pointer" : "not-allowed",
+                            background: "#ef444420", border: "1px solid #ef444450",
+                            color: "#ef4444", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                          }}>⚔️ FIGHT</button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </Panel>
 
             {/* ─── COIN FLIP ─── */}
@@ -3982,15 +4082,15 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                       }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                           <div>
-                            <NeonText size="0.8rem" color="#0ff">UPGRADE TO LVL {w.level + 1}</NeonText>
-                            <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>
+                            <NeonText size="0.8rem" color="#fbbf24">UPGRADE TO LVL {w.level + 1}</NeonText>
+                            <div style={{ color: "#888", fontSize: "0.65rem", marginTop: 2 }}>
                               +{Math.floor(w.damage * 0.08)} DMG boost
                             </div>
                           </div>
                           <NeonText size="1rem" color="#fbbf24" glow={false}>💰 {cost.toLocaleString()}</NeonText>
                         </div>
                         <GlowButton onClick={() => upgradeWeapon(w.id)} disabled={coins < cost}
-                          color={coins >= cost ? "#0ff" : "#555"} style={{ width: "100%", fontSize: "0.85rem" }}>
+                          color={coins >= cost ? "#fbbf24" : "#555"} style={{ width: "100%", fontSize: "0.85rem" }}>
                           {coins >= cost ? `⬆ UPGRADE — ${cost.toLocaleString()} COINS` : `NEED ${(cost - coins).toLocaleString()} MORE`}
                         </GlowButton>
                       </div>
