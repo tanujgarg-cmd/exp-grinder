@@ -1672,8 +1672,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
     const bot = miniBoss ? BOSS_NAMES[Math.floor(Math.random() * BOSS_NAMES.length)] : BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
     const bossPool = WEAPONS.filter(w => w.rarity === "mythic" || w.rarity === "glitched");
     const botWeapon = miniBoss ? { ...bossPool[Math.floor(Math.random() * bossPool.length)], level: Math.floor(Math.random() * 20) + 15 } : WEAPONS[Math.floor(Math.random() * WEAPONS.length)];
-    const botMode = Math.random() > 0.5 ? "realtime" : "auto";
-    const finalMode = battleMode === "realtime" && botMode === "realtime" ? "realtime" : "auto";
+    const finalMode = battleMode;
     setTimeout(() => {
       setEnemy({ name: bot, weapon: botWeapon });
       setBattleMode(finalMode);
@@ -2197,7 +2196,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
           ))}
         </div>
         <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>
-          Real-time only activates if opponent also selects it
+          Auto = watch the battle. Real-time = top-down arena, dodge and shoot!
         </div>
       </div>
       {}
@@ -3803,7 +3802,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
 
                     {/* Applied Potions */}
                     {(w.potions || []).length > 0 && (
-                      <div style={{ marginBottom: 16, padding: 12, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e" }}>
+                      <div style={{ marginBottom: 12, padding: 12, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e" }}>
                         <NeonText size="0.7rem" color="#c084fc">🧪 APPLIED POTIONS</NeonText>
                         <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
                           {w.potions.map(pot => {
@@ -3827,7 +3826,42 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                             );
                           })}
                         </div>
-                        {w.potions.length < 2 && <div style={{ color: "#555", fontSize: "0.5rem", marginTop: 6 }}>Can add {2 - w.potions.length} more potion</div>}
+                      </div>
+                    )}
+
+                    {/* Add Potion to Weapon */}
+                    {w.rarity !== "pet" && (w.potions || []).length < 2 && potions.length > 0 && (
+                      <div style={{ marginBottom: 16, padding: 12, background: "#0a0a2a", borderRadius: 8, border: "1px solid #c084fc30" }}>
+                        <NeonText size="0.7rem" color="#c084fc">🧪 ADD POTION ({2 - (w.potions || []).length} slot{2 - (w.potions || []).length > 1 ? "s" : ""} available)</NeonText>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
+                          {potions.map((pot, pIdx) => {
+                            const potion = POTIONS.find(p => p.id === pot.id);
+                            const alreadyHas = (w.potions || []).find(p => p.id === pot.id);
+                            if (alreadyHas) return null;
+                            const eff = getPotionEffect(pot.id, pot.merge);
+                            return (
+                              <button key={pIdx} onClick={() => applyPotion(pIdx, w.id)} style={{
+                                display: "flex", alignItems: "center", gap: 8, padding: "8px 10px",
+                                background: `${potion.color}10`, borderRadius: 6, border: `1px solid ${potion.color}40`,
+                                cursor: "pointer", width: "100%", textAlign: "left",
+                              }}>
+                                <span style={{ fontSize: "1.1rem" }}>{potion.emoji}</span>
+                                <div style={{ flex: 1 }}>
+                                  <span style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
+                                  <div style={{ color: "#888", fontSize: "0.5rem" }}>
+                                    {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
+                                  </div>
+                                </div>
+                                <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>+ ADD</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                    {w.rarity !== "pet" && (w.potions || []).length < 2 && potions.length === 0 && (
+                      <div style={{ marginBottom: 16, padding: 10, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e", textAlign: "center" }}>
+                        <div style={{ color: "#555", fontSize: "0.6rem" }}>🧪 No potions in inventory. Craft them in the CRAFT tab!</div>
                       </div>
                     )}
 
