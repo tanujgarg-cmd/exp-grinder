@@ -160,6 +160,53 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the largest organ in the human body?", options: ["Liver", "Brain", "Skin", "Heart"], answer: 2 },
         { q: "How many planets are in our solar system?", options: ["7", "8", "9", "10"], answer: 1 },
         { q: "What is H2O commonly known as?", options: ["Salt", "Water", "Oxygen", "Acid"], answer: 1 },
+      
+        { q: "What is the center of an atom called?", options: ["Proton", "Electron", "Nucleus", "Neutron"], answer: 2 },
+        { q: "Which gas makes up most of Earth's atmosphere?", options: ["Oxygen", "Nitrogen", "CO2", "Helium"], answer: 1 },
+        { q: "What type of animal is a dolphin?", options: ["Fish", "Reptile", "Mammal", "Amphibian"], answer: 2 },
+        { q: "What is the boiling point of water in Celsius?", options: ["50", "75", "100", "150"], answer: 2 },
+        { q: "How many bones does a shark have?", options: ["0", "50", "100", "200"], answer: 0 },
+      
+        { q: "What is frozen water called?", options: ["Steam", "Vapor", "Ice", "Frost"], answer: 2 },
+        { q: "Which planet is closest to the Sun?", options: ["Venus", "Mercury", "Mars", "Earth"], answer: 1 },
+        { q: "What do bees make?", options: ["Silk", "Honey", "Wax", "Milk"], answer: 1 },
+        { q: "What is the largest planet?", options: ["Saturn", "Neptune", "Jupiter", "Uranus"], answer: 2 },
+        { q: "What force keeps us on the ground?", options: ["Magnetism", "Gravity", "Friction", "Inertia"], answer: 1 },
+        { q: "What organ pumps blood?", options: ["Brain", "Lungs", "Heart", "Liver"], answer: 2 },
+        { q: "What is the chemical symbol for gold?", options: ["Go", "Gd", "Au", "Ag"], answer: 2 },
+        { q: "How many legs do insects have?", options: ["4", "6", "8", "10"], answer: 1 },
+        { q: "What is the closest star to Earth?", options: ["Sirius", "Proxima", "Sun", "Vega"], answer: 2 },
+      
+        { q: "What is the Sun?", options: ["Planet", "Moon", "Star", "Asteroid"], answer: 2 },
+        { q: "How many eyes do most spiders have?", options: ["2", "4", "6", "8"], answer: 3 },
+        { q: "What gas do we breathe out?", options: ["Oxygen", "CO2", "Nitrogen", "Helium"], answer: 1 },
+        { q: "What are baby cats called?", options: ["Puppies", "Kittens", "Cubs", "Calves"], answer: 1 },
+        { q: "Is the Sun a solid, liquid, or gas?", options: ["Solid", "Liquid", "Gas", "Plasma"], answer: 3 },
+        { q: "What do magnets attract?", options: ["Wood", "Plastic", "Iron", "Glass"], answer: 2 },
+        { q: "What is the smallest planet?", options: ["Mars", "Mercury", "Pluto", "Venus"], answer: 1 },
+        { q: "What sense do ears provide?", options: ["Sight", "Hearing", "Smell", "Taste"], answer: 1 },
+        { q: "What do tadpoles grow into?", options: ["Fish", "Frogs", "Snakes", "Turtles"], answer: 1 },
+        { q: "What covers 71% of Earth?", options: ["Sand", "Ice", "Water", "Forest"], answer: 2 },
+        { q: "What is a shooting star?", options: ["Star", "Planet", "Meteor", "Comet"], answer: 2 },
+        { q: "What animal has the longest neck?", options: ["Horse", "Camel", "Giraffe", "Ostrich"], answer: 2 },
+        { q: "What is lava from?", options: ["Ocean", "Volcano", "Glacier", "River"], answer: 1 },
+        { q: "How many senses do humans have?", options: ["3", "4", "5", "6"], answer: 2 },
+        { q: "What is the opposite of frozen?", options: ["Cold", "Melted", "Solid", "Dry"], answer: 1 },
+        { q: "What do plants need to grow?", options: ["Darkness", "Sunlight", "Cold", "Wind"], answer: 1 },
+        { q: "What is the biggest bird?", options: ["Eagle", "Ostrich", "Penguin", "Hawk"], answer: 1 },
+        { q: "What season comes after spring?", options: ["Fall", "Winter", "Summer", "Spring"], answer: 2 },
+        { q: "What is a group of fish called?", options: ["Herd", "Flock", "School", "Pack"], answer: 2 },
+        { q: "What planet has rings?", options: ["Mars", "Jupiter", "Saturn", "Venus"], answer: 2 },
+        { q: "What is thunder caused by?", options: ["Wind", "Rain", "Lightning", "Clouds"], answer: 2 },
+        { q: "What animal is the fastest swimmer?", options: ["Shark", "Dolphin", "Sailfish", "Whale"], answer: 2 },
+        { q: "What part of the plant is underground?", options: ["Leaf", "Stem", "Root", "Flower"], answer: 2 },
+        { q: "What is a baby horse called?", options: ["Calf", "Lamb", "Foal", "Kid"], answer: 2 },
+        { q: "What state of matter is steam?", options: ["Solid", "Liquid", "Gas", "Plasma"], answer: 2 },
+        { q: "What bone protects the brain?", options: ["Rib", "Spine", "Skull", "Pelvis"], answer: 2 },
+        { q: "What is the largest ocean animal?", options: ["Shark", "Blue Whale", "Squid", "Walrus"], answer: 1 },
+        { q: "What layer protects Earth from UV?", options: ["Troposphere", "Ozone", "Crust", "Mantle"], answer: 1 },
+        { q: "What is the main ingredient in glass?", options: ["Iron", "Sand", "Clay", "Coal"], answer: 1 },
+        { q: "How many teeth do adult humans usually have?", options: ["28", "30", "32", "34"], answer: 2 },
       ],
       medium: [
         { q: "What is the speed of light in km/s?", options: ["150,000", "300,000", "450,000", "600,000"], answer: 1 },
@@ -167,6 +214,52 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the hardest natural substance?", options: ["Gold", "Iron", "Diamond", "Titanium"], answer: 2 },
         { q: "What planet has the Great Red Spot?", options: ["Mars", "Saturn", "Jupiter", "Neptune"], answer: 2 },
         { q: "What is the powerhouse of the cell?", options: ["Nucleus", "Ribosome", "Mitochondria", "Membrane"], answer: 2 },
+      
+        { q: "What is the most abundant gas in the Sun?", options: ["Helium", "Oxygen", "Hydrogen", "Nitrogen"], answer: 2 },
+        { q: "Which vitamin does the Sun help produce?", options: ["A", "B12", "C", "D"], answer: 3 },
+        { q: "What particle has a positive charge?", options: ["Electron", "Neutron", "Proton", "Photon"], answer: 2 },
+        { q: "How many chambers does a human heart have?", options: ["2", "3", "4", "5"], answer: 2 },
+        { q: "What is the chemical formula for table salt?", options: ["NaCl", "KCl", "CaCl2", "NaOH"], answer: 0 },
+      
+        { q: "What is the hardest mineral?", options: ["Quartz", "Topaz", "Diamond", "Ruby"], answer: 2 },
+        { q: "What type of rock is marble?", options: ["Igneous", "Sedimentary", "Metamorphic", "Mineral"], answer: 2 },
+        { q: "What is the main gas in the air we breathe?", options: ["Oxygen", "Nitrogen", "CO2", "Argon"], answer: 1 },
+        { q: "What does a seismograph measure?", options: ["Wind", "Rain", "Earthquakes", "Temperature"], answer: 2 },
+        { q: "How many chromosomes do humans have?", options: ["23", "44", "46", "48"], answer: 2 },
+        { q: "What is the pH of a neutral solution?", options: ["0", "5", "7", "14"], answer: 2 },
+        { q: "Which planet rotates on its side?", options: ["Neptune", "Uranus", "Saturn", "Jupiter"], answer: 1 },
+        { q: "What is the study of fungi called?", options: ["Botany", "Mycology", "Zoology", "Ecology"], answer: 1 },
+      
+        { q: "What is the speed of light?", options: ["300k km/s", "150k km/s", "500k km/s", "100k km/s"], answer: 0 },
+        { q: "What planet is known as Earth's twin?", options: ["Mars", "Venus", "Mercury", "Jupiter"], answer: 1 },
+        { q: "What is the most common blood type?", options: ["A", "B", "O", "AB"], answer: 2 },
+        { q: "What is the tallest type of tree?", options: ["Oak", "Pine", "Redwood", "Birch"], answer: 2 },
+        { q: "What does photosynthesis produce?", options: ["CO2", "Water", "Oxygen", "Nitrogen"], answer: 2 },
+        { q: "What element is diamond made of?", options: ["Silicon", "Carbon", "Iron", "Calcium"], answer: 1 },
+        { q: "What is the study of weather?", options: ["Geology", "Meteorology", "Biology", "Astronomy"], answer: 1 },
+        { q: "Which organ filters blood?", options: ["Heart", "Liver", "Kidney", "Spleen"], answer: 2 },
+        { q: "What gas fills balloons to float?", options: ["Oxygen", "Hydrogen", "Helium", "Nitrogen"], answer: 2 },
+        { q: "What is petrified wood made of?", options: ["Wood", "Stone", "Metal", "Crystal"], answer: 1 },
+        { q: "What is the largest internal organ?", options: ["Heart", "Brain", "Liver", "Stomach"], answer: 2 },
+        { q: "What animal has blue blood?", options: ["Octopus", "Frog", "Snake", "Fish"], answer: 0 },
+        { q: "What is the study of earthquakes?", options: ["Volcanology", "Seismology", "Geology", "Tectonics"], answer: 1 },
+        { q: "What vitamin prevents scurvy?", options: ["A", "B", "C", "D"], answer: 2 },
+        { q: "What type of energy does the Sun emit?", options: ["Nuclear", "Solar", "Chemical", "Kinetic"], answer: 1 },
+        { q: "What is the formula for water?", options: ["H2O", "CO2", "NaCl", "O2"], answer: 0 },
+        { q: "What are the building blocks of proteins?", options: ["Sugars", "Amino acids", "Lipids", "Nucleotides"], answer: 1 },
+        { q: "What planet has the strongest gravity?", options: ["Saturn", "Neptune", "Jupiter", "Uranus"], answer: 2 },
+        { q: "What type of rock forms from lava?", options: ["Sedimentary", "Metamorphic", "Igneous", "Fossil"], answer: 2 },
+        { q: "What is dry ice made of?", options: ["Frozen water", "Frozen CO2", "Frozen nitrogen", "Frozen oxygen"], answer: 1 },
+        { q: "How many valence electrons does carbon have?", options: ["2", "3", "4", "5"], answer: 2 },
+        { q: "What is the second most abundant element on Earth?", options: ["Iron", "Silicon", "Aluminum", "Calcium"], answer: 1 },
+        { q: "What animal can regenerate limbs?", options: ["Lizard", "Starfish", "Frog", "Snake"], answer: 1 },
+        { q: "What causes tides?", options: ["Wind", "Moon gravity", "Earth rotation", "Sun heat"], answer: 1 },
+        { q: "What is the fastest bird?", options: ["Eagle", "Falcon", "Hawk", "Swift"], answer: 1 },
+        { q: "What mineral makes bones hard?", options: ["Iron", "Calcium", "Sodium", "Potassium"], answer: 1 },
+        { q: "What is a light-year?", options: ["Time unit", "Distance unit", "Speed unit", "Energy unit"], answer: 1 },
+        { q: "What structure carries blood away from the heart?", options: ["Veins", "Arteries", "Capillaries", "Nerves"], answer: 1 },
+        { q: "What is the only metal that is liquid at room temp?", options: ["Lead", "Mercury", "Tin", "Zinc"], answer: 1 },
+        { q: "What is the process of rock breaking down called?", options: ["Erosion", "Weathering", "Sedimentation", "Fusion"], answer: 1 },
       ],
       hard: [
         { q: "What is the Schwarzschild radius related to?", options: ["Atoms", "Black holes", "Stars", "Galaxies"], answer: 1 },
@@ -174,6 +267,51 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the most abundant element in the universe?", options: ["Oxygen", "Carbon", "Hydrogen", "Helium"], answer: 2 },
         { q: "What is absolute zero in Celsius?", options: ["-273.15°C", "-100°C", "-459.67°C", "0°C"], answer: 0 },
         { q: "What causes tides on Earth?", options: ["Wind", "Moon's gravity", "Sun's heat", "Earth's spin"], answer: 1 },
+      
+        { q: "What is the half-life of Carbon-14?", options: ["2,730 yrs", "5,730 yrs", "11,460 yrs", "28,650 yrs"], answer: 1 },
+        { q: "Which organ produces insulin?", options: ["Liver", "Pancreas", "Kidney", "Spleen"], answer: 1 },
+        { q: "What is the most electronegative element?", options: ["Oxygen", "Chlorine", "Fluorine", "Nitrogen"], answer: 2 },
+      
+        { q: "What is Avogadro's number?", options: ["6.02x10^23", "3.14x10^23", "9.8x10^23", "1.6x10^23"], answer: 0 },
+        { q: "What force holds atomic nuclei together?", options: ["Gravity", "Electromagnetic", "Strong nuclear", "Weak nuclear"], answer: 2 },
+        { q: "What is the unit of electrical resistance?", options: ["Watt", "Volt", "Ohm", "Ampere"], answer: 2 },
+        { q: "Which subatomic particle was discovered last?", options: ["Proton", "Neutron", "Electron", "Higgs boson"], answer: 3 },
+        { q: "What is the escape velocity from Earth?", options: ["7.9 km/s", "11.2 km/s", "15.4 km/s", "25.0 km/s"], answer: 1 },
+        { q: "What is the Heisenberg principle about?", options: ["Relativity", "Uncertainty", "Entanglement", "Superposition"], answer: 1 },
+        { q: "How many known moons does Jupiter have?", options: ["16", "52", "79+", "12"], answer: 2 },
+        { q: "What is the speed of sound in air (m/s)?", options: ["243", "343", "443", "543"], answer: 1 },
+        { q: "What type of bond shares electrons?", options: ["Ionic", "Covalent", "Metallic", "Hydrogen"], answer: 1 },
+      
+        { q: "What is the Chandrasekhar limit?", options: ["Black hole mass", "Star mass limit", "Planet size", "Galaxy radius"], answer: 1 },
+        { q: "What is the most abundant protein in the body?", options: ["Keratin", "Collagen", "Hemoglobin", "Insulin"], answer: 1 },
+        { q: "What is the Krebs cycle part of?", options: ["Digestion", "Cell respiration", "Photosynthesis", "DNA replication"], answer: 1 },
+        { q: "What is the charge of a neutron?", options: ["Positive", "Negative", "Neutral", "Variable"], answer: 2 },
+        { q: "What is the SI unit of force?", options: ["Joule", "Watt", "Newton", "Pascal"], answer: 2 },
+        { q: "What is the photoelectric effect?", options: ["Light bending", "Light emitting electrons", "Light reflecting", "Light absorbing"], answer: 1 },
+        { q: "What is CRISPR used for?", options: ["Microscopy", "Gene editing", "Drug synthesis", "Brain scanning"], answer: 1 },
+        { q: "What is the Doppler effect?", options: ["Light bending", "Frequency shift", "Color change", "Sound echo"], answer: 1 },
+        { q: "What is the triple point of water?", options: ["0C", "0.01C", "100C", "-273C"], answer: 1 },
+        { q: "What is the Pauli exclusion principle about?", options: ["Gravity", "Electrons", "Light", "Energy"], answer: 1 },
+        { q: "What is dark matter?", options: ["Black holes", "Invisible mass", "Antimatter", "Dark energy"], answer: 1 },
+        { q: "What is the strongest acid?", options: ["HCl", "H2SO4", "Fluoroantimonic", "HNO3"], answer: 2 },
+        { q: "What is the unit of frequency?", options: ["Hertz", "Ohm", "Tesla", "Weber"], answer: 0 },
+        { q: "What is entropy?", options: ["Energy", "Disorder", "Temperature", "Pressure"], answer: 1 },
+        { q: "What is quantum tunneling?", options: ["Digging", "Particles passing barriers", "Light bending", "Sound waves"], answer: 1 },
+        { q: "What particle carries the electromagnetic force?", options: ["Gluon", "W boson", "Photon", "Graviton"], answer: 2 },
+        { q: "What is the Planck constant unit?", options: ["J/s", "J*s", "N/m", "kg/m"], answer: 1 },
+        { q: "What is the age of the universe?", options: ["10B yrs", "13.8B yrs", "15B yrs", "20B yrs"], answer: 1 },
+        { q: "What organelle makes ATP?", options: ["Nucleus", "Ribosome", "Mitochondria", "Lysosome"], answer: 2 },
+        { q: "What is the Drake equation about?", options: ["Black holes", "Alien civilizations", "Star formation", "Galaxy size"], answer: 1 },
+        { q: "What is Ohm's Law?", options: ["F=ma", "V=IR", "E=mc2", "PV=nRT"], answer: 1 },
+        { q: "What bond is strongest?", options: ["Hydrogen", "Van der Waals", "Covalent", "Ionic"], answer: 2 },
+        { q: "What is a quasar?", options: ["Dead star", "Active galactic nucleus", "Nebula", "Asteroid"], answer: 1 },
+        { q: "What is the observer effect?", options: ["Bias", "Measurement changes outcome", "Optical illusion", "Parallax"], answer: 1 },
+        { q: "What is the Roche limit?", options: ["Orbital decay distance", "Tidal destruction distance", "Light escape distance", "Gravity range"], answer: 1 },
+        { q: "What is a Bose-Einstein condensate?", options: ["5th state of matter", "Chemical compound", "Nuclear reaction", "Crystal structure"], answer: 0 },
+        { q: "What causes the Northern Lights?", options: ["Moonlight", "Solar wind", "Earth heat", "Star light"], answer: 1 },
+        { q: "What is the Hubble constant?", options: ["Star brightness", "Universe expansion rate", "Light speed", "Gravity strength"], answer: 1 },
+        { q: "What is the most common isotope of hydrogen?", options: ["Protium", "Deuterium", "Tritium", "Helium-3"], answer: 0 },
+        { q: "What is a neutron star made of?", options: ["Iron", "Neutrons", "Plasma", "Dark matter"], answer: 1 },
       ],
     }},
   { id: "tech", name: "TECH & COMPUTERS", icon: "💻", color: "#60a5fa", desc: "Software, hardware, internet",
@@ -189,13 +327,102 @@ const TRIVIA_CATEGORIES = [
         { q: "Who founded Microsoft?", options: ["Steve Jobs", "Bill Gates", "Elon Musk", "Jeff Bezos"], answer: 1 },
         { q: "What does HTML stand for?", options: ["HyperText Markup Language", "High Tech Modern Language", "Home Tool Markup Language", "Hyper Transfer Mail Language"], answer: 0 },
         { q: "What is the main language of the web?", options: ["Python", "Java", "JavaScript", "C++"], answer: 2 },
+      
+        { q: "Who created Facebook?", options: ["Bill Gates", "Steve Jobs", "Mark Zuckerberg", "Jeff Bezos"], answer: 2 },
+        { q: "What company made the iPhone?", options: ["Samsung", "Google", "Apple", "Microsoft"], answer: 2 },
+        { q: "What is the brain of a computer?", options: ["RAM", "CPU", "Hard Drive", "Monitor"], answer: 1 },
+        { q: "What does USB stand for?", options: ["Universal Serial Bus", "Ultra Speed Bridge", "Unified System Board", "Universal System Backup"], answer: 0 },
+      
+        { q: "What does PDF stand for?", options: ["Portable Document Format", "Personal Data File", "Print Document Format", "Public Data Format"], answer: 0 },
+        { q: "What is Google's search engine rival?", options: ["Yahoo", "Bing", "DuckDuckGo", "All of these"], answer: 3 },
+        { q: "What does RAM stand for?", options: ["Random Access Memory", "Read All Memory", "Run Active Memory", "Rapid Access Module"], answer: 0 },
+        { q: "What social media uses tweets?", options: ["Facebook", "Instagram", "Twitter/X", "TikTok"], answer: 2 },
+        { q: "What device converts voice to digital?", options: ["Speaker", "Monitor", "Microphone", "Keyboard"], answer: 2 },
+        { q: "What does GPS stand for?", options: ["Global Position System", "General Purpose System", "Global Positioning System", "Geographic Point System"], answer: 2 },
+        { q: "What company makes Android?", options: ["Apple", "Google", "Samsung", "Microsoft"], answer: 1 },
+        { q: "What is the most used browser?", options: ["Firefox", "Safari", "Chrome", "Edge"], answer: 2 },
+        { q: "What stores data permanently in a PC?", options: ["RAM", "CPU", "Hard Drive", "GPU"], answer: 2 },
+      
+        { q: "What does URL stand for?", options: ["Universal Resource Locator", "Unified Record Link", "User Request Language", "Upload Resource Line"], answer: 0 },
+        { q: "What is spam?", options: ["Virus", "Junk email", "Firewall", "Browser"], answer: 1 },
+        { q: "What does OS mean?", options: ["Open Source", "Operating System", "Online Service", "Output Signal"], answer: 1 },
+        { q: "What is a pixel?", options: ["Sound unit", "Smallest screen dot", "File type", "Code language"], answer: 1 },
+        { q: "What is Bluetooth?", options: ["Color", "Wireless connection", "Browser", "App"], answer: 1 },
+        { q: "What is a cursor?", options: ["Virus", "Mouse pointer", "File", "Cable"], answer: 1 },
+        { q: "What does FAQ mean?", options: ["Fast Access Query", "Frequently Asked Questions", "File And Queue", "Format All Queries"], answer: 1 },
+        { q: "What is an emoji?", options: ["Virus", "Digital icon", "Font", "App"], answer: 1 },
+        { q: "What is a screenshot?", options: ["Photo of screen", "Virus scan", "Download", "Upload"], answer: 0 },
+        { q: "What is an app?", options: ["Hardware", "Software application", "Cable", "Battery"], answer: 1 },
+        { q: "What device has a touchscreen?", options: ["Printer", "Smartphone", "Mouse", "Router"], answer: 1 },
+        { q: "What is a browser?", options: ["Hardware", "Internet viewer", "Game", "File type"], answer: 1 },
+        { q: "What does download mean?", options: ["Delete", "Upload", "Get from internet", "Send email"], answer: 2 },
+        { q: "What is a password used for?", options: ["Speed", "Security", "Display", "Sound"], answer: 1 },
+        { q: "What company made Windows?", options: ["Apple", "Google", "IBM", "Microsoft"], answer: 3 },
+        { q: "What is cloud storage?", options: ["USB drive", "Online storage", "Hard disk", "DVD"], answer: 1 },
+        { q: "What does Ctrl+C do?", options: ["Cut", "Copy", "Close", "Create"], answer: 1 },
+        { q: "What is a hashtag?", options: ["Phone number", "Social media tag", "Password", "Email"], answer: 1 },
+        { q: "What is Instagram for?", options: ["Email", "Photos/videos", "Documents", "Gaming"], answer: 1 },
+        { q: "What powers a laptop without a plug?", options: ["Solar", "Battery", "Wind", "Gas"], answer: 1 },
+        { q: "What is an update?", options: ["Deletion", "New version", "Virus", "Backup"], answer: 1 },
+        { q: "What does Ctrl+Z do?", options: ["Zoom", "Undo", "Save", "Print"], answer: 1 },
+        { q: "What is antivirus software?", options: ["Game", "Protects from malware", "Browser", "OS"], answer: 1 },
+        { q: "What is drag and drop?", options: ["Coding", "Move with mouse", "Download", "Delete"], answer: 1 },
+        { q: "What does LOL mean?", options: ["Lots of Love", "Laugh Out Loud", "Long Online Life", "Level of Logic"], answer: 1 },
+        { q: "What is a GIF?", options: ["Sound file", "Animated image", "Document", "Program"], answer: 1 },
+        { q: "What is a QR code?", options: ["Bar code type", "Scannable square code", "Password", "Virus"], answer: 1 },
+        { q: "What is streaming?", options: ["Downloading", "Playing media live", "Uploading", "Coding"], answer: 1 },
+        { q: "What is a selfie?", options: ["Screenshot", "Self-portrait photo", "Profile pic", "Filter"], answer: 1 },
+        { q: "What is airplane mode?", options: ["Game mode", "Turns off wireless", "Fast mode", "Safe mode"], answer: 1 },
       ],
       medium: [
         { q: "What year was the first iPhone released?", options: ["2005", "2006", "2007", "2008"], answer: 2 },
-        { q: "What does RAM stand for?", options: ["Read Access Memory", "Random Access Memory", "Run Application Memory", "Rapid Active Module"], answer: 1 },
         { q: "Who created Linux?", options: ["Bill Gates", "Steve Jobs", "Linus Torvalds", "Dennis Ritchie"], answer: 2 },
         { q: "What is the binary for the number 10?", options: ["1000", "1010", "1100", "1001"], answer: 1 },
         { q: "What protocol does HTTPS use for security?", options: ["SSH", "SSL/TLS", "FTP", "SMTP"], answer: 1 },
+      
+        { q: "What does SSD stand for?", options: ["Solid State Drive", "Super Speed Disk", "System Storage Device", "Serial Signal Drive"], answer: 0 },
+        { q: "Who founded Amazon?", options: ["Elon Musk", "Jeff Bezos", "Larry Page", "Tim Cook"], answer: 1 },
+        { q: "What does GPU stand for?", options: ["General Power Unit", "Graphics Processing Unit", "Global Performance Utility", "Graphics Power Unit"], answer: 1 },
+      
+        { q: "What language is Android built with?", options: ["Python", "Java/Kotlin", "Swift", "C#"], answer: 1 },
+        { q: "What does IoT stand for?", options: ["Internet of Things", "Input of Technology", "Integrated Online Tech", "Internal Operating Tool"], answer: 0 },
+        { q: "Who co-founded Apple with Steve Jobs?", options: ["Bill Gates", "Steve Wozniak", "Tim Cook", "Elon Musk"], answer: 1 },
+        { q: "What is phishing?", options: ["A game", "A scam email", "A coding language", "A firewall"], answer: 1 },
+        { q: "What does VPN stand for?", options: ["Virtual Private Network", "Very Protected Network", "Visual Processing Node", "Verified Public Network"], answer: 0 },
+        { q: "What language does iOS use?", options: ["Java", "Python", "Swift", "Ruby"], answer: 2 },
+        { q: "What company makes Windows?", options: ["Apple", "Google", "IBM", "Microsoft"], answer: 3 },
+        { q: "What is cloud computing?", options: ["Weather tech", "Remote servers", "Satellite internet", "Quantum computing"], answer: 1 },
+      
+        { q: "What is open source?", options: ["Paid software", "Free public code", "Hardware", "Cloud"], answer: 1 },
+        { q: "What is an IP address?", options: ["Email address", "Device network ID", "Website name", "Password"], answer: 1 },
+        { q: "What is machine learning?", options: ["Robots walking", "AI learning from data", "3D printing", "Cloud computing"], answer: 1 },
+        { q: "What is a firewall?", options: ["Physical wall", "Network security", "Browser", "Cable"], answer: 1 },
+        { q: "What does HTTPS mean?", options: ["Hyper Transfer Protocol Secure", "High Tech Protocol System", "Home Transfer Page Secure", "Hyper Text Process Server"], answer: 0 },
+        { q: "What is two-factor authentication?", options: ["Double password", "Two-step verification", "Two accounts", "Dual screen"], answer: 1 },
+        { q: "What is a chatbot?", options: ["Chat room", "AI conversation program", "Video call", "Social media"], answer: 1 },
+        { q: "What is latency?", options: ["Speed", "Delay in data transfer", "Bandwidth", "Storage"], answer: 1 },
+        { q: "What is a domain name?", options: ["IP address", "Website name", "Email server", "File type"], answer: 1 },
+        { q: "What year was Google founded?", options: ["1996", "1998", "2000", "2002"], answer: 1 },
+        { q: "What is cryptocurrency?", options: ["Physical money", "Digital currency", "Gift card", "Stock"], answer: 1 },
+        { q: "What is a cookie in web browsing?", options: ["Food", "Stored data file", "Virus", "Image"], answer: 1 },
+        { q: "What does SEO stand for?", options: ["Search Engine Optimization", "System Error Output", "Secure Email Option", "Software Engineering Operations"], answer: 0 },
+        { q: "What is RAM used for?", options: ["Storage", "Temporary memory", "Display", "Power"], answer: 1 },
+        { q: "What is a podcast?", options: ["Blog post", "Audio/video series", "Social media", "Game"], answer: 1 },
+        { q: "What is an algorithm?", options: ["Hardware", "Set of instructions", "Display", "Network"], answer: 1 },
+        { q: "What does NFC stand for?", options: ["Near Field Communication", "New File Creator", "Network Function Control", "Normal Format Code"], answer: 0 },
+        { q: "What is virtual reality?", options: ["Video game", "Computer-generated world", "Social media", "Cloud storage"], answer: 1 },
+        { q: "What is a server?", options: ["Computer serving data", "Monitor", "Keyboard", "Mouse"], answer: 0 },
+        { q: "What is a bug in software?", options: ["Insect", "Error in code", "Feature", "Update"], answer: 1 },
+        { q: "What is debugging?", options: ["Adding bugs", "Fixing errors", "Deleting files", "Installing"], answer: 1 },
+        { q: "What is a pixel resolution?", options: ["Color depth", "Number of pixels", "Screen size", "Brightness"], answer: 1 },
+        { q: "What is Bluetooth named after?", options: ["Color", "Danish king", "Inventor", "Company"], answer: 1 },
+        { q: "What is a kernel?", options: ["Shell", "OS core", "App", "File"], answer: 1 },
+        { q: "What does LAN stand for?", options: ["Large Area Network", "Local Area Network", "Long Access Node", "Linked Array Network"], answer: 1 },
+        { q: "What is overclocking?", options: ["Slowing down", "Running hardware faster", "Cooling system", "Power saving"], answer: 1 },
+        { q: "What is a UX designer?", options: ["Coder", "User experience designer", "Network admin", "Database manager"], answer: 1 },
+        { q: "What is the dark web?", options: ["Hidden internet", "Broken sites", "Old web", "Slow internet"], answer: 0 },
+        { q: "What year was Tesla founded?", options: ["2001", "2003", "2005", "2007"], answer: 1 },
+        { q: "What is a proxy server?", options: ["Direct connection", "Intermediary server", "Firewall", "Router"], answer: 1 },
       ],
       hard: [
         { q: "What is the time complexity of binary search?", options: ["O(n)", "O(n²)", "O(log n)", "O(1)"], answer: 2 },
@@ -203,6 +430,50 @@ const TRIVIA_CATEGORIES = [
         { q: "Who invented the World Wide Web?", options: ["Vint Cerf", "Tim Berners-Lee", "Alan Turing", "Robert Kahn"], answer: 1 },
         { q: "What does a compiler do?", options: ["Runs code line by line", "Translates code to machine code", "Debugs errors", "Manages memory"], answer: 1 },
         { q: "What is a race condition?", options: ["Fast algorithm", "Concurrent access bug", "Network latency", "Memory overflow"], answer: 1 },
+      
+        { q: "What year was Bitcoin created?", options: ["2007", "2008", "2009", "2010"], answer: 2 },
+        { q: "What is the smallest unit of data?", options: ["Byte", "Bit", "Nibble", "Word"], answer: 1 },
+        { q: "What does API stand for?", options: ["Application Programming Interface", "Automated Process Integration", "Advanced Program Interface", "Application Protocol Interface"], answer: 0 },
+      
+        { q: "What is a blockchain?", options: ["Database type", "Distributed ledger", "Programming language", "Network protocol"], answer: 1 },
+        { q: "What does SQL stand for?", options: ["Structured Query Language", "System Quality Language", "Simple Question Logic", "Sequential Query Loop"], answer: 0 },
+        { q: "What is the CAP theorem about?", options: ["Databases", "Networks", "Algorithms", "Security"], answer: 0 },
+        { q: "What is containerization in software?", options: ["File compression", "OS-level virtualization", "Data encryption", "Memory management"], answer: 1 },
+        { q: "What does CI/CD stand for?", options: ["Code Integration/Code Delivery", "Continuous Integration/Continuous Delivery", "Central Interface/Central Data", "Common Input/Common Dispatch"], answer: 1 },
+        { q: "What is Big O notation used for?", options: ["File size", "Algorithm complexity", "Network speed", "Memory usage"], answer: 1 },
+        { q: "What is a hash function?", options: ["Encryption key", "One-way mapping", "Password manager", "Data compressor"], answer: 1 },
+        { q: "What layer is HTTP in the OSI model?", options: ["Layer 4", "Layer 5", "Layer 6", "Layer 7"], answer: 3 },
+      
+        { q: "What is a neural network?", options: ["Brain scan", "AI model mimicking brain", "Network cable", "Database"], answer: 1 },
+        { q: "What is TCP/IP?", options: ["File format", "Internet protocol suite", "Programming language", "Hardware"], answer: 1 },
+        { q: "What is a microservice?", options: ["Small app", "Independent service component", "Micro computer", "Small database"], answer: 1 },
+        { q: "What is garbage collection in programming?", options: ["File deletion", "Automatic memory management", "Virus scan", "Data backup"], answer: 1 },
+        { q: "What is a Turing machine?", options: ["Computer brand", "Theoretical computation model", "AI robot", "Search engine"], answer: 1 },
+        { q: "What is polymorphism?", options: ["Single form", "Many forms in OOP", "Database term", "Network type"], answer: 1 },
+        { q: "What does CORS stand for?", options: ["Cross-Origin Resource Sharing", "Central Online Resource System", "Code Output Result Server", "Common Object Request Service"], answer: 0 },
+        { q: "What is a deadlock?", options: ["Broken lock", "Processes waiting forever", "Network timeout", "Slow code"], answer: 1 },
+        { q: "What is WebAssembly?", options: ["JavaScript library", "Low-level web bytecode", "HTML framework", "CSS processor"], answer: 1 },
+        { q: "What is a load balancer?", options: ["Weight scale", "Traffic distributor", "Code optimizer", "Memory cleaner"], answer: 1 },
+        { q: "What is sharding?", options: ["Breaking glass", "Database partitioning", "Code splitting", "Memory division"], answer: 1 },
+        { q: "What is a mutex?", options: ["Music player", "Mutual exclusion lock", "Network tool", "File format"], answer: 1 },
+        { q: "What is idempotency?", options: ["Speed metric", "Same result on repeat calls", "Data type", "Error type"], answer: 1 },
+        { q: "What is a monorepo?", options: ["Single file", "Single repo for multiple projects", "One branch", "One commit"], answer: 1 },
+        { q: "What is GraphQL?", options: ["Database", "API query language", "Graph library", "File format"], answer: 1 },
+        { q: "What is Kubernetes?", options: ["Programming language", "Container orchestration", "Database", "Operating system"], answer: 1 },
+        { q: "What is DNS?", options: ["Domain Name System", "Digital Network Service", "Data Node Server", "Direct Name Search"], answer: 0 },
+        { q: "What is a JWT?", options: ["JSON Web Token", "Java Web Tool", "JavaScript Widget Template", "Joint Wireless Transfer"], answer: 0 },
+        { q: "What is memoization?", options: ["Memorizing", "Caching function results", "Data storage", "Note taking"], answer: 1 },
+        { q: "What is a singleton pattern?", options: ["Many instances", "One instance only", "No instances", "Two instances"], answer: 1 },
+        { q: "What is eventual consistency?", options: ["Instant sync", "Data syncs over time", "Never syncs", "Random sync"], answer: 1 },
+        { q: "What is a CDN?", options: ["Content Delivery Network", "Central Data Node", "Code Development Network", "Cache Distribution Node"], answer: 0 },
+        { q: "What is OAuth?", options: ["Password manager", "Authorization protocol", "Encryption", "VPN type"], answer: 1 },
+        { q: "What is WebSocket?", options: ["HTTP request", "Full-duplex communication", "File transfer", "Email protocol"], answer: 1 },
+        { q: "What is a B-tree used for?", options: ["Graphics", "Database indexing", "Network routing", "AI training"], answer: 1 },
+        { q: "What is a bloom filter?", options: ["Image filter", "Probabilistic data structure", "Sound filter", "Network filter"], answer: 1 },
+        { q: "What is ACID in databases?", options: ["Chemical term", "Transaction properties", "Data format", "Query language"], answer: 1 },
+        { q: "What is a lambda function?", options: ["Named function", "Anonymous function", "Recursive function", "Main function"], answer: 1 },
+        { q: "What is the halting problem?", options: ["Stopping a program", "Undecidable problem", "Slow code", "Memory leak"], answer: 1 },
+        { q: "What is P vs NP?", options: ["Math equation", "Unsolved CS problem", "Programming language", "Data structure"], answer: 1 },
       ],
     }},
   { id: "logic", name: "MATH & LOGIC", icon: "🧮", color: "#ff6b6b", desc: "Puzzles, patterns, reasoning",
@@ -218,6 +489,19 @@ const TRIVIA_CATEGORIES = [
         { q: "If a train goes 60 mph for 2 hours, how far?", options: ["100 mi", "110 mi", "120 mi", "130 mi"], answer: 2 },
         { q: "What is the square root of 144?", options: ["10", "11", "12", "14"], answer: 2 },
         { q: "How many seconds in an hour?", options: ["3,000", "3,200", "3,600", "4,000"], answer: 2 },
+      
+        { q: "What comes next: 1, 1, 2, 3, 5, ?", options: ["6", "7", "8", "9"], answer: 2 },
+        { q: "How many sides does a hexagon have?", options: ["5", "6", "7", "8"], answer: 1 },
+        { q: "What is 7 x 8?", options: ["48", "54", "56", "63"], answer: 2 },
+      
+        { q: "What is 25% of 80?", options: ["15", "20", "25", "30"], answer: 1 },
+        { q: "How many sides does a triangle have?", options: ["2", "3", "4", "5"], answer: 1 },
+        { q: "What is 9 x 9?", options: ["72", "81", "90", "99"], answer: 1 },
+        { q: "What is 100 divided by 4?", options: ["20", "25", "30", "35"], answer: 1 },
+        { q: "How many minutes in 2 hours?", options: ["100", "110", "120", "130"], answer: 2 },
+        { q: "What is 50 + 75?", options: ["115", "120", "125", "130"], answer: 2 },
+        { q: "What shape has 4 equal sides?", options: ["Rectangle", "Square", "Triangle", "Circle"], answer: 1 },
+        { q: "What is half of 246?", options: ["113", "118", "123", "128"], answer: 2 },
       ],
       medium: [
         { q: "What is 7! (7 factorial)?", options: ["720", "5040", "40320", "362880"], answer: 1 },
@@ -225,6 +509,22 @@ const TRIVIA_CATEGORIES = [
         { q: "A die is rolled. P(even number)?", options: ["1/6", "1/3", "1/2", "2/3"], answer: 2 },
         { q: "What is log₂(64)?", options: ["4", "5", "6", "8"], answer: 2 },
         { q: "If x² - 9 = 0, what are the solutions?", options: ["±3", "±9", "3", "9"], answer: 0 },
+      
+        { q: "What is the value of pi to 2 decimals?", options: ["3.12", "3.14", "3.16", "3.18"], answer: 1 },
+        { q: "If x + 5 = 12, what is x?", options: ["5", "6", "7", "8"], answer: 2 },
+        { q: "What is 2 to the power of 10?", options: ["512", "1000", "1024", "2048"], answer: 2 },
+        { q: "What is the next prime after 29?", options: ["30", "31", "33", "37"], answer: 1 },
+        { q: "What angle do clock hands make at 3:00?", options: ["60", "90", "120", "180"], answer: 1 },
+      
+        { q: "What is 13 squared?", options: ["156", "163", "169", "176"], answer: 2 },
+        { q: "What is the LCM of 4 and 6?", options: ["8", "10", "12", "24"], answer: 2 },
+        { q: "How many degrees in a right angle?", options: ["45", "60", "90", "180"], answer: 2 },
+        { q: "What is the GCD of 18 and 24?", options: ["3", "4", "6", "8"], answer: 2 },
+        { q: "What is 3! (3 factorial)?", options: ["3", "6", "9", "12"], answer: 1 },
+        { q: "If a triangle has sides 3,4,5 what type is it?", options: ["Equilateral", "Isosceles", "Right", "Obtuse"], answer: 2 },
+        { q: "What is 0.75 as a fraction?", options: ["1/2", "2/3", "3/4", "4/5"], answer: 2 },
+        { q: "What is the mean of 10, 20, 30?", options: ["15", "20", "25", "30"], answer: 1 },
+        { q: "How many faces does a dodecahedron have?", options: ["8", "10", "12", "20"], answer: 2 },
       ],
       hard: [
         { q: "What is the derivative of x³?", options: ["x²", "2x²", "3x²", "3x"], answer: 2 },
@@ -232,6 +532,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the integral of 2x?", options: ["x", "x²", "x² + C", "2x² + C"], answer: 2 },
         { q: "What is the sum of first 100 natural numbers?", options: ["4,950", "5,000", "5,050", "5,100"], answer: 2 },
         { q: "In how many ways can 3 items be chosen from 7?", options: ["21", "35", "42", "210"], answer: 1 },
+      
+        { q: "What is the derivative of x cubed?", options: ["x2", "2x2", "3x2", "3x3"], answer: 2 },
+        { q: "What is log base 2 of 256?", options: ["6", "7", "8", "9"], answer: 2 },
+        { q: "What is the sum of angles in a pentagon?", options: ["360", "450", "540", "720"], answer: 2 },
+        { q: "What is 17 squared?", options: ["269", "279", "289", "299"], answer: 2 },
+        { q: "How many edges does a cube have?", options: ["6", "8", "10", "12"], answer: 3 },
+      
+        { q: "What is the limit of 1/x as x approaches infinity?", options: ["1", "0", "Infinity", "Undefined"], answer: 1 },
+        { q: "What is the area of a circle with radius 5?", options: ["25pi", "10pi", "50pi", "5pi"], answer: 0 },
+        { q: "What is the binary of decimal 42?", options: ["101010", "110010", "100110", "101100"], answer: 0 },
+        { q: "What is i squared (imaginary number)?", options: ["1", "-1", "i", "-i"], answer: 1 },
+        { q: "How many vertices does an icosahedron have?", options: ["8", "10", "12", "20"], answer: 2 },
+        { q: "What is the Fibonacci number after 89?", options: ["123", "134", "144", "155"], answer: 2 },
+        { q: "What is the integral of 1/x?", options: ["x", "ln(x)", "1/x2", "e^x"], answer: 1 },
+        { q: "What is 2^20?", options: ["524288", "1048576", "2097152", "4194304"], answer: 1 },
+        { q: "How many primes are under 50?", options: ["12", "13", "15", "17"], answer: 2 },
       ],
     }},
   { id: "history", name: "HISTORY & WORLD", icon: "🏛️", color: "#fbbf24", desc: "Ancient & modern history",
@@ -247,6 +563,22 @@ const TRIVIA_CATEGORIES = [
         { q: "The Great Wall is in which country?", options: ["Japan", "China", "India", "Korea"], answer: 1 },
         { q: "Who discovered America?", options: ["Magellan", "Columbus", "Drake", "Vespucci"], answer: 1 },
         { q: "Which empire built the Colosseum?", options: ["Greek", "Roman", "Egyptian", "Persian"], answer: 1 },
+      
+        { q: "Who was the first man on the Moon?", options: ["Buzz Aldrin", "Yuri Gagarin", "Neil Armstrong", "John Glenn"], answer: 2 },
+        { q: "What year did the Titanic sink?", options: ["1910", "1912", "1914", "1916"], answer: 1 },
+        { q: "Which country gave the Statue of Liberty to the US?", options: ["England", "Spain", "France", "Germany"], answer: 2 },
+        { q: "What ancient wonder is in Egypt?", options: ["Colosseum", "Pyramids", "Parthenon", "Stonehenge"], answer: 1 },
+        { q: "Who was known as the Iron Lady?", options: ["Queen Victoria", "Margaret Thatcher", "Angela Merkel", "Indira Gandhi"], answer: 1 },
+      
+        { q: "What wall divided Germany?", options: ["Great Wall", "Berlin Wall", "Hadrian's Wall", "Iron Curtain"], answer: 1 },
+        { q: "Who was the first woman to fly solo across the Atlantic?", options: ["Earhart", "Ride", "Thatcher", "Curie"], answer: 0 },
+        { q: "What did Vikings use to travel?", options: ["Chariots", "Longships", "Camels", "Trains"], answer: 1 },
+        { q: "Which war lasted from 1914-1918?", options: ["WWII", "WWI", "Civil War", "Cold War"], answer: 1 },
+        { q: "What civilization built pyramids in Central America?", options: ["Greek", "Roman", "Maya", "Egyptian"], answer: 2 },
+        { q: "Who invented the telephone?", options: ["Edison", "Bell", "Tesla", "Morse"], answer: 1 },
+        { q: "What was the Roman language?", options: ["Greek", "Latin", "Italian", "Spanish"], answer: 1 },
+        { q: "Who was the King of Rock and Roll?", options: ["Beatles", "Elvis", "MJ", "Prince"], answer: 1 },
+        { q: "What country built the Great Wall?", options: ["Japan", "India", "China", "Korea"], answer: 2 },
       ],
       medium: [
         { q: "The French Revolution started in which year?", options: ["1776", "1789", "1799", "1804"], answer: 1 },
@@ -254,6 +586,22 @@ const TRIVIA_CATEGORIES = [
         { q: "Which war was fought between 1950-1953?", options: ["Vietnam", "Korean", "Gulf", "Falklands"], answer: 1 },
         { q: "Who painted the Mona Lisa?", options: ["Michelangelo", "Da Vinci", "Raphael", "Donatello"], answer: 1 },
         { q: "The Berlin Wall fell in which year?", options: ["1987", "1989", "1991", "1993"], answer: 1 },
+      
+        { q: "Which empire was ruled by Sultans?", options: ["Roman", "Mongol", "Ottoman", "British"], answer: 2 },
+        { q: "What year did India gain independence?", options: ["1945", "1947", "1949", "1950"], answer: 1 },
+        { q: "The Renaissance began in which country?", options: ["France", "England", "Italy", "Spain"], answer: 2 },
+        { q: "What was the Cold War between?", options: ["UK and France", "USA and USSR", "China and Japan", "Germany and Russia"], answer: 1 },
+        { q: "Who was the first female PM of the UK?", options: ["May", "Thatcher", "Blair", "Victoria"], answer: 1 },
+      
+        { q: "Who wrote the Declaration of Independence?", options: ["Washington", "Jefferson", "Franklin", "Adams"], answer: 1 },
+        { q: "What empire ruled much of South America?", options: ["Aztec", "Maya", "Inca", "Olmec"], answer: 2 },
+        { q: "When did the Soviet Union collapse?", options: ["1989", "1990", "1991", "1992"], answer: 2 },
+        { q: "Who was the first female Nobel Prize winner?", options: ["Curie", "Earhart", "Nightingale", "Austen"], answer: 0 },
+        { q: "What ancient city was buried by Vesuvius?", options: ["Rome", "Athens", "Pompeii", "Sparta"], answer: 2 },
+        { q: "Who was the first President of South Africa after apartheid?", options: ["Tutu", "Mandela", "Zuma", "Mbeki"], answer: 1 },
+        { q: "What treaty ended WWI?", options: ["Paris", "Versailles", "Vienna", "Westphalia"], answer: 1 },
+        { q: "Who built the Taj Mahal?", options: ["Akbar", "Shah Jahan", "Ashoka", "Babur"], answer: 1 },
+        { q: "What year was the UN founded?", options: ["1940", "1943", "1945", "1948"], answer: 2 },
       ],
       hard: [
         { q: "The Treaty of Westphalia was signed in?", options: ["1618", "1648", "1688", "1714"], answer: 1 },
@@ -261,6 +609,22 @@ const TRIVIA_CATEGORIES = [
         { q: "The Magna Carta was signed in which year?", options: ["1066", "1215", "1348", "1453"], answer: 1 },
         { q: "Which civilization built Machu Picchu?", options: ["Aztec", "Maya", "Inca", "Olmec"], answer: 2 },
         { q: "The Hundred Years' War was between?", options: ["Spain & Portugal", "England & France", "Rome & Carthage", "Austria & Prussia"], answer: 1 },
+      
+        { q: "The Battle of Hastings was in which year?", options: ["1066", "1166", "1266", "966"], answer: 0 },
+        { q: "Who was the last Pharaoh of Egypt?", options: ["Nefertiti", "Hatshepsut", "Cleopatra", "Ramses"], answer: 2 },
+        { q: "Who unified Germany in 1871?", options: ["Kaiser Wilhelm", "Bismarck", "Frederick", "Metternich"], answer: 1 },
+        { q: "The Aztec capital was called?", options: ["Cusco", "Tenochtitlan", "Machu Picchu", "Chichen Itza"], answer: 1 },
+        { q: "The Silk Road connected Rome to where?", options: ["India", "Japan", "China", "Persia"], answer: 2 },
+      
+        { q: "What was the Rosetta Stone used to decode?", options: ["Latin", "Hieroglyphics", "Sanskrit", "Cuneiform"], answer: 1 },
+        { q: "Who was the first Holy Roman Emperor?", options: ["Augustus", "Charlemagne", "Constantine", "Julius Caesar"], answer: 1 },
+        { q: "What year was the printing press invented?", options: ["1340", "1440", "1540", "1640"], answer: 1 },
+        { q: "The Opium Wars were between Britain and?", options: ["India", "Japan", "China", "France"], answer: 2 },
+        { q: "What was the capital of the Byzantine Empire?", options: ["Rome", "Athens", "Constantinople", "Alexandria"], answer: 2 },
+        { q: "Who led the Bolshevik Revolution?", options: ["Stalin", "Lenin", "Trotsky", "Marx"], answer: 1 },
+        { q: "What was the largest empire in history?", options: ["Roman", "Mongol", "British", "Ottoman"], answer: 2 },
+        { q: "The Meiji Restoration was in which country?", options: ["China", "Korea", "Japan", "India"], answer: 2 },
+        { q: "What civilization invented the wheel?", options: ["Egyptian", "Greek", "Sumerian", "Chinese"], answer: 2 },
       ],
     }},
   { id: "geography", name: "GEOGRAPHY", icon: "🌍", color: "#0ff", desc: "Countries, capitals, landmarks",
@@ -276,6 +640,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the capital of France?", options: ["London", "Berlin", "Paris", "Rome"], answer: 2 },
         { q: "Which is the longest river?", options: ["Amazon", "Nile", "Mississippi", "Yangtze"], answer: 1 },
         { q: "How many continents are there?", options: ["5", "6", "7", "8"], answer: 2 },
+      
+        { q: "What is the largest country by area?", options: ["China", "USA", "Canada", "Russia"], answer: 3 },
+        { q: "Which river flows through London?", options: ["Seine", "Thames", "Danube", "Rhine"], answer: 1 },
+        { q: "What is the capital of Japan?", options: ["Seoul", "Beijing", "Tokyo", "Bangkok"], answer: 2 },
+        { q: "Which ocean is the smallest?", options: ["Atlantic", "Indian", "Arctic", "Pacific"], answer: 2 },
+        { q: "What continent is Brazil in?", options: ["Africa", "Europe", "N. America", "S. America"], answer: 3 },
+      
+        { q: "What is the biggest continent?", options: ["Africa", "Europe", "Asia", "N. America"], answer: 2 },
+        { q: "What country is shaped like a boot?", options: ["Spain", "Greece", "Italy", "Portugal"], answer: 2 },
+        { q: "What is the capital of Germany?", options: ["Munich", "Berlin", "Hamburg", "Frankfurt"], answer: 1 },
+        { q: "Which country has kangaroos?", options: ["Brazil", "India", "Australia", "Mexico"], answer: 2 },
+        { q: "What is the largest lake in Africa?", options: ["Chad", "Victoria", "Tanganyika", "Malawi"], answer: 1 },
+        { q: "What ocean is between the US and Europe?", options: ["Pacific", "Indian", "Atlantic", "Arctic"], answer: 2 },
+        { q: "What is the capital of Spain?", options: ["Barcelona", "Madrid", "Seville", "Valencia"], answer: 1 },
+        { q: "Which country has the most volcanoes?", options: ["Japan", "Indonesia", "USA", "Iceland"], answer: 1 },
+        { q: "What is the longest wall in the world?", options: ["Berlin Wall", "Great Wall", "Hadrian's Wall", "Western Wall"], answer: 1 },
       ],
       medium: [
         { q: "Which country has the most islands?", options: ["Indonesia", "Philippines", "Sweden", "Japan"], answer: 2 },
@@ -283,6 +663,22 @@ const TRIVIA_CATEGORIES = [
         { q: "The Sahara Desert is in which continent?", options: ["Asia", "Africa", "Australia", "South America"], answer: 1 },
         { q: "Which mountain is the tallest?", options: ["K2", "Everest", "Kangchenjunga", "Makalu"], answer: 1 },
         { q: "What is the capital of Australia?", options: ["Sydney", "Melbourne", "Canberra", "Brisbane"], answer: 2 },
+      
+        { q: "Which desert is the largest hot desert?", options: ["Gobi", "Sahara", "Arabian", "Kalahari"], answer: 1 },
+        { q: "What is the capital of Canada?", options: ["Toronto", "Vancouver", "Ottawa", "Montreal"], answer: 2 },
+        { q: "Mount Kilimanjaro is in which country?", options: ["Kenya", "Ethiopia", "Tanzania", "Uganda"], answer: 2 },
+        { q: "What is the longest river in Europe?", options: ["Danube", "Rhine", "Volga", "Thames"], answer: 2 },
+        { q: "Which country has the most people?", options: ["India", "China", "USA", "Indonesia"], answer: 0 },
+      
+        { q: "What is the driest desert?", options: ["Sahara", "Gobi", "Atacama", "Arabian"], answer: 2 },
+        { q: "Which river flows through Egypt?", options: ["Amazon", "Nile", "Ganges", "Tigris"], answer: 1 },
+        { q: "What is the capital of Turkey?", options: ["Istanbul", "Ankara", "Izmir", "Antalya"], answer: 1 },
+        { q: "What is the smallest US state?", options: ["Delaware", "Connecticut", "Rhode Island", "Vermont"], answer: 2 },
+        { q: "Which sea is the saltiest?", options: ["Black Sea", "Dead Sea", "Red Sea", "Caspian Sea"], answer: 1 },
+        { q: "What country has the most lakes?", options: ["USA", "Russia", "Canada", "Finland"], answer: 2 },
+        { q: "What is the highest waterfall?", options: ["Niagara", "Angel Falls", "Victoria", "Iguazu"], answer: 1 },
+        { q: "Which continent has no countries?", options: ["Australia", "Antarctica", "Arctic", "Oceania"], answer: 1 },
+        { q: "What is the capital of Egypt?", options: ["Alexandria", "Cairo", "Luxor", "Giza"], answer: 1 },
       ],
       hard: [
         { q: "Which strait separates Asia and North America?", options: ["Malacca", "Gibraltar", "Bering", "Hormuz"], answer: 2 },
@@ -290,6 +686,22 @@ const TRIVIA_CATEGORIES = [
         { q: "Which country has the most time zones?", options: ["Russia", "USA", "France", "China"], answer: 2 },
         { q: "The Andes span how many countries?", options: ["5", "6", "7", "8"], answer: 2 },
         { q: "Which lake is the deepest?", options: ["Caspian Sea", "Lake Baikal", "Lake Tanganyika", "Lake Superior"], answer: 1 },
+      
+        { q: "Which country has the most UNESCO sites?", options: ["China", "Italy", "Spain", "France"], answer: 1 },
+        { q: "What is the driest continent?", options: ["Africa", "Australia", "Antarctica", "Asia"], answer: 2 },
+        { q: "Which African country was never colonized?", options: ["Nigeria", "Ethiopia", "Egypt", "Ghana"], answer: 1 },
+        { q: "What is the capital of New Zealand?", options: ["Auckland", "Christchurch", "Wellington", "Hamilton"], answer: 2 },
+        { q: "What is the largest island in the world?", options: ["Borneo", "Madagascar", "Greenland", "Sumatra"], answer: 2 },
+      
+        { q: "What is the longest coastline country?", options: ["USA", "Russia", "Canada", "Australia"], answer: 2 },
+        { q: "Which country spans the most time zones?", options: ["Russia", "USA", "France", "China"], answer: 2 },
+        { q: "What is the highest capital city?", options: ["Quito", "Bogota", "La Paz", "Mexico City"], answer: 2 },
+        { q: "What trench is the deepest?", options: ["Java", "Puerto Rico", "Mariana", "Philippine"], answer: 2 },
+        { q: "What is the largest landlocked country?", options: ["Mongolia", "Chad", "Kazakhstan", "Bolivia"], answer: 2 },
+        { q: "Which country has the most borders?", options: ["Russia", "China", "Brazil", "Germany"], answer: 1 },
+        { q: "What is the most populated island?", options: ["Borneo", "Java", "Sumatra", "Honshu"], answer: 1 },
+        { q: "What river flows through the most capitals?", options: ["Nile", "Danube", "Rhine", "Amazon"], answer: 1 },
+        { q: "Which African country is largest by area?", options: ["Sudan", "DRC", "Algeria", "Libya"], answer: 2 },
       ],
     }},
   { id: "general", name: "GENERAL KNOWLEDGE", icon: "🧠", color: "#f0f", desc: "Random fun facts",
@@ -305,6 +717,22 @@ const TRIVIA_CATEGORIES = [
         { q: "How many months have 31 days?", options: ["5", "6", "7", "8"], answer: 2 },
         { q: "What is the hardest natural substance?", options: ["Gold", "Iron", "Diamond", "Platinum"], answer: 2 },
         { q: "How many players in a football team?", options: ["9", "10", "11", "12"], answer: 2 },
+      
+        { q: "What is the largest mammal?", options: ["Elephant", "Blue Whale", "Giraffe", "Hippo"], answer: 1 },
+        { q: "How many days in a leap year?", options: ["364", "365", "366", "367"], answer: 2 },
+        { q: "What color is an emerald?", options: ["Red", "Blue", "Green", "Yellow"], answer: 2 },
+        { q: "How many strings on a standard guitar?", options: ["4", "5", "6", "7"], answer: 2 },
+        { q: "What is the fastest land animal?", options: ["Lion", "Cheetah", "Horse", "Gazelle"], answer: 1 },
+      
+        { q: "What planet do we live on?", options: ["Mars", "Venus", "Earth", "Jupiter"], answer: 2 },
+        { q: "How many letters in the English alphabet?", options: ["24", "25", "26", "27"], answer: 2 },
+        { q: "What is a baby dog called?", options: ["Kitten", "Cub", "Puppy", "Foal"], answer: 2 },
+        { q: "What month has the fewest days?", options: ["April", "February", "June", "November"], answer: 1 },
+        { q: "What is the tallest animal?", options: ["Elephant", "Horse", "Giraffe", "Camel"], answer: 2 },
+        { q: "How many continents are there?", options: ["5", "6", "7", "8"], answer: 2 },
+        { q: "What color is the sky on a clear day?", options: ["Green", "Blue", "Red", "White"], answer: 1 },
+        { q: "What do caterpillars turn into?", options: ["Moths", "Butterflies", "Beetles", "Bees"], answer: 1 },
+        { q: "How many days in a week?", options: ["5", "6", "7", "8"], answer: 2 },
       ],
       medium: [
         { q: "What is the speed of light (approx)?", options: ["300,000 km/s", "150,000 km/s", "500,000 km/s", "100,000 km/s"], answer: 0 },
@@ -312,6 +740,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What year was the internet invented?", options: ["1969", "1975", "1983", "1991"], answer: 0 },
         { q: "Which blood type is universal donor?", options: ["A+", "B+", "AB+", "O-"], answer: 3 },
         { q: "What is the most spoken language?", options: ["English", "Spanish", "Mandarin", "Hindi"], answer: 2 },
+      
+        { q: "How many teeth does an adult have?", options: ["28", "30", "32", "34"], answer: 2 },
+        { q: "What is the largest organ inside the body?", options: ["Heart", "Liver", "Lungs", "Brain"], answer: 1 },
+        { q: "How many colors in a rainbow?", options: ["5", "6", "7", "8"], answer: 2 },
+        { q: "What is the smallest bone in the body?", options: ["Stapes", "Femur", "Patella", "Radius"], answer: 0 },
+        { q: "What metal is liquid at room temperature?", options: ["Lead", "Mercury", "Tin", "Zinc"], answer: 1 },
+      
+        { q: "What is the largest bird?", options: ["Eagle", "Ostrich", "Condor", "Albatross"], answer: 1 },
+        { q: "What vitamin is in citrus fruits?", options: ["A", "B", "C", "D"], answer: 2 },
+        { q: "What is the deepest ocean?", options: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+        { q: "What is the currency of Japan?", options: ["Yuan", "Won", "Yen", "Baht"], answer: 2 },
+        { q: "What is the hardest substance in the body?", options: ["Bone", "Nail", "Enamel", "Cartilage"], answer: 2 },
+        { q: "How many lungs do humans have?", options: ["1", "2", "3", "4"], answer: 1 },
+        { q: "What is the longest bone in the body?", options: ["Tibia", "Humerus", "Femur", "Spine"], answer: 2 },
+        { q: "What is a group of lions called?", options: ["Pack", "Herd", "Pride", "Flock"], answer: 2 },
+        { q: "What element does O represent?", options: ["Gold", "Osmium", "Oxygen", "Oganesson"], answer: 2 },
       ],
       hard: [
         { q: "What is the pH of pure water?", options: ["6", "7", "8", "9"], answer: 1 },
@@ -319,6 +763,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the rarest blood type?", options: ["O-", "AB-", "B-", "A-"], answer: 1 },
         { q: "How long is a light-year in km?", options: ["9.5 billion", "9.5 trillion", "9.5 quadrillion", "950 billion"], answer: 1 },
         { q: "Which element has the highest melting point?", options: ["Iron", "Tungsten", "Carbon", "Platinum"], answer: 1 },
+      
+        { q: "What is the most common element in the universe?", options: ["Oxygen", "Carbon", "Hydrogen", "Helium"], answer: 2 },
+        { q: "What temperature is same in C and F?", options: ["-40", "-32", "0", "32"], answer: 0 },
+        { q: "How many bones in the human hand?", options: ["17", "22", "27", "32"], answer: 2 },
+        { q: "What year was the first email sent?", options: ["1969", "1971", "1973", "1975"], answer: 1 },
+        { q: "What is the deepest-diving whale?", options: ["Blue", "Humpback", "Sperm", "Orca"], answer: 2 },
+      
+        { q: "What is the only mammal that can fly?", options: ["Squirrel", "Bat", "Sugar glider", "Lemur"], answer: 1 },
+        { q: "What color is cobalt?", options: ["Red", "Green", "Blue", "Yellow"], answer: 2 },
+        { q: "What is the human body's largest artery?", options: ["Carotid", "Femoral", "Aorta", "Pulmonary"], answer: 2 },
+        { q: "How many taste buds does a human have?", options: ["2,000", "5,000", "10,000", "20,000"], answer: 2 },
+        { q: "What is the oldest known civilization?", options: ["Egyptian", "Greek", "Sumerian", "Chinese"], answer: 2 },
+        { q: "What is the densest planet?", options: ["Jupiter", "Mars", "Earth", "Mercury"], answer: 2 },
+        { q: "What percentage of the brain is water?", options: ["50%", "60%", "73%", "85%"], answer: 2 },
+        { q: "What is the rarest M&M color?", options: ["Red", "Brown", "Green", "Orange"], answer: 1 },
+        { q: "What animal has the most legs?", options: ["Centipede", "Millipede", "Spider", "Crab"], answer: 1 },
       ],
     }},
   { id: "entertainment", name: "MOVIES & TV", icon: "🎬", color: "#ef4444", desc: "Films, TV, music",
@@ -334,6 +794,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What franchise features lightsabers?", options: ["Star Trek", "Star Wars", "Halo", "Marvel"], answer: 1 },
         { q: "Who played Jack in Titanic?", options: ["Brad Pitt", "Tom Cruise", "Leo DiCaprio", "Matt Damon"], answer: 2 },
         { q: "What is the highest-grossing film ever?", options: ["Titanic", "Endgame", "Avatar", "Star Wars"], answer: 2 },
+      
+        { q: "What color is Shrek?", options: ["Blue", "Red", "Green", "Yellow"], answer: 2 },
+        { q: "What is Pikachu's type?", options: ["Fire", "Water", "Electric", "Grass"], answer: 2 },
+        { q: "What is Superman's weakness?", options: ["Fire", "Water", "Kryptonite", "Silver"], answer: 2 },
+        { q: "What animal is Simba?", options: ["Tiger", "Bear", "Lion", "Panther"], answer: 2 },
+        { q: "Who lives in a pineapple under the sea?", options: ["Nemo", "SpongeBob", "Patrick", "Dory"], answer: 1 },
+      
+        { q: "What is Mario's brother's name?", options: ["Wario", "Luigi", "Toad", "Yoshi"], answer: 1 },
+        { q: "What does Elsa sing in Frozen?", options: ["Let It Be", "Let It Go", "Let It Snow", "Let It Rain"], answer: 1 },
+        { q: "What color is Sonic the Hedgehog?", options: ["Red", "Green", "Blue", "Yellow"], answer: 2 },
+        { q: "Who is Mickey Mouse's girlfriend?", options: ["Daisy", "Minnie", "Goofy", "Pluto"], answer: 1 },
+        { q: "What is the name of Shrek's donkey?", options: ["Donkey", "Burro", "Jack", "Eddie"], answer: 0 },
+        { q: "What game has creepers and Endermen?", options: ["Fortnite", "Roblox", "Minecraft", "Terraria"], answer: 2 },
+        { q: "Who is the villain in The Lion King?", options: ["Simba", "Mufasa", "Scar", "Zazu"], answer: 2 },
+        { q: "What school does Harry Potter attend?", options: ["Narnia", "Xavier's", "Hogwarts", "Mordor"], answer: 2 },
+        { q: "What is the name of Thor's hammer?", options: ["Excalibur", "Mjolnir", "Stormbreaker", "Sting"], answer: 1 },
       ],
       medium: [
         { q: "Which band sang Bohemian Rhapsody?", options: ["Beatles", "Queen", "Led Zeppelin", "Pink Floyd"], answer: 1 },
@@ -341,6 +817,22 @@ const TRIVIA_CATEGORIES = [
         { q: "Who created Mickey Mouse?", options: ["Warner Bros", "Pixar", "Walt Disney", "DreamWorks"], answer: 2 },
         { q: "The Mandalorian is in which universe?", options: ["Marvel", "DC", "Star Wars", "Star Trek"], answer: 2 },
         { q: "Who directed The Dark Knight trilogy?", options: ["Snyder", "Nolan", "Burton", "Whedon"], answer: 1 },
+      
+        { q: "Who played Iron Man in the MCU?", options: ["Chris Evans", "Chris Hemsworth", "Robert Downey Jr", "Mark Ruffalo"], answer: 2 },
+        { q: "What year was Minecraft released?", options: ["2009", "2010", "2011", "2012"], answer: 2 },
+        { q: "How many Infinity Stones are there?", options: ["4", "5", "6", "7"], answer: 2 },
+        { q: "Which studio made Toy Story?", options: ["DreamWorks", "Disney", "Pixar", "Illumination"], answer: 2 },
+        { q: "What planet is Superman from?", options: ["Mars", "Krypton", "Asgard", "Vulcan"], answer: 1 },
+      
+        { q: "What is the name of Batman's city?", options: ["Metropolis", "Star City", "Gotham", "Central City"], answer: 2 },
+        { q: "Who is the main character in Zelda?", options: ["Zelda", "Link", "Ganon", "Epona"], answer: 1 },
+        { q: "What year did Fortnite release?", options: ["2015", "2016", "2017", "2018"], answer: 2 },
+        { q: "Who composed the Harry Potter music?", options: ["Zimmer", "Williams", "Shore", "Elfman"], answer: 1 },
+        { q: "What is the highest-rated TV show on IMDb?", options: ["Game of Thrones", "Breaking Bad", "The Wire", "Sopranos"], answer: 1 },
+        { q: "Who played Joker in The Dark Knight?", options: ["Nicholson", "Leto", "Phoenix", "Ledger"], answer: 3 },
+        { q: "What studio made Shrek?", options: ["Pixar", "DreamWorks", "Disney", "Sony"], answer: 1 },
+        { q: "How many Harry Potter books are there?", options: ["5", "6", "7", "8"], answer: 2 },
+        { q: "What is the name of Iron Man's AI?", options: ["Cortana", "Alexa", "JARVIS", "Hal"], answer: 2 },
       ],
       hard: [
         { q: "Which film won Best Picture at 2020 Oscars?", options: ["1917", "Joker", "Parasite", "Once Upon a Time"], answer: 2 },
@@ -348,6 +840,22 @@ const TRIVIA_CATEGORIES = [
         { q: "Who composed the score for Inception?", options: ["Williams", "Zimmer", "Elfman", "Shore"], answer: 1 },
         { q: "Which TV show has the most Emmy wins?", options: ["Game of Thrones", "Frasier", "Saturday Night Live", "The Simpsons"], answer: 0 },
         { q: "What year was Netflix founded?", options: ["1995", "1997", "1999", "2001"], answer: 1 },
+      
+        { q: "Which country produces the most films yearly?", options: ["USA", "China", "India", "Nigeria"], answer: 2 },
+        { q: "Who directed Pulp Fiction?", options: ["Scorsese", "Tarantino", "Coppola", "Fincher"], answer: 1 },
+        { q: "What was the first video game console?", options: ["Atari", "NES", "Magnavox Odyssey", "ColecoVision"], answer: 2 },
+        { q: "Who wrote The Lord of the Rings?", options: ["C.S. Lewis", "J.R.R. Tolkien", "George R.R. Martin", "J.K. Rowling"], answer: 1 },
+        { q: "What AI is in 2001: A Space Odyssey?", options: ["JARVIS", "HAL 9000", "Skynet", "WOPR"], answer: 1 },
+      
+        { q: "What is the best-selling video game ever?", options: ["GTA V", "Minecraft", "Tetris", "Wii Sports"], answer: 1 },
+        { q: "Who directed Inception and Interstellar?", options: ["Spielberg", "Nolan", "Cameron", "Villeneuve"], answer: 1 },
+        { q: "What anime has the most episodes?", options: ["Naruto", "One Piece", "Dragon Ball", "Sazae-san"], answer: 3 },
+        { q: "What movie won the first Best Picture Oscar?", options: ["Wings", "Sunrise", "The Jazz Singer", "Ben-Hur"], answer: 0 },
+        { q: "Who invented the Game Boy?", options: ["Sony", "Sega", "Nintendo", "Atari"], answer: 2 },
+        { q: "What is the longest-running TV show?", options: ["The Simpsons", "Gunsmoke", "Doctor Who", "Coronation Street"], answer: 0 },
+        { q: "What is Studio Ghibli's highest-grossing film?", options: ["Totoro", "Spirited Away", "Howl's Castle", "Ponyo"], answer: 1 },
+        { q: "Who voiced Woody in Toy Story?", options: ["Tim Allen", "Tom Hanks", "Robin Williams", "Billy Crystal"], answer: 1 },
+        { q: "What year did YouTube launch?", options: ["2003", "2004", "2005", "2006"], answer: 2 },
       ],
     }},
   { id: "sports", name: "SPORTS", icon: "⚽", color: "#6ee7b7", desc: "Athletes, records, games",
@@ -363,6 +871,22 @@ const TRIVIA_CATEGORIES = [
         { q: "The Olympics happen every how many years?", options: ["2", "3", "4", "5"], answer: 2 },
         { q: "Which country invented cricket?", options: ["India", "Australia", "England", "South Africa"], answer: 2 },
         { q: "How many points for a touchdown in NFL?", options: ["3", "5", "6", "7"], answer: 2 },
+      
+        { q: "What is a perfect score in bowling?", options: ["200", "250", "300", "350"], answer: 2 },
+        { q: "In which sport do you use a puck?", options: ["Hockey", "Lacrosse", "Cricket", "Baseball"], answer: 0 },
+        { q: "How many rings on the Olympic flag?", options: ["3", "4", "5", "6"], answer: 2 },
+        { q: "What sport uses a racket and shuttlecock?", options: ["Tennis", "Badminton", "Squash", "Ping Pong"], answer: 1 },
+        { q: "How many quarters in a basketball game?", options: ["2", "3", "4", "5"], answer: 2 },
+      
+        { q: "What sport uses a bat and ball on a diamond?", options: ["Cricket", "Baseball", "Golf", "Tennis"], answer: 1 },
+        { q: "How many players on a volleyball team?", options: ["4", "5", "6", "7"], answer: 2 },
+        { q: "What color is a tennis ball?", options: ["White", "Yellow", "Green", "Orange"], answer: 1 },
+        { q: "What sport is Tiger Woods famous for?", options: ["Tennis", "Baseball", "Golf", "Boxing"], answer: 2 },
+        { q: "How many bases in baseball?", options: ["3", "4", "5", "6"], answer: 1 },
+        { q: "What do you hit in badminton?", options: ["Ball", "Puck", "Shuttlecock", "Disc"], answer: 2 },
+        { q: "What sport is played in a pool?", options: ["Water polo", "Tennis", "Golf", "Cricket"], answer: 0 },
+        { q: "How many periods in ice hockey?", options: ["2", "3", "4", "5"], answer: 1 },
+        { q: "What do you wear on your feet to ice skate?", options: ["Cleats", "Skates", "Boots", "Sneakers"], answer: 1 },
       ],
       medium: [
         { q: "Who has the most Grand Slam titles (men)?", options: ["Federer", "Nadal", "Djokovic", "Sampras"], answer: 2 },
@@ -370,6 +894,22 @@ const TRIVIA_CATEGORIES = [
         { q: "What is the 100m sprint world record?", options: ["9.48s", "9.58s", "9.68s", "9.78s"], answer: 1 },
         { q: "Which sport is played at Wimbledon?", options: ["Golf", "Cricket", "Tennis", "Polo"], answer: 2 },
         { q: "How many holes in a golf course?", options: ["9", "12", "15", "18"], answer: 3 },
+      
+        { q: "Which country has won the most World Cups?", options: ["Germany", "Italy", "Argentina", "Brazil"], answer: 3 },
+        { q: "How long is a marathon in miles?", options: ["24.2", "25.2", "26.2", "27.2"], answer: 2 },
+        { q: "In cricket, how many balls in an over?", options: ["4", "5", "6", "8"], answer: 2 },
+        { q: "What is the maximum break in snooker?", options: ["127", "137", "147", "155"], answer: 2 },
+        { q: "How many sets to win in men's Grand Slam tennis?", options: ["2", "3", "4", "5"], answer: 1 },
+      
+        { q: "What country invented basketball?", options: ["USA", "Canada", "UK", "France"], answer: 0 },
+        { q: "How many points for a 3-pointer in basketball?", options: ["1", "2", "3", "4"], answer: 2 },
+        { q: "What is the Tour de France?", options: ["Running race", "Cycling race", "Car rally", "Boat race"], answer: 1 },
+        { q: "Who has the most Ballon d'Or awards?", options: ["Ronaldo", "Messi", "Pele", "Maradona"], answer: 1 },
+        { q: "What is the national sport of Japan?", options: ["Karate", "Judo", "Sumo", "Kendo"], answer: 2 },
+        { q: "How many sets in a volleyball match?", options: ["3", "4", "5", "6"], answer: 2 },
+        { q: "What sport uses the term 'birdie'?", options: ["Tennis", "Golf", "Badminton", "Both B&C"], answer: 3 },
+        { q: "Where were the 2020 Olympics held?", options: ["Beijing", "London", "Tokyo", "Paris"], answer: 2 },
+        { q: "What is the weight of a boxing heavyweight?", options: ["175+ lbs", "190+ lbs", "200+ lbs", "220+ lbs"], answer: 2 },
       ],
       hard: [
         { q: "Who holds the most Olympic gold medals?", options: ["Bolt", "Phelps", "Latynina", "Nurmi"], answer: 1 },
@@ -377,14 +917,35 @@ const TRIVIA_CATEGORIES = [
         { q: "Where were the first modern Olympics?", options: ["Paris", "London", "Athens", "Berlin"], answer: 2 },
         { q: "Diameter of a basketball hoop in inches?", options: ["16", "18", "20", "22"], answer: 1 },
         { q: "Most Cricket World Cup wins?", options: ["India", "Australia", "West Indies", "England"], answer: 1 },
+      
+        { q: "Only country in every FIFA World Cup?", options: ["Germany", "Argentina", "Italy", "Brazil"], answer: 3 },
+        { q: "How many dimples on a golf ball?", options: ["236", "336", "436", "536"], answer: 1 },
+        { q: "What is the oldest Grand Slam?", options: ["US Open", "French Open", "Wimbledon", "Australian Open"], answer: 2 },
+        { q: "Which NBA player has most career points?", options: ["Jordan", "Kareem", "LeBron", "Kobe"], answer: 2 },
+        { q: "What sport is called the sweet science?", options: ["Fencing", "Boxing", "Wrestling", "Judo"], answer: 1 },
+      
+        { q: "What sport has the most participants globally?", options: ["Cricket", "Soccer", "Basketball", "Swimming"], answer: 1 },
+        { q: "Who has the most Grand Slam titles (all)?", options: ["Federer", "Nadal", "Djokovic", "Serena Williams"], answer: 2 },
+        { q: "What is the diameter of a soccer goal (m)?", options: ["7.32", "7.62", "8.00", "8.32"], answer: 0 },
+        { q: "What year were the first Winter Olympics?", options: ["1916", "1920", "1924", "1928"], answer: 2 },
+        { q: "Who holds the 200m world record?", options: ["Bolt", "Blake", "Gay", "Powell"], answer: 0 },
+        { q: "What martial art is in the Olympics since 2020?", options: ["Kung Fu", "Taekwondo", "Karate", "Jiu-Jitsu"], answer: 2 },
+        { q: "How long is an Olympic swimming pool (m)?", options: ["25", "50", "75", "100"], answer: 1 },
+        { q: "What country has won the most Olympic golds?", options: ["China", "Russia", "UK", "USA"], answer: 3 },
+        { q: "What is the heaviest ball in sports?", options: ["Basketball", "Bowling ball", "Shot put", "Medicine ball"], answer: 1 },
       ],
     }},
 ];
-function scrambleWord(word) {
+function scrambleWord(word, attempts = 0) {
+  if (attempts > 20 || word.length <= 2) {
+    const arr = word.split("");
+    [arr[0], arr[arr.length - 1]] = [arr[arr.length - 1], arr[0]];
+    return arr.join("");
+  }
   const arr = word.split("");
   for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; }
   const result = arr.join("");
-  return result === word ? scrambleWord(word) : result;
+  return result === word ? scrambleWord(word, attempts + 1) : result;
 }
 const WORD_CATEGORIES = [
   { id: "space", name: "SPACE & ASTRONOMY", icon: "🚀", color: "#60a5fa", desc: "Stars, planets, cosmos",
@@ -399,18 +960,60 @@ const WORD_CATEGORIES = [
         { answer: "MOON", hint: "Orbits the Earth" },
         { answer: "MARS", hint: "The Red Planet" },
         { answer: "VOID", hint: "Empty space" },
+      
+        { answer: "SUN", hint: "Our closest star" },
+      
+        { answer: "ORBIT", hint: "Path around a planet" },
+        { answer: "DUST", hint: "Cosmic particles" },
+        { answer: "GLOW", hint: "Stars do this" },
+        { answer: "DARK", hint: "Most of space is this" },
+        { answer: "RING", hint: "Saturn has these" },
+        { answer: "BEAM", hint: "Light travels in one" },
+        { answer: "CORE", hint: "Center of a planet" },
+        { answer: "POLE", hint: "North or south end" },
+        { answer: "DAWN", hint: "Sunrise on a planet" },
+        { answer: "VAST", hint: "Space is incredibly this" },
+        { answer: "FUEL", hint: "Rockets need this" },
       ],
       medium: [
-        { answer: "ORBIT", hint: "Path around a planet" },
         { answer: "COMET", hint: "Icy traveler with a tail" },
         { answer: "LUNAR", hint: "Related to the moon" },
         { answer: "SOLAR", hint: "Related to the sun" },
+      
+        { answer: "ROCKET", hint: "Space vehicle" },
+        { answer: "SATURN", hint: "Planet with rings" },
+        { answer: "GALAXY", hint: "Collection of stars" },
+      
+        { answer: "CRATER", hint: "Impact hole on moon" },
+        { answer: "PULSAR", hint: "Rotating neutron star" },
+        { answer: "DEBRIS", hint: "Space junk" },
+        { answer: "QUASAR", hint: "Extremely bright object" },
+        { answer: "LAUNCH", hint: "Rocket liftoff" },
+        { answer: "METEOR", hint: "Shooting star" },
+        { answer: "ZENITH", hint: "Highest point in sky" },
+        { answer: "COSMOS", hint: "The entire universe" },
+        { answer: "DWARF", hint: "Type of small star" },
+        { answer: "FLARE", hint: "Solar eruption" },
       ],
       hard: [
         { answer: "ASTEROID", hint: "Rocky space object" },
         { answer: "SUPERNOVA", hint: "Massive star explosion" },
         { answer: "SATELLITE", hint: "Orbiting object" },
         { answer: "TELESCOPE", hint: "Used to see far away" },
+      
+        { answer: "NEBULA", hint: "Stellar nursery" },
+        { answer: "ECLIPSE", hint: "Shadow alignment" },
+      
+        { answer: "SOLSTICE", hint: "Longest or shortest day" },
+        { answer: "APHELION", hint: "Farthest point from sun" },
+        { answer: "REDSHIFT", hint: "Light stretching effect" },
+        { answer: "WORMHOLE", hint: "Theoretical space tunnel" },
+        { answer: "EXOPLANET", hint: "Planet outside our system" },
+        { answer: "MAGNITUDE", hint: "Star brightness measure" },
+        { answer: "RADIATION", hint: "Energy from stars" },
+        { answer: "METEORITE", hint: "Space rock on ground" },
+        { answer: "CELESTIAL", hint: "Related to the heavens" },
+        { answer: "PERIHELION", hint: "Closest point to sun" },
       ],
     }},
   { id: "animals", name: "ANIMALS & NATURE", icon: "🐾", color: "#6ee7b7", desc: "Wildlife, plants, ecosystems",
@@ -425,18 +1028,66 @@ const WORD_CATEGORIES = [
         { answer: "FROG", hint: "Leaps and ribbits" },
         { answer: "HAWK", hint: "Bird of prey" },
         { answer: "BEAR", hint: "Hibernates in winter" },
+      
+        { answer: "FISH", hint: "Aquatic creature" },
+        { answer: "BIRD", hint: "Feathered flyer" },
+      
+        { answer: "DEER", hint: "Forest animal with antlers" },
+        { answer: "SEAL", hint: "Ocean mammal" },
+        { answer: "MOTH", hint: "Nocturnal butterfly" },
+        { answer: "CRAB", hint: "Sideways walker" },
+        { answer: "WASP", hint: "Stinging insect" },
+        { answer: "GOAT", hint: "Mountain climber" },
+        { answer: "DUCK", hint: "Quacking bird" },
+        { answer: "MOLE", hint: "Underground digger" },
+        { answer: "TOAD", hint: "Warty amphibian" },
+        { answer: "NEWT", hint: "Small salamander" },
       ],
       medium: [
         { answer: "SHARK", hint: "Apex ocean predator" },
         { answer: "EAGLE", hint: "Majestic bird of prey" },
         { answer: "CORAL", hint: "Underwater reef builder" },
         { answer: "PANDA", hint: "Black and white bear" },
+      
+        { answer: "MONKEY", hint: "Tree-swinging primate" },
+        { answer: "TURTLE", hint: "Slow shelled reptile" },
+        { answer: "PARROT", hint: "Talking bird" },
+        { answer: "RABBIT", hint: "Long-eared hopper" },
+      
+        { answer: "FALCON", hint: "Fastest bird alive" },
+        { answer: "BADGER", hint: "Black and white digger" },
+        { answer: "SALMON", hint: "Upstream swimming fish" },
+        { answer: "BEETLE", hint: "Hard-shelled insect" },
+        { answer: "LIZARD", hint: "Scaly reptile" },
+        { answer: "DONKEY", hint: "Stubborn equine" },
+        { answer: "JAGUAR", hint: "Spotted jungle cat" },
+        { answer: "WALRUS", hint: "Tusked Arctic mammal" },
+        { answer: "SPIDER", hint: "Eight-legged web maker" },
+        { answer: "OYSTER", hint: "Pearl-making shellfish" },
+        { answer: "PIGEON", hint: "City bird" },
+        { answer: "MANTIS", hint: "Praying insect" },
       ],
       hard: [
         { answer: "ELEPHANT", hint: "Largest land animal" },
         { answer: "PREDATOR", hint: "Hunts for food" },
         { answer: "CHAMELEON", hint: "Changes color" },
         { answer: "NOCTURNAL", hint: "Active at night" },
+      
+        { answer: "CHEETAH", hint: "Fastest land animal" },
+        { answer: "PANGOLIN", hint: "Scaly anteater" },
+        { answer: "PLATYPUS", hint: "Duck-billed mammal" },
+      
+        { answer: "FLAMINGO", hint: "Pink long-legged bird" },
+        { answer: "SCORPION", hint: "Stinging arachnid" },
+        { answer: "MANATEE", hint: "Gentle sea cow" },
+        { answer: "TORTOISE", hint: "Slow land reptile" },
+        { answer: "NARWHAL", hint: "Unicorn of the sea" },
+        { answer: "ANTEATER", hint: "Long tongue insect eater" },
+        { answer: "ANACONDA", hint: "Giant South American snake" },
+        { answer: "KANGAROO", hint: "Australian hopper" },
+        { answer: "ARMADILLO", hint: "Armored mammal" },
+        { answer: "PORCUPINE", hint: "Quill-covered rodent" },
+        { answer: "WOLVERINE", hint: "Fierce small predator" },
       ],
     }},
   { id: "tech", name: "TECHNOLOGY", icon: "💻", color: "#c084fc", desc: "Gadgets, code, internet",
@@ -451,18 +1102,65 @@ const WORD_CATEGORIES = [
         { answer: "WIFI", hint: "Wireless internet" },
         { answer: "BYTE", hint: "8 bits" },
         { answer: "CHIP", hint: "Inside a computer" },
+      
+        { answer: "APP", hint: "Phone program" },
+        { answer: "WEB", hint: "Internet network" },
+      
+        { answer: "LINK", hint: "Clickable URL" },
+        { answer: "DATA", hint: "Digital information" },
+        { answer: "SCAN", hint: "Read a document digitally" },
+        { answer: "SPAM", hint: "Unwanted email" },
+        { answer: "ICON", hint: "Small screen image" },
+        { answer: "PING", hint: "Network test signal" },
+        { answer: "BOOT", hint: "Starting up a computer" },
+        { answer: "PORT", hint: "Connection socket" },
+        { answer: "SITE", hint: "Web location" },
+        { answer: "HACK", hint: "Break into a system" },
       ],
       medium: [
         { answer: "CLOUD", hint: "Online storage" },
         { answer: "PIXEL", hint: "Tiny screen dot" },
         { answer: "CACHE", hint: "Temporary storage" },
         { answer: "DEBUG", hint: "Fix errors in code" },
+      
+        { answer: "SERVER", hint: "Hosts websites" },
+        { answer: "PYTHON", hint: "Popular coding language" },
+        { answer: "ROUTER", hint: "Network traffic director" },
+        { answer: "BINARY", hint: "Language of 0s and 1s" },
+      
+        { answer: "KERNEL", hint: "OS core component" },
+        { answer: "COOKIE", hint: "Browser tracking data" },
+        { answer: "CURSOR", hint: "Screen pointer" },
+        { answer: "MALWARE", hint: "Malicious software" },
+        { answer: "DOMAIN", hint: "Website address name" },
+        { answer: "BACKUP", hint: "Copy for safety" },
+        { answer: "WIDGET", hint: "Small app component" },
+        { answer: "PLUGIN", hint: "Software extension" },
+        { answer: "RENDER", hint: "Generate visual output" },
+        { answer: "SYNTAX", hint: "Code grammar rules" },
+        { answer: "TOGGLE", hint: "On/off switch" },
+        { answer: "STREAM", hint: "Live data flow" },
       ],
       hard: [
         { answer: "ALGORITHM", hint: "Step-by-step process" },
         { answer: "BANDWIDTH", hint: "Data transfer capacity" },
         { answer: "ENCRYPTED", hint: "Secured with a cipher" },
         { answer: "FIREWALL", hint: "Network security barrier" },
+      
+        { answer: "ETHERNET", hint: "Wired network standard" },
+        { answer: "COMPILER", hint: "Code translator" },
+        { answer: "PROTOCOL", hint: "Communication rules" },
+      
+        { answer: "FIRMWARE", hint: "Hardware-embedded software" },
+        { answer: "DEBUGGER", hint: "Bug-finding tool" },
+        { answer: "METADATA", hint: "Data about data" },
+        { answer: "RECURSION", hint: "Function calling itself" },
+        { answer: "CONTAINER", hint: "Isolated software package" },
+        { answer: "BOOTSTRAP", hint: "Self-starting process" },
+        { answer: "PROCESSOR", hint: "CPU full name" },
+        { answer: "FRAMEWORK", hint: "Code foundation structure" },
+        { answer: "INTERFACE", hint: "User interaction layer" },
+        { answer: "BLOCKCHAIN", hint: "Distributed ledger tech" },
       ],
     }},
   { id: "science", name: "SCIENCE & CHEMISTRY", icon: "🔬", color: "#fbbf24", desc: "Elements, reactions, physics",
@@ -477,18 +1175,64 @@ const WORD_CATEGORIES = [
         { answer: "CELL", hint: "Basic unit of life" },
         { answer: "IRON", hint: "Element Fe" },
         { answer: "ACID", hint: "Low pH substance" },
+      
+        { answer: "HEAT", hint: "Thermal energy" },
+        { answer: "WAVE", hint: "Energy transfer pattern" },
+      
+        { answer: "LENS", hint: "Focuses light" },
+        { answer: "MASS", hint: "Amount of matter" },
+        { answer: "SEED", hint: "Plant starter" },
+        { answer: "RUST", hint: "Iron oxidation" },
+        { answer: "BONE", hint: "Skeleton part" },
+        { answer: "STEM", hint: "Plant support structure" },
+        { answer: "CORE", hint: "Earth's center" },
+        { answer: "GENE", hint: "DNA unit" },
+        { answer: "VOLT", hint: "Electricity measure" },
+        { answer: "FERN", hint: "Ancient plant type" },
+        { answer: "LUNG", hint: "Breathing organ" },
       ],
       medium: [
         { answer: "PROTON", hint: "Positive particle" },
         { answer: "PLASMA", hint: "Fourth state of matter" },
         { answer: "ENZYME", hint: "Biological catalyst" },
         { answer: "FUSION", hint: "Stars run on this" },
+      
+        { answer: "MAGNET", hint: "Attracts iron" },
+        { answer: "PHOTON", hint: "Light particle" },
+      
+        { answer: "PRISM", hint: "Splits white light" },
+        { answer: "FOSSIL", hint: "Preserved ancient life" },
+        { answer: "NEUTRON", hint: "Neutral atomic particle" },
+        { answer: "REFLEX", hint: "Automatic body response" },
+        { answer: "OXYGEN", hint: "We breathe this gas" },
+        { answer: "CARBON", hint: "Basis of organic life" },
+        { answer: "THEORY", hint: "Scientific explanation" },
+        { answer: "GENOME", hint: "Complete DNA set" },
+        { answer: "STATIC", hint: "Electric charge buildup" },
+        { answer: "BEAKER", hint: "Lab glass container" },
       ],
       hard: [
         { answer: "MOLECULE", hint: "Group of bonded atoms" },
         { answer: "CATALYST", hint: "Speeds up reactions" },
         { answer: "ELECTRON", hint: "Negative particle" },
         { answer: "SPECTRUM", hint: "Range of wavelengths" },
+      
+        { answer: "ISOTOPE", hint: "Same element different mass" },
+        { answer: "ENTROPY", hint: "Measure of disorder" },
+        { answer: "QUANTUM", hint: "Smallest discrete unit" },
+      
+        { answer: "ANTIMATTER", hint: "Opposite of matter" },
+        { answer: "SYNTHESIS", hint: "Building complex from simple" },
+        { answer: "PHOTOSYNTHESIS", hint: "Plant energy process" },
+        { answer: "CHROMOSOME", hint: "DNA package in cell" },
+        { answer: "ELECTRODE", hint: "Conducts electricity" },
+        { answer: "FREQUENCY", hint: "Wave cycles per second" },
+        { answer: "HYDROGEN", hint: "Lightest element" },
+        { answer: "MOMENTUM", hint: "Mass times velocity" },
+        { answer: "VELOCITY", hint: "Speed with direction" },
+        { answer: "ORGANISM", hint: "Living thing" },
+        { answer: "EQUILIBRIUM", hint: "State of balance" },
+        { answer: "VISCOSITY", hint: "Fluid thickness measure" },
       ],
     }},
   { id: "history", name: "HISTORY", icon: "🏛️", color: "#fbbf24", desc: "Past events, civilizations",
@@ -503,18 +1247,72 @@ const WORD_CATEGORIES = [
         { answer: "ROME", hint: "Ancient empire's capital" },
         { answer: "ARMY", hint: "Military force" },
         { answer: "GOLD", hint: "Precious metal for trade" },
+      
+        { answer: "FORT", hint: "Military stronghold" },
+        { answer: "SHIP", hint: "Ocean vessel" },
+        { answer: "COIN", hint: "Ancient currency" },
+        { answer: "SILK", hint: "Luxury ancient fabric" },
+      
+        { answer: "DUKE", hint: "Noble rank" },
+        { answer: "HERO", hint: "Brave person" },
+        { answer: "FLAG", hint: "National symbol" },
+        { answer: "TOMB", hint: "Burial place" },
+        { answer: "WALL", hint: "China built a great one" },
+        { answer: "IRON", hint: "An age of metal" },
+        { answer: "OATH", hint: "Solemn promise" },
+        { answer: "RAID", hint: "Surprise attack" },
+        { answer: "MONK", hint: "Religious devotee" },
+        { answer: "LORD", hint: "Medieval ruler" },
+        { answer: "SERF", hint: "Medieval laborer" },
+        { answer: "CROWN", hint: "Royal headwear" },
       ],
       medium: [
         { answer: "EMPIRE", hint: "Large kingdom" },
         { answer: "KNIGHT", hint: "Medieval warrior" },
         { answer: "THRONE", hint: "Royal seat" },
         { answer: "PLAGUE", hint: "Black Death" },
+      
+        { answer: "CASTLE", hint: "Medieval fortress" },
+        { answer: "VIKING", hint: "Norse warrior" },
+        { answer: "TEMPLE", hint: "Place of worship" },
+        { answer: "SCROLL", hint: "Ancient document" },
+      
+        { answer: "TREATY", hint: "Peace agreement" },
+        { answer: "COLONY", hint: "Overseas territory" },
+        { answer: "BISHOP", hint: "Church leader" },
+        { answer: "RANSOM", hint: "Payment for captive" },
+        { answer: "FEUDAL", hint: "Medieval land system" },
+        { answer: "TRENCH", hint: "WWI fighting ditch" },
+        { answer: "MUSKET", hint: "Early firearm" },
+        { answer: "SULTAN", hint: "Ottoman ruler" },
+        { answer: "SAMURAI", hint: "Japanese warrior" },
+        { answer: "CHARIOT", hint: "Ancient war vehicle" },
+        { answer: "PILGRIM", hint: "Religious traveler" },
+        { answer: "ANCIENT", hint: "Very old civilization" },
       ],
       hard: [
         { answer: "REVOLUTION", hint: "Overthrow of power" },
         { answer: "GLADIATOR", hint: "Roman arena fighter" },
         { answer: "PHARAOH", hint: "Egyptian ruler" },
         { answer: "CRUSADE", hint: "Medieval holy war" },
+      
+        { answer: "DYNASTY", hint: "Ruling family line" },
+        { answer: "EMPEROR", hint: "Supreme ruler" },
+        { answer: "MEDIEVAL", hint: "Middle Ages period" },
+        { answer: "ARTIFACT", hint: "Historical object" },
+      
+        { answer: "MONARCHY", hint: "Rule by a king" },
+        { answer: "ALLIANCE", hint: "Military partnership" },
+        { answer: "CONQUEST", hint: "Military takeover" },
+        { answer: "DIPLOMAT", hint: "International negotiator" },
+        { answer: "COLOSSEUM", hint: "Roman arena" },
+        { answer: "RENAISSANCE", hint: "Cultural rebirth period" },
+        { answer: "ARMISTICE", hint: "War ceasefire" },
+        { answer: "HIEROGLYPH", hint: "Egyptian writing symbol" },
+        { answer: "GUILLOTINE", hint: "French execution device" },
+        { answer: "ABOLITION", hint: "Ending of slavery" },
+        { answer: "INQUISITION", hint: "Religious persecution" },
+        { answer: "PARLIAMENT", hint: "Legislative body" },
       ],
     }},
   { id: "geography", name: "GEOGRAPHY", icon: "🌍", color: "#0ff", desc: "Places, landforms",
@@ -529,18 +1327,70 @@ const WORD_CATEGORIES = [
         { answer: "HILL", hint: "Small mountain" },
         { answer: "CAVE", hint: "Underground opening" },
         { answer: "REEF", hint: "Underwater coral structure" },
+      
+        { answer: "SAND", hint: "Beach material" },
+        { answer: "PEAK", hint: "Mountain top" },
+        { answer: "POND", hint: "Small body of water" },
+        { answer: "GULF", hint: "Large ocean inlet" },
+      
+        { answer: "CAPE", hint: "Land jutting into sea" },
+        { answer: "BANK", hint: "River edge" },
+        { answer: "DUNE", hint: "Sand hill" },
+        { answer: "FORD", hint: "Shallow river crossing" },
+        { answer: "VALE", hint: "Wide valley" },
+        { answer: "COVE", hint: "Small sheltered bay" },
+        { answer: "MESA", hint: "Flat-topped hill" },
+        { answer: "TIDE", hint: "Ocean rise and fall" },
+        { answer: "BAY", hint: "Curved coastline indent" },
+        { answer: "CLIFF", hint: "Steep rock face" },
+        { answer: "RIDGE", hint: "Long narrow hilltop" },
       ],
       medium: [
         { answer: "CANYON", hint: "Deep valley with steep sides" },
         { answer: "ISLAND", hint: "Land surrounded by water" },
         { answer: "DESERT", hint: "Dry sandy region" },
         { answer: "GLACIER", hint: "Slow-moving ice river" },
+      
+        { answer: "VALLEY", hint: "Low land between hills" },
+        { answer: "JUNGLE", hint: "Dense tropical forest" },
+        { answer: "LAGOON", hint: "Shallow coastal water" },
+        { answer: "SUMMIT", hint: "Highest point" },
+      
+        { answer: "RAVINE", hint: "Narrow steep valley" },
+        { answer: "TUNDRA", hint: "Frozen treeless land" },
+        { answer: "STEPPE", hint: "Flat grassland" },
+        { answer: "GEYSER", hint: "Hot water eruption" },
+        { answer: "GORGE", hint: "Deep narrow valley" },
+        { answer: "MARSH", hint: "Wetland area" },
+        { answer: "STRAIT", hint: "Narrow water channel" },
+        { answer: "OASIS", hint: "Desert water source" },
+        { answer: "DELTA", hint: "River mouth formation" },
+        { answer: "BASIN", hint: "Low-lying land area" },
+        { answer: "TROPIC", hint: "Hot climate zone" },
+        { answer: "PRAIRIE", hint: "North American grassland" },
       ],
       hard: [
         { answer: "PENINSULA", hint: "Land surrounded by water on 3 sides" },
         { answer: "CONTINENT", hint: "Major landmass" },
         { answer: "ARCHIPELAGO", hint: "Chain of islands" },
         { answer: "TECTONIC", hint: "Earth's moving plates" },
+      
+        { answer: "SAVANNAH", hint: "Tropical grassland" },
+        { answer: "PLATEAU", hint: "Flat elevated land" },
+        { answer: "ESTUARY", hint: "River meets the sea" },
+      
+        { answer: "VOLCANIC", hint: "Eruption-related" },
+        { answer: "MERIDIAN", hint: "Longitude line" },
+        { answer: "ALTITUDE", hint: "Height above sea level" },
+        { answer: "LATITUDE", hint: "Distance from equator" },
+        { answer: "MONSOON", hint: "Seasonal wind shift" },
+        { answer: "ISTHMUS", hint: "Narrow land strip" },
+        { answer: "MANGROVE", hint: "Coastal tree swamp" },
+        { answer: "PERMAFROST", hint: "Permanently frozen ground" },
+        { answer: "TRIBUTARY", hint: "River branch" },
+        { answer: "TOPOGRAPHY", hint: "Land surface features" },
+        { answer: "HEMISPHERE", hint: "Half of the globe" },
+        { answer: "CONTINENTAL", hint: "Related to landmasses" },
       ],
     }},
   { id: "sports", name: "SPORTS", icon: "⚽", color: "#6ee7b7", desc: "Games, athletes",
@@ -555,18 +1405,70 @@ const WORD_CATEGORIES = [
         { answer: "RACE", hint: "Speed competition" },
         { answer: "TEAM", hint: "Group of players" },
         { answer: "BALL", hint: "Round sports object" },
+      
+        { answer: "KICK", hint: "Football move" },
+        { answer: "JUMP", hint: "Leap into air" },
+        { answer: "SWIM", hint: "Water movement" },
+        { answer: "PASS", hint: "Throw to teammate" },
+      
+        { answer: "WIN", hint: "Opposite of lose" },
+        { answer: "NET", hint: "Tennis divider" },
+        { answer: "RUN", hint: "Track event" },
+        { answer: "BAT", hint: "Cricket hitting tool" },
+        { answer: "HOOP", hint: "Basketball ring" },
+        { answer: "DIVE", hint: "Pool entry sport" },
+        { answer: "PUCK", hint: "Hockey disk" },
+        { answer: "FOUL", hint: "Rule violation" },
+        { answer: "SERVE", hint: "Tennis start shot" },
+        { answer: "SCORE", hint: "Game points" },
+        { answer: "COACH", hint: "Team leader" },
+        { answer: "PITCH", hint: "Soccer field or throw" },
       ],
       medium: [
         { answer: "SPRINT", hint: "Short fast run" },
         { answer: "TACKLE", hint: "Defensive move in football" },
         { answer: "TROPHY", hint: "Winner's prize" },
         { answer: "LEAGUE", hint: "Group of competing teams" },
+      
+        { answer: "GOALIE", hint: "Defends the net" },
+        { answer: "BOXING", hint: "Ring combat sport" },
+        { answer: "ARCHER", hint: "Bow and arrow athlete" },
+        { answer: "HURDLE", hint: "Jump-over barrier" },
+      
+        { answer: "VOLLEY", hint: "Hit before bounce" },
+        { answer: "PENALTY", hint: "Punishment kick" },
+        { answer: "REFEREE", hint: "Game official" },
+        { answer: "STRIKER", hint: "Forward scorer" },
+        { answer: "PLAYOFF", hint: "Elimination round" },
+        { answer: "INNING", hint: "Baseball turn segment" },
+        { answer: "WICKET", hint: "Cricket target" },
+        { answer: "JAVELIN", hint: "Throwing spear event" },
+        { answer: "OFFENSE", hint: "Attacking team" },
+        { answer: "FUMBLE", hint: "Dropped ball error" },
+        { answer: "STEROID", hint: "Banned performance drug" },
       ],
       hard: [
         { answer: "MARATHON", hint: "26.2 mile race" },
         { answer: "OLYMPICS", hint: "Global sports event" },
         { answer: "DECATHLON", hint: "10-event competition" },
         { answer: "GYMNASIUM", hint: "Indoor sports facility" },
+      
+        { answer: "TRIATHLON", hint: "Three-sport event" },
+        { answer: "FREESTYLE", hint: "Swimming stroke" },
+        { answer: "DRIBBLING", hint: "Ball control skill" },
+        { answer: "ATHLETICS", hint: "Track and field events" },
+      
+        { answer: "ENDURANCE", hint: "Stamina ability" },
+        { answer: "AGGREGATE", hint: "Combined score total" },
+        { answer: "QUALIFIER", hint: "Preliminary round" },
+        { answer: "DEFENDING", hint: "Current champion status" },
+        { answer: "UNDERDOG", hint: "Expected to lose" },
+        { answer: "RELEGATED", hint: "Dropped to lower league" },
+        { answer: "REBOUND", hint: "Ball bounce recovery" },
+        { answer: "OVERTIME", hint: "Extra game period" },
+        { answer: "SEMIFINAL", hint: "Round before the final" },
+        { answer: "SPORTSMANSHIP", hint: "Fair play spirit" },
+        { answer: "TOURNAMENT", hint: "Competition series" },
       ],
     }},
   { id: "food", name: "FOOD & COOKING", icon: "🍕", color: "#ef4444", desc: "Dishes, ingredients",
@@ -581,18 +1483,72 @@ const WORD_CATEGORIES = [
         { answer: "SOUP", hint: "Liquid food in a bowl" },
         { answer: "CAKE", hint: "Birthday dessert" },
         { answer: "FISH", hint: "Seafood protein" },
+      
+        { answer: "CORN", hint: "Yellow vegetable on cob" },
+        { answer: "MILK", hint: "White dairy drink" },
+        { answer: "NUTS", hint: "Crunchy tree snacks" },
+        { answer: "PEAR", hint: "Green bell-shaped fruit" },
+      
+        { answer: "SALT", hint: "White seasoning" },
+        { answer: "PLUM", hint: "Small purple fruit" },
+        { answer: "STEW", hint: "Slow-cooked pot meal" },
+        { answer: "LIME", hint: "Small green citrus" },
+        { answer: "HERB", hint: "Cooking plant" },
+        { answer: "BEAN", hint: "Pod vegetable" },
+        { answer: "LAMB", hint: "Young sheep meat" },
+        { answer: "LOAF", hint: "Shape of bread" },
+        { answer: "WRAP", hint: "Tortilla roll meal" },
+        { answer: "TACO", hint: "Mexican folded shell" },
+        { answer: "PORK", hint: "Pig meat" },
+        { answer: "BEET", hint: "Red root vegetable" },
       ],
       medium: [
         { answer: "BUTTER", hint: "Dairy spread" },
         { answer: "PEPPER", hint: "Spicy seasoning" },
         { answer: "PASTRY", hint: "Baked dough treat" },
         { answer: "GINGER", hint: "Spicy root" },
+      
+        { answer: "CHEESE", hint: "Dairy solid" },
+        { answer: "GARLIC", hint: "Pungent cooking bulb" },
+        { answer: "WAFFLE", hint: "Grid-patterned breakfast" },
+        { answer: "COFFEE", hint: "Caffeinated drink" },
+      
+        { answer: "MUFFIN", hint: "Small baked cake" },
+        { answer: "RAISIN", hint: "Dried grape" },
+        { answer: "NOODLE", hint: "Asian pasta" },
+        { answer: "YOGURT", hint: "Fermented milk" },
+        { answer: "PICKLE", hint: "Brined cucumber" },
+        { answer: "ALMOND", hint: "Tree nut" },
+        { answer: "LENTIL", hint: "Small pulse legume" },
+        { answer: "RADISH", hint: "Spicy red root" },
+        { answer: "FONDUE", hint: "Melted cheese dish" },
+        { answer: "SORBET", hint: "Frozen fruit dessert" },
+        { answer: "QUINOA", hint: "Protein-rich grain" },
+        { answer: "WASABI", hint: "Japanese hot paste" },
       ],
       hard: [
         { answer: "CINNAMON", hint: "Sweet brown spice" },
         { answer: "TURMERIC", hint: "Yellow Indian spice" },
         { answer: "MARINARA", hint: "Italian tomato sauce" },
         { answer: "SOURDOUGH", hint: "Fermented bread" },
+      
+        { answer: "AVOCADO", hint: "Green creamy fruit" },
+        { answer: "SAFFRON", hint: "Most expensive spice" },
+        { answer: "BRIOCHE", hint: "Rich French bread" },
+        { answer: "CARDAMOM", hint: "Aromatic Indian spice" },
+      
+        { answer: "FOCACCIA", hint: "Italian flatbread" },
+        { answer: "PROSCIUTTO", hint: "Italian cured ham" },
+        { answer: "MERINGUE", hint: "Whipped egg white dessert" },
+        { answer: "ARUGULA", hint: "Peppery salad leaf" },
+        { answer: "TIRAMISU", hint: "Italian coffee dessert" },
+        { answer: "CHORIZO", hint: "Spicy Spanish sausage" },
+        { answer: "GAZPACHO", hint: "Cold Spanish soup" },
+        { answer: "CROISSANT", hint: "French crescent pastry" },
+        { answer: "GNOCCHI", hint: "Italian potato dumpling" },
+        { answer: "BAGUETTE", hint: "Long French bread" },
+        { answer: "RICOTTA", hint: "Italian soft cheese" },
+        { answer: "KOMBUCHA", hint: "Fermented tea drink" },
       ],
     }},
 ];
@@ -2276,6 +3232,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
         setWheelResult(null);
         setCoinDoubler(false);
         setCoinFlipsUsed(0);
+        setBountyAttempts({});
         setStreak(s => s + 1);
         setLastLoginDate(today);
       }
@@ -2779,8 +3736,9 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
   }, [bountyDate]);
 
   const [activeBounty, setActiveBounty] = useState(null);
-  const [bountyFightPhase, setBountyFightPhase] = useState(null); // null, fighting, won, lost
+  const [bountyFightPhase, setBountyFightPhase] = useState(null);
   const [bountyFightHP, setBountyFightHP] = useState({ player: 100, enemy: 100 });
+  const [bountyAttempts, setBountyAttempts] = useState({});
 
   const completeBounty = (bountyId) => {
     setBounties(b => b.map(bn => bn.id === bountyId ? { ...bn, completed: true } : bn));
@@ -2788,8 +3746,28 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
     if (bounty) earnCoins(bounty.reward);
   };
 
+  const bountyLosePenalty = () => {
+    const allWeapons = [...inventory].filter(w => w.rarity !== "pet");
+    if (allWeapons.length > 0) {
+      const best = allWeapons.reduce((a, b) => getWeaponStats(a).damage > getWeaponStats(b).damage ? a : b);
+      if ((best.level || 1) > 3) {
+        setInventory(inv => inv.map(w => w.id === best.id ? { ...w, level: w.level - 3 } : w));
+        notify(`💀 ${best.emoji} ${best.name} lost 3 levels!`, "#f44");
+      } else {
+        setInventory(inv => inv.filter(w => w.id !== best.id));
+        notify(`💀 ${best.emoji} ${best.name} was DESTROYED!`, "#f44");
+      }
+    } else {
+      setDebt(d => { debtRef.current = d + 5000; return d + 5000; });
+      notify(`💀 No weapons to penalize! +5,000 debt!`, "#f44");
+    }
+  };
+
   const startBountyFight = (bounty) => {
     if (inventory.length === 0) { notify("You need a weapon first!", "#f44"); return; }
+    const attempts = bountyAttempts[bounty.id] || 0;
+    if (attempts >= 2) { notify("No attempts left for this bounty today!", "#f44"); return; }
+    setBountyAttempts(a => ({ ...a, [bounty.id]: (a[bounty.id] || 0) + 1 }));
     setActiveBounty(bounty);
     setBountyFightPhase("fighting");
     setBountyFightHP({ player: 100, enemy: 100 });
@@ -2823,6 +3801,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
           clearInterval(fightInterval);
           setTimeout(() => {
             setBountyFightPhase("lost");
+            bountyLosePenalty();
             notify(`💀 Bounty failed! ${bounty.name} defeated you!`, "#f44");
           }, 500);
         }
@@ -2853,6 +3832,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
       if (s.potions) setPotions(s.potions);
       if (s.bounties) setBounties(s.bounties);
       if (s.bountyDate) setBountyDate(s.bountyDate);
+      if (s.bountyAttempts) setBountyAttempts(s.bountyAttempts);
     } catch (e) { console.error("Failed to load state:", e); }
   }, []);
 
@@ -2864,7 +3844,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
         coins, debt, xp, level, inventory, gamesLeft, streak,
         lastClaimDate, lastLoginDate,
         achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened,
-        materials, potions, bounties, bountyDate,
+        materials, potions, bounties, bountyDate, bountyAttempts,
       };
       onSave(JSON.stringify(state));
     }, 30000);
@@ -3072,7 +4052,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
             {user ? user.email?.split("@")[0] : "NEON ARENA v1.0"}
           </div>
           <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
-            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions, bounties, bountyDate }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
+            {onSave && <button onClick={() => { const state = { coins, debt, xp, level, inventory, gamesLeft, streak, lastClaimDate, lastLoginDate, achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened, materials, potions, bounties, bountyDate, bountyAttempts }; onSave(JSON.stringify(state)); notify("💾 Game saved!", "#0f0"); }} style={{ background: "none", border: "1px solid #0f030", color: "#0f0", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>💾 SAVE</button>}
             {onLogout && <button onClick={onLogout} style={{ background: "none", border: "1px solid #f4430", color: "#f44", padding: "2px 8px", borderRadius: 4, fontSize: "0.5rem", cursor: "pointer", fontFamily: "'Orbitron', sans-serif" }}>LOGOUT</button>}
           </div>
         </div>
@@ -3278,7 +4258,7 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                   )}
                   {bountyFightPhase === "lost" && (
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ color: "#888", fontSize: "0.65rem" }}>Upgrade your weapons and try again!</div>
+                      <div style={{ color: "#888", fontSize: "0.65rem" }}>Your best weapon lost 3 levels or you gained debt!</div>
                       <button onClick={() => { setActiveBounty(null); setBountyFightPhase(null); }} style={{
                         marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
                         background: "#f4420", border: "1px solid #f4450", color: "#f44",
@@ -3313,12 +4293,17 @@ export default function XPGrinder({ user, initialState, onSave, onLogout }) {
                         </div>
                         {bounty.completed ? (
                           <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>DONE</span>
+                        ) : (bountyAttempts[bounty.id] || 0) >= 2 ? (
+                          <span style={{ color: "#f44", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>0 LEFT</span>
                         ) : (
-                          <button onClick={() => startBountyFight(bounty)} style={{
-                            padding: "6px 14px", borderRadius: 6, cursor: inventory.length > 0 ? "pointer" : "not-allowed",
-                            background: "#ef444420", border: "1px solid #ef444450",
-                            color: "#ef4444", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
-                          }}>⚔️ FIGHT</button>
+                          <div style={{ textAlign: "center" }}>
+                            <button onClick={() => startBountyFight(bounty)} style={{
+                              padding: "6px 14px", borderRadius: 6, cursor: "pointer",
+                              background: "#ef444420", border: "1px solid #ef444450",
+                              color: "#ef4444", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                            }}>⚔️ FIGHT</button>
+                            <div style={{ color: "#666", fontSize: "0.45rem", marginTop: 2 }}>{2 - (bountyAttempts[bounty.id] || 0)}/2</div>
+                          </div>
                         )}
                       </div>
                     ))}
