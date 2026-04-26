@@ -4124,6 +4124,26 @@ export default function XPGrinder() {
   const [chatInput, setChatInput] = useState("");
   const [socialLoading, setSocialLoading] = useState(false);
   const [socialTab, setSocialTab] = useState("leaderboard");
+  const [adminPlayers, setAdminPlayers] = useState([]);
+  const [adminLoading, setAdminLoading] = useState(false);
+  const [adminExpanded, setAdminExpanded] = useState(null);
+
+  const loadAdminData = async () => {
+    if (!sb.current || user?.email !== "tanuj.garg@gmail.com") return;
+    setAdminLoading(true);
+    try {
+      const { data } = await sb.current.from("players").select("*");
+      if (data) {
+        const parsed = data.map(p => {
+          let state = {};
+          try { state = typeof p.game_state === "string" ? JSON.parse(p.game_state) : (p.game_state || {}); } catch(e) {}
+          return { ...p, parsed: state };
+        });
+        setAdminPlayers(parsed);
+      }
+    } catch(e) { console.error("Admin load error:", e); }
+    setAdminLoading(false);
+  };
   const [emailSuggestions, setEmailSuggestions] = useState([]);
   const chatEndRef = useRef(null);
 
@@ -4141,7 +4161,7 @@ export default function XPGrinder() {
     setSocialLoading(false);
   };
 
-  useEffect(() => { if (screen === "social") { loadSocialData(); loadLeaderboard(); } }, [screen]);
+  useEffect(() => { if (screen === "social") { loadSocialData(); loadLeaderboard(); } if (screen === "admin") { loadAdminData(); } }, [screen]);
   // Preload leaderboard shortly after game start so it's cached and ready
   useEffect(() => {
     if (!user || !sb.current) return;
@@ -4237,6 +4257,7 @@ export default function XPGrinder() {
     { id: "battle", icon: "⚔️", label: "PVP" },
     { id: "inventory", icon: "🎒", label: "GEAR" },
     { id: "social", icon: "👥", label: "SOCIAL" },
+    ...(user?.email === "tanuj.garg@gmail.com" ? [{ id: "admin", icon: "🔧", label: "ADMIN" }] : []),
   ];
   return (
     <div style={{ minHeight: "100vh", background: "linear-gradient(180deg, #020108 0%, #0a0015 30%, #050510 100%)", color: "#f0f0f0", position: "relative", overflow: "hidden", fontSize: "0.95rem", }}>
@@ -5502,6 +5523,213 @@ export default function XPGrinder() {
                 })}
               </div>
             )}
+          </div>
+        )}
+
+{/* ─── ADMIN ─── */}
+        {screen === "admin" && user?.email === "tanuj.garg@gmail.com" && (
+          <div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+              <NeonText size="1.3rem" color="#f90">🔧 ADMIN PANEL</NeonText>
+              <button onClick={loadAdminData} disabled={adminLoading} style={{
+                padding: "8px 16px", borderRadius: 6, cursor: "pointer",
+                background: "#f9020", border: "1px solid #f9050",
+                color: "#f90", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+              }}>{adminLoading ? "LOADING..." : "🔄 REFRESH"}</button>
+            </div>
+            <div style={{ color: "#888", fontSize: "0.75rem", marginBottom: 16 }}>
+              {adminPlayers.length} registered players
+            </div>
+            {adminPlayers.length === 0 && !adminLoading && (
+              <Panel style={{ textAlign: "center", padding: 30 }}>
+                <NeonText size="0.9rem" color="#888">Click REFRESH to load player data</NeonText>
+              </Panel>
+            )}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {adminPlayers.map(p => {
+                const s = p.parsed;
+                const inv = s.inventory || [];
+                const power = calculatePower(inv);
+                const rank = getRank(power);
+                const isExpanded = adminExpanded === p.email;
+                return (
+                  <Panel key={p.id} style={{ cursor: "pointer", border: `1px solid ${rank.color}30` }}
+                    onClick={() => setAdminExpanded(isExpanded ? null : p.email)}>
+                    {/* Player summary row */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{
+                        width: 44, height: 44, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center",
+                        background: `${rank.color}15`, border: `1px solid ${rank.color}40`, fontSize: "1.3rem",
+                      }}>{rank.icon}</div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ color: "#fff", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif" }}>{p.email}</div>
+                        <div style={{ color: "#888", fontSize: "0.65rem", marginTop: 2 }}>
+                          {rank.name} • ⚡{power} • 💰{(s.coins || 0).toLocaleString()} coins • LVL {s.level || 1} • {inv.length} weapons
+                        </div>
+                      </div>
+                      <NeonText size="0.8rem" color="#888">{isExpanded ? "▲" : "▼"}</NeonText>
+                    </div>
+
+                    {/* Expanded details */}
+                    {isExpanded && (
+                      <div style={{ marginTop: 16, borderTop: "1px solid #1a1a3e", paddingTop: 16 }}>
+                        {/* Stats grid */}
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 16 }}>
+                          {[
+                            { label: "COINS", value: (s.coins || 0).toLocaleString(), color: "#fbbf24" },
+                            { label: "DEBT", value: (s.debt || 0).toLocaleString(), color: s.debt > 0 ? "#f44" : "#0f0" },
+                            { label: "XP", value: (s.xp || 0).toLocaleString(), color: "#c084fc" },
+                            { label: "LEVEL", value: s.level || 1, color: "#0ff" },
+                            { label: "PVP WINS", value: s.totalPvPWins || 0, color: "#f0f" },
+                            { label: "GAMES WON", value: s.totalGamesWon || 0, color: "#6ee7b7" },
+                            { label: "TOTAL EARNED", value: (s.totalCoinsEarned || 0).toLocaleString(), color: "#fbbf24" },
+                            { label: "PACKS OPENED", value: s.packsOpened || 0, color: "#c084fc" },
+                          ].map((stat, i) => (
+                            <div key={i} style={{ textAlign: "center", padding: "8px 4px", background: "#05050f", borderRadius: 6, border: "1px solid #1a1a3e" }}>
+                              <div style={{ color: "#666", fontSize: "0.5rem", marginBottom: 2 }}>{stat.label}</div>
+                              <NeonText size="0.85rem" color={stat.color}>{stat.value}</NeonText>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Games remaining today */}
+                        {s.gamesLeft && (
+                          <div style={{ marginBottom: 16 }}>
+                            <NeonText size="0.7rem" color="#0ff">🎮 GAMES REMAINING TODAY</NeonText>
+                            <div style={{ display: "flex", gap: 8, marginTop: 6 }}>
+                              {Object.entries(s.gamesLeft).map(([game, left]) => (
+                                <div key={game} style={{
+                                  flex: 1, textAlign: "center", padding: "6px 4px", borderRadius: 6,
+                                  background: "#05050f", border: `1px solid ${left > 0 ? "#0ff30" : "#f4430"}`,
+                                }}>
+                                  <div style={{ color: "#888", fontSize: "0.55rem", textTransform: "uppercase" }}>{game}</div>
+                                  <NeonText size="0.8rem" color={left > 0 ? "#0ff" : "#f44"}>{left}/5</NeonText>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Streak & daily info */}
+                        <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+                          <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
+                            <div style={{ color: "#888", fontSize: "0.55rem" }}>STREAK</div>
+                            <NeonText size="0.85rem" color="#fbbf24">🔥 {s.streak || 0} days</NeonText>
+                          </div>
+                          <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
+                            <div style={{ color: "#888", fontSize: "0.55rem" }}>LAST LOGIN</div>
+                            <NeonText size="0.7rem" color="#888" glow={false}>{s.lastLoginDate || "N/A"}</NeonText>
+                          </div>
+                          <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
+                            <div style={{ color: "#888", fontSize: "0.55rem" }}>ACHIEVEMENTS</div>
+                            <NeonText size="0.85rem" color="#fbbf24">{Object.keys(s.achievements || {}).length}/{ACHIEVEMENTS.length}</NeonText>
+                          </div>
+                        </div>
+
+                        {/* Weapons inventory */}
+                        <NeonText size="0.7rem" color="#6ee7b7">🎒 WEAPONS ({inv.length})</NeonText>
+                        {inv.length === 0 ? (
+                          <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>No weapons yet</div>
+                        ) : (
+                          <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 6 }}>
+                            {inv.map((w, wi) => {
+                              const stats = getWeaponStats(w);
+                              return (
+                                <div key={wi} style={{
+                                  display: "flex", alignItems: "center", gap: 8, padding: "6px 10px",
+                                  background: "#05050f", borderRadius: 6, border: `1px solid ${RARITY_COLORS[w.rarity]}20`,
+                                }}>
+                                  <span style={{ fontSize: "1.1rem" }}>{w.emoji}</span>
+                                  <div style={{ flex: 1 }}>
+                                    <span style={{ color: RARITY_COLORS[w.rarity], fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>
+                                      {w.name}
+                                    </span>
+                                    <span style={{ color: "#888", fontSize: "0.6rem", marginLeft: 8 }}>
+                                      {w.rarity === "pet" ? `M${w.merge || 1}` : `LV${w.level || 1}`} • DMG:{stats.damage} SPD:{stats.speed}
+                                      {stats.defense > 0 ? ` DEF:${stats.defense}` : ""}
+                                      {stats.attack > 0 ? ` ATK:${stats.attack}` : ""}
+                                    </span>
+                                  </div>
+                                  {(w.potions || []).map(pot => {
+                                    const potion = POTIONS.find(pp => pp.id === pot.id);
+                                    return <span key={pot.id} style={{ fontSize: "0.75rem" }}>{potion?.emoji}M{pot.merge}</span>;
+                                  })}
+                                  <span style={{
+                                    fontSize: "0.5rem", color: RARITY_COLORS[w.rarity], padding: "2px 6px",
+                                    border: `1px solid ${RARITY_COLORS[w.rarity]}40`, borderRadius: 4, textTransform: "uppercase",
+                                  }}>{w.rarity}</span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+
+                        {/* Materials */}
+                        {s.materials && (
+                          <div style={{ marginTop: 12 }}>
+                            <NeonText size="0.7rem" color="#f90">⚒️ MATERIALS</NeonText>
+                            <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
+                              {MATERIALS.map(mat => {
+                                const qty = s.materials[mat.id] || 0;
+                                if (qty === 0) return null;
+                                return (
+                                  <span key={mat.id} style={{
+                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.65rem",
+                                    background: `${mat.color}10`, border: `1px solid ${mat.color}30`, color: mat.color,
+                                  }}>{mat.emoji} {qty}</span>
+                                );
+                              })}
+                              {Object.values(s.materials || {}).every(v => v === 0) && (
+                                <span style={{ color: "#555", fontSize: "0.65rem" }}>None</span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Potions */}
+                        {(s.potions || []).length > 0 && (
+                          <div style={{ marginTop: 12 }}>
+                            <NeonText size="0.7rem" color="#c084fc">🧪 POTIONS ({s.potions.length})</NeonText>
+                            <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
+                              {s.potions.map((pot, pi) => {
+                                const potion = POTIONS.find(pp => pp.id === pot.id);
+                                return (
+                                  <span key={pi} style={{
+                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.65rem",
+                                    background: `${potion?.color}10`, border: `1px solid ${potion?.color}30`, color: potion?.color,
+                                  }}>{potion?.emoji} {potion?.name} M{pot.merge}</span>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Bounty status */}
+                        {(s.bounties || []).length > 0 && (
+                          <div style={{ marginTop: 12 }}>
+                            <NeonText size="0.7rem" color="#ef4444">🎯 BOUNTIES</NeonText>
+                            <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
+                              {s.bounties.map((b, bi) => (
+                                <span key={bi} style={{
+                                  padding: "3px 8px", borderRadius: 4, fontSize: "0.6rem",
+                                  background: b.completed ? "#0f010" : "#f4410",
+                                  border: `1px solid ${b.completed ? "#0f030" : "#f4430"}`,
+                                  color: b.completed ? "#0f0" : "#f44",
+                                }}>{b.name} {b.completed ? "✅" : "❌"} 💰{b.reward.toLocaleString()}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        <div style={{ marginTop: 12, color: "#444", fontSize: "0.55rem" }}>
+                          Registered: {new Date(p.created_at).toLocaleDateString()}
+                        </div>
+                      </div>
+                    )}
+                  </Panel>
+                );
+              })}
+            </div>
           </div>
         )}
 
