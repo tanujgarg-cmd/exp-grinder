@@ -3199,9 +3199,39 @@ function PvPBattle({ playerWeapons, onComplete }) {
     </div>
   );
 }
-export default function XPGrinder({ user, initialState, onSave, onLogout }) {
-  const [screen, setScreen] = useState("hub");
-  const [coins, setCoins] = useState(4000);
+export default function XPGrinder() {
+  const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [initialState, setInitialState] = useState(null);
+
+  useEffect(() => {
+    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    sbAuth.auth.getUser().then(({ data }) => {
+      if (data?.user) {
+        setUser(data.user);
+        sbAuth.from("players").select("game_state").eq("user_id", data.user.id).single().then(({ data: pData }) => {
+          if (pData?.game_state) setInitialState(pData.game_state);
+          setAuthLoading(false);
+        });
+      } else {
+        window.location.href = "/";
+      }
+    });
+  }, []);
+
+  const onLogout = async () => {
+    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    await sbAuth.auth.signOut();
+    window.location.href = "/";
+  };
+
+  const onSave = async (stateJson) => {
+    if (!user) return;
+    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    await sbAuth.from("players").upsert({ user_id: user.id, email: user.email, game_state: stateJson }, { onConflict: "user_id" });
+  };
+
+  const [screen, setScreen] = useState("hub");  const [coins, setCoins] = useState(4000);
   const coinsRef = useRef(4000);
   const debtRef = useRef(0);
   const [debt, setDebt] = useState(0);
