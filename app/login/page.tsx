@@ -2,6 +2,7 @@
 // @ts-nocheck
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 const WEAPONS = [
   { id: 1, name: "Plasma Dagger", price: 800, damage: 5, speed: 9, type: "attack", rarity: "common", emoji: "🗡️" },
   { id: 2, name: "Ion Blaster", price: 1400, damage: 7, speed: 6, type: "attack", rarity: "common", emoji: "🔫" },
@@ -3205,7 +3206,7 @@ export default function XPGrinder() {
   const [initialState, setInitialState] = useState(null);
 
   useEffect(() => {
-    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    const sbAuth = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     sbAuth.auth.getUser().then(({ data }) => {
       if (data?.user) {
         setUser(data.user);
@@ -3220,14 +3221,14 @@ export default function XPGrinder() {
   }, []);
 
   const onLogout = async () => {
-    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    const sbAuth = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     await sbAuth.auth.signOut();
     window.location.href = "/";
   };
 
   const onSave = async (stateJson) => {
     if (!user) return;
-    const sbAuth = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+    const sbAuth = createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
     await sbAuth.from("players").upsert({ user_id: user.id, email: user.email, game_state: stateJson }, { onConflict: "user_id" });
   };
 
