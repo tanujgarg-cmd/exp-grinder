@@ -1727,8 +1727,8 @@ function generateTypedProblem(type, diff) {
   const { choices, correctIndex } = generateMathChoices(answer);
   return { question, answer, choices, correctIndex };
 }
-const NeonText = ({ children, color = "#0ff", size = "1rem", glow = true, style = {} }) => (
-  <span style={{ color, fontSize: size, textShadow: glow ? `0 0 10px ${color}, 0 0 20px ${color}40, 0 0 40px ${color}20` : "none", ...style, }}>{children}</span>
+const NeonText = ({ children, color = "#0ff", size = "1.1rem", glow = true, style = {} }) => (
+  <span style={{ color, fontSize: size, fontWeight: 600, textShadow: glow ? `0 0 10px ${color}, 0 0 20px ${color}40, 0 0 40px ${color}20` : "none", ...style, }}>{children}</span>
 );
 const GlowButton = ({ children, onClick, color = "#0ff", disabled = false, style = {} }) => (
   <button disabled={disabled} onClick={onClick} style={{
@@ -4238,7 +4238,7 @@ export default function XPGrinder() {
     { id: "social", icon: "👥", label: "SOCIAL" },
   ];
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(180deg, #020108 0%, #0a0015 30%, #050510 100%)", color: "#fff", position: "relative", overflow: "hidden", }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(180deg, #020108 0%, #0a0015 30%, #050510 100%)", color: "#f0f0f0", position: "relative", overflow: "hidden", fontSize: "0.95rem", }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
