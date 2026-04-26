@@ -4124,6 +4124,7 @@ export default function XPGrinder() {
   const [chatInput, setChatInput] = useState("");
   const [socialLoading, setSocialLoading] = useState(false);
   const [socialTab, setSocialTab] = useState("leaderboard");
+  const [emailSuggestions, setEmailSuggestions] = useState([]);
   const chatEndRef = useRef(null);
 
   const loadSocialData = async () => {
@@ -5621,8 +5622,8 @@ export default function XPGrinder() {
                 <Panel style={{ marginBottom: 12 }}>
                   <NeonText size="0.75rem" color="#0ff">ADD FRIEND</NeonText>
                   <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-                    <input type="email" placeholder="Enter player email..." value={friendEmail}
-                      onChange={(e) => setFriendEmail(e.target.value)}
+                    <input type="email" placeholder="Start typing email..." value={friendEmail}
+                      onChange={async (e) => { setFriendEmail(e.target.value); const q = e.target.value.trim(); if (q.length >= 2 && sb.current) { const { data } = await sb.current.from("players").select("email").ilike("email", `%${q}%`).limit(5); setEmailSuggestions((data || []).map(p => p.email).filter(em => em !== user?.email)); } else { setEmailSuggestions([]); } }}
                       onKeyDown={(e) => e.key === "Enter" && sendFriendRequest()}
                       style={{
                         flex: 1, padding: "10px 12px", borderRadius: 6,
@@ -5635,6 +5636,17 @@ export default function XPGrinder() {
                       color: "#c084fc", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
                     }}>SEND</button>
                   </div>
+                  {emailSuggestions.length > 0 && (
+                    <div style={{ marginTop: 6, borderRadius: 6, overflow: "hidden", border: "1px solid #1a1a3e" }}>
+                      {emailSuggestions.map(em => (
+                        <button key={em} onClick={() => { setFriendEmail(em); setEmailSuggestions([]); }} style={{
+                          width: "100%", padding: "10px 12px", background: "#0a0a2a", border: "none",
+                          borderBottom: "1px solid #1a1a3e", color: "#0ff", fontSize: "0.85rem",
+                          fontFamily: "'Share Tech Mono', monospace", cursor: "pointer", textAlign: "left",
+                        }}>{em}</button>
+                      ))}
+                    </div>
+                  )}
                 </Panel>
 
                 {/* Friends list */}
