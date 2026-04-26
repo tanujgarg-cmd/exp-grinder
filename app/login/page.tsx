@@ -4053,7 +4053,7 @@ export default function XPGrinder() {
   const supabaseUrl = typeof window !== "undefined" ? process.env.NEXT_PUBLIC_SUPABASE_URL : "";
   const supabaseKey = typeof window !== "undefined" ? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY : "";
   const sb = useRef(null);
-  if (!sb.current && supabaseUrl && supabaseKey) sb.current = createClient(supabaseUrl, supabaseKey);
+  if (!sb.current && supabaseUrl && supabaseKey) sb.current = createBrowserClient(supabaseUrl, supabaseKey);
 
   const [friends, setFriends] = useState([]);
   const [leaderboard, setLeaderboard] = useState([]);
