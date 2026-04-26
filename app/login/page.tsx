@@ -1746,11 +1746,11 @@ const Panel = ({ children, style = {}, ...rest }) => (
 );
 const HealthBar = ({ current, max, color = "#0f0", label }) => (
   <div style={{ width: "100%" }}>
-    {label && <div style={{ fontSize: "0.7rem", color: "#888", marginBottom: 4 }}>{label}</div>}
+    {label && <div style={{ fontSize: "0.85rem", color: "#888", marginBottom: 4 }}>{label}</div>}
     <div style={{ background: "#111", borderRadius: 6, height: 20, overflow: "hidden", border: "1px solid #222" }}>
       <div style={{ width: `${Math.max(0, (current / max) * 100)}%`, height: "100%", background: `linear-gradient(90deg, ${color}, ${color}aa)`, boxShadow: `0 0 10px ${color}60`, transition: "width 0.5s ease", borderRadius: 6, }} />
     </div>
-    <div style={{ fontSize: "0.75rem", color, textAlign: "right", marginTop: 2 }}>
+    <div style={{ fontSize: "0.9rem", color, textAlign: "right", marginTop: 2 }}>
       {current}/{max}
     </div>
   </div>
@@ -1821,7 +1821,7 @@ function MathGame({ onComplete }) {
       <div>
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <NeonText size="1rem" color="#0ff">SELECT CHALLENGE TYPE</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Pick a category, then choose your difficulty!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Pick a category, then choose your difficulty!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {MATH_GAME_TYPES.map(t => (
@@ -1829,11 +1829,11 @@ function MathGame({ onComplete }) {
               <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: `${t.color}15`, borderRadius: 8, border: `1px solid ${t.color}40`, fontSize: "1.3rem", }}>{t.icon}</div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.8rem" color={t.color}>{t.name}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>{t.desc}</div>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 2 }}>{t.desc}</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="0.75rem" color="#fbbf24" glow={false}>💰 {t.levels[0].coins}–{t.levels[2].coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>3 levels</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>3 levels</div>
               </div>
             </div>
           ))}
@@ -1844,11 +1844,11 @@ function MathGame({ onComplete }) {
   if (phase === "difficulty") {
     return (
       <div>
-        <button onClick={() => { setGameType(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", marginBottom: 16, }}>← BACK</button>
+        <button onClick={() => { setGameType(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", marginBottom: 16, }}>← BACK</button>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: "2rem", marginBottom: 8 }}>{gameType.icon}</div>
           <NeonText size="1.1rem" color={gameType.color}>{gameType.name}</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Choose difficulty — all-or-nothing!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Choose difficulty — all-or-nothing!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {gameType.levels.map((level) => (
@@ -1862,12 +1862,12 @@ function MathGame({ onComplete }) {
                 <NeonText size="0.85rem" color={DIFF_COLORS[level.diff]}>
                   {level.diff.toUpperCase()}
                 </NeonText>
-                <div style={{ color: "#666", fontSize: "0.7rem", marginTop: 2 }}>{level.label}</div>
-                <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>⏱ {level.time}s time limit</div>
+                <div style={{ color: "#666", fontSize: "0.85rem", marginTop: 2 }}>{level.label}</div>
+                <div style={{ color: "#555", fontSize: "0.8rem", marginTop: 2 }}>⏱ {level.time}s time limit</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="1rem" color="#fbbf24" glow={false}>💰 {level.coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>all-or-nothing</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>all-or-nothing</div>
               </div>
             </div>
           ))}
@@ -1882,7 +1882,7 @@ function MathGame({ onComplete }) {
         <NeonText size="1.5rem" color={result.earned > 0 ? "#0f0" : "#f44"}>
           {result.earned > 0 ? "PERFECT RUN!" : "FAILED"}
         </NeonText>
-        <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>
+        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>
           {gameType.name} • {gameDiff.diff.toUpperCase()}
         </div>
         <div style={{ color: "#888", fontSize: "0.85rem", margin: "8px 0 4px" }}>
@@ -1916,7 +1916,7 @@ function MathGame({ onComplete }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <div>
           <NeonText color={gameType.color} size="0.7rem">{gameType.icon} {gameType.name}</NeonText>
-          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.6rem", marginLeft: 8 }}>
+          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.75rem", marginLeft: 8 }}>
             {gameDiff.diff.toUpperCase()}
           </span>
         </div>
@@ -1927,7 +1927,7 @@ function MathGame({ onComplete }) {
           <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: i < current ? (i < correctCount ? "#0f0" : "#f44") : i === current ? gameType.color : "#222", border: `1px solid ${i === current ? gameType.color : "#333"}`, boxShadow: i === current ? `0 0 8px ${gameType.color}60` : "none", }} />
         ))}
       </div>
-      <div style={{ fontSize: "0.7rem", color: "#666", marginBottom: 6 }}>ROUND {current + 1} OF {totalRounds}</div>
+      <div style={{ fontSize: "0.85rem", color: "#666", marginBottom: 6 }}>ROUND {current + 1} OF {totalRounds}</div>
       <div style={{ margin: "16px 0 24px", padding: "20px", background: "#05050f", borderRadius: 10, border: "1px solid #1a1a3e", }}>
         <NeonText size="1.8rem" color="#fff">{prob.question} = ?</NeonText>
       </div>
@@ -1956,7 +1956,7 @@ function MathGame({ onComplete }) {
         <NeonText color="#fbbf24" size="0.8rem" glow={false}>💰 {gameDiff.coins} (all-or-nothing)</NeonText>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: allCorrect ? "#0f0" : "#f44" }} />
-          <span style={{ color: allCorrect ? "#0f0" : "#f44", fontSize: "0.75rem" }}>
+          <span style={{ color: allCorrect ? "#0f0" : "#f44", fontSize: "0.9rem" }}>
             {allCorrect ? "PERFECT" : "STREAK BROKEN"}
           </span>
         </div>
@@ -2029,7 +2029,7 @@ function TriviaGame({ onComplete }) {
       <div>
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <NeonText size="1rem" color="#f0f">SELECT TRIVIA CATEGORY</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Pick a topic, then choose difficulty!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Pick a topic, then choose difficulty!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {TRIVIA_CATEGORIES.map(c => (
@@ -2037,11 +2037,11 @@ function TriviaGame({ onComplete }) {
               <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: `${c.color}15`, borderRadius: 8, border: `1px solid ${c.color}40`, fontSize: "1.3rem", }}>{c.icon}</div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.8rem" color={c.color}>{c.name}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>{c.desc}</div>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 2 }}>{c.desc}</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="0.75rem" color="#fbbf24" glow={false}>💰 {c.levels[0].coins}–{c.levels[2].coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>3 levels</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>3 levels</div>
               </div>
             </div>
           ))}
@@ -2052,11 +2052,11 @@ function TriviaGame({ onComplete }) {
   if (phase === "difficulty") {
     return (
       <div>
-        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", marginBottom: 16, }}>← BACK</button>
+        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", marginBottom: 16, }}>← BACK</button>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: "2rem", marginBottom: 8 }}>{category.icon}</div>
           <NeonText size="1.1rem" color={category.color}>{category.name}</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>All-or-nothing — answer all 5 correctly!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>All-or-nothing — answer all 5 correctly!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {category.levels.map(level => (
@@ -2068,11 +2068,11 @@ function TriviaGame({ onComplete }) {
               </div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.85rem" color={DIFF_COLORS[level.diff]}>{level.diff.toUpperCase()}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>⏱ {level.time}s time limit</div>
+                <div style={{ color: "#555", fontSize: "0.8rem", marginTop: 2 }}>⏱ {level.time}s time limit</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="1rem" color="#fbbf24" glow={false}>💰 {level.coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>all-or-nothing</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>all-or-nothing</div>
               </div>
             </div>
           ))}
@@ -2087,7 +2087,7 @@ function TriviaGame({ onComplete }) {
         <NeonText size="1.5rem" color={result.earned > 0 ? "#0f0" : "#f44"}>
           {result.earned > 0 ? "PERFECT RUN!" : "FAILED"}
         </NeonText>
-        <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>
+        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>
           {category.name} • {gameDiff.diff.toUpperCase()}
         </div>
         <div style={{ color: "#888", fontSize: "0.85rem", margin: "8px 0 4px" }}>{result.reason}</div>
@@ -2115,7 +2115,7 @@ function TriviaGame({ onComplete }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <div>
           <NeonText color={category.color} size="0.7rem">{category.icon} {category.name}</NeonText>
-          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.6rem", marginLeft: 8 }}>
+          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.75rem", marginLeft: 8 }}>
             {gameDiff.diff.toUpperCase()}
           </span>
         </div>
@@ -2126,7 +2126,7 @@ function TriviaGame({ onComplete }) {
           <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: i < current ? (i < correctCount ? "#0f0" : "#f44") : i === current ? category.color : "#222", border: `1px solid ${i === current ? category.color : "#333"}`, boxShadow: i === current ? `0 0 8px ${category.color}60` : "none", }} />
         ))}
       </div>
-      <div style={{ fontSize: "0.7rem", color: "#666", marginBottom: 6 }}>QUESTION {current + 1} OF {totalRounds}</div>
+      <div style={{ fontSize: "0.85rem", color: "#666", marginBottom: 6 }}>QUESTION {current + 1} OF {totalRounds}</div>
       <div style={{ margin: "16px 0 24px", padding: "20px", background: "#05050f", borderRadius: 10, border: "1px solid #1a1a3e", minHeight: 60 }}>
         <NeonText size="1.15rem" color="#fff">{q.q}</NeonText>
       </div>
@@ -2148,7 +2148,7 @@ function TriviaGame({ onComplete }) {
         <NeonText color="#fbbf24" size="0.8rem" glow={false}>💰 {gameDiff.coins} (all-or-nothing)</NeonText>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: allCorrect ? "#0f0" : "#f44" }} />
-          <span style={{ color: allCorrect ? "#0f0" : "#f44", fontSize: "0.75rem" }}>
+          <span style={{ color: allCorrect ? "#0f0" : "#f44", fontSize: "0.9rem" }}>
             {allCorrect ? "PERFECT" : "STREAK BROKEN"}
           </span>
         </div>
@@ -2266,7 +2266,7 @@ function MemoryGame({ onComplete }) {
       <div>
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <NeonText size="1rem" color="#6ee7b7">SELECT CARD THEME</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Pick a theme, then choose difficulty!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Pick a theme, then choose difficulty!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {MEMORY_CATEGORIES.map(c => (
@@ -2274,11 +2274,11 @@ function MemoryGame({ onComplete }) {
               <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: `${c.color}15`, borderRadius: 8, border: `1px solid ${c.color}40`, fontSize: "1.3rem", }}>{c.icon}</div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.8rem" color={c.color}>{c.name}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>{c.desc}</div>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 2 }}>{c.desc}</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="0.75rem" color="#fbbf24" glow={false}>💰 {c.levels[0].coins}–{c.levels[2].coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>all-or-nothing</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>all-or-nothing</div>
               </div>
             </div>
           ))}
@@ -2289,11 +2289,11 @@ function MemoryGame({ onComplete }) {
   if (phase === "difficulty") {
     return (
       <div>
-        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", marginBottom: 16, }}>← BACK</button>
+        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", marginBottom: 16, }}>← BACK</button>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: "2rem", marginBottom: 8 }}>{category.icon}</div>
           <NeonText size="1.1rem" color={category.color}>{category.name}</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Match ALL pairs before time runs out to earn!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Match ALL pairs before time runs out to earn!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {category.levels.map(level => (
@@ -2305,11 +2305,11 @@ function MemoryGame({ onComplete }) {
               </div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.85rem" color={DIFF_COLORS[level.diff]}>{level.diff.toUpperCase()}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>⏱ {level.time}s • {level.grid / 2} pairs ({level.grid} cards)</div>
+                <div style={{ color: "#555", fontSize: "0.8rem", marginTop: 2 }}>⏱ {level.time}s • {level.grid / 2} pairs ({level.grid} cards)</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="1rem" color="#fbbf24" glow={false}>💰 {level.coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>all-or-nothing</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>all-or-nothing</div>
               </div>
             </div>
           ))}
@@ -2328,7 +2328,7 @@ function MemoryGame({ onComplete }) {
         <NeonText size="1.5rem" color={won ? "#0f0" : "#f44"}>
           {won ? "ALL MATCHED!" : "FAILED"}
         </NeonText>
-        <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>
+        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>
           {category.name} • {gameDiff.diff.toUpperCase()}
         </div>
         <div style={{ color: "#888", fontSize: "0.85rem", margin: "8px 0" }}>
@@ -2347,7 +2347,7 @@ function MemoryGame({ onComplete }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <div>
           <NeonText color={category.color} size="0.7rem">{category.icon} {category.name}</NeonText>
-          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.6rem", marginLeft: 8 }}>
+          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.75rem", marginLeft: 8 }}>
             {gameDiff.diff.toUpperCase()}
           </span>
         </div>
@@ -2447,7 +2447,7 @@ function WordGame({ onComplete }) {
       <div>
         <div style={{ textAlign: "center", marginBottom: 16 }}>
           <NeonText size="1rem" color="#fbbf24">SELECT WORD CATEGORY</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Unscramble 5 words — earn per correct answer!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Unscramble 5 words — earn per correct answer!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {WORD_CATEGORIES.map(c => (
@@ -2455,11 +2455,11 @@ function WordGame({ onComplete }) {
               <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", background: `${c.color}15`, borderRadius: 8, border: `1px solid ${c.color}40`, fontSize: "1.3rem", }}>{c.icon}</div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.8rem" color={c.color}>{c.name}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>{c.desc}</div>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 2 }}>{c.desc}</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="0.75rem" color="#fbbf24" glow={false}>💰 {c.levels[0].coins}–{c.levels[2].coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>per word</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>per word</div>
               </div>
             </div>
           ))}
@@ -2470,11 +2470,11 @@ function WordGame({ onComplete }) {
   if (phase === "difficulty") {
     return (
       <div>
-        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", marginBottom: 16, }}>← BACK</button>
+        <button onClick={() => { setCategory(null); setPhase("select"); }} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", marginBottom: 16, }}>← BACK</button>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: "2rem", marginBottom: 8 }}>{category.icon}</div>
           <NeonText size="1.1rem" color={category.color}>{category.name}</NeonText>
-          <p style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>Harder = longer words, more coins, less time!</p>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>Harder = longer words, more coins, less time!</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {category.levels.map(level => (
@@ -2486,11 +2486,11 @@ function WordGame({ onComplete }) {
               </div>
               <div style={{ flex: 1 }}>
                 <NeonText size="0.85rem" color={DIFF_COLORS[level.diff]}>{level.diff.toUpperCase()}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>⏱ {level.time}s • {level.diff === "easy" ? "3-4" : level.diff === "medium" ? "5-6" : "7+"} letter words</div>
+                <div style={{ color: "#555", fontSize: "0.8rem", marginTop: 2 }}>⏱ {level.time}s • {level.diff === "easy" ? "3-4" : level.diff === "medium" ? "5-6" : "7+"} letter words</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <NeonText size="1rem" color="#fbbf24" glow={false}>💰 {level.coins}</NeonText>
-                <div style={{ color: "#555", fontSize: "0.6rem" }}>per word</div>
+                <div style={{ color: "#555", fontSize: "0.75rem" }}>per word</div>
               </div>
             </div>
           ))}
@@ -2506,7 +2506,7 @@ function WordGame({ onComplete }) {
         <NeonText size="1.5rem" color={finalScore > 0 ? "#0f0" : "#f44"}>
           {finalScore >= gameDiff.coins * totalRounds ? "PERFECT!" : finalScore > 0 ? "NICE WORK!" : "NO COINS"}
         </NeonText>
-        <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>
+        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>
           {category.name} • {gameDiff.diff.toUpperCase()}
         </div>
         <div style={{ margin: "16px 0" }}>
@@ -2522,7 +2522,7 @@ function WordGame({ onComplete }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <div>
           <NeonText color={category.color} size="0.7rem">{category.icon} {category.name}</NeonText>
-          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.6rem", marginLeft: 8 }}>
+          <span style={{ color: DIFF_COLORS[gameDiff.diff], fontSize: "0.75rem", marginLeft: 8 }}>
             {gameDiff.diff.toUpperCase()}
           </span>
         </div>
@@ -2533,7 +2533,7 @@ function WordGame({ onComplete }) {
           <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: i === current ? category.color : i < current ? "#0f0" : "#222", border: `1px solid ${i === current ? category.color : "#333"}`, boxShadow: i === current ? `0 0 8px ${category.color}60` : "none", }} />
         ))}
       </div>
-      <div style={{ fontSize: "0.7rem", color: "#666", marginBottom: 6 }}>WORD {current + 1} OF {totalRounds}</div>
+      <div style={{ fontSize: "0.85rem", color: "#666", marginBottom: 6 }}>WORD {current + 1} OF {totalRounds}</div>
       <div style={{ margin: "12px 0" }}>
         <NeonText size="0.85rem" color="#888">Unscramble the word:</NeonText>
         <div style={{ margin: "15px 0", display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
@@ -2543,7 +2543,7 @@ function WordGame({ onComplete }) {
         </div>
         {showHint && <div style={{ color: "#fbbf24", fontSize: "0.85rem", fontStyle: "italic" }}>Hint: {puzzle.hint}</div>}
         {!showHint && !feedback && (
-          <button onClick={() => setShowHint(true)} style={{ background: "none", border: "1px solid #fbbf2440", color: "#fbbf24", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.75rem", }}>Show Hint (½ coins)</button>
+          <button onClick={() => setShowHint(true)} style={{ background: "none", border: "1px solid #fbbf2440", color: "#fbbf24", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.9rem", }}>Show Hint (½ coins)</button>
         )}
       </div>
       {feedback && (
@@ -2966,7 +2966,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
                 <NeonText size="0.6rem" color="#0ff">YOU</NeonText>
-                <span style={{ color: "#0ff", fontSize: "0.55rem" }}>{playerHP}/100</span>
+                <span style={{ color: "#0ff", fontSize: "0.7rem" }}>{playerHP}/100</span>
               </div>
               <div style={{ background: "#111", borderRadius: 4, height: 10, overflow: "hidden", border: "1px solid #222" }}>
                 <div style={{ width: `${playerHP}%`, height: "100%", background: playerHP > 50 ? "linear-gradient(90deg, #0ff, #0f0)" : playerHP > 25 ? "linear-gradient(90deg, #fbbf24, #f90)" : "linear-gradient(90deg, #f44, #f00)", transition: "width 0.5s, background 0.5s", borderRadius: 4, boxShadow: `0 0 8px ${playerHP > 50 ? "#0ff" : playerHP > 25 ? "#f90" : "#f44"}50`, }} />
@@ -2976,7 +2976,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
               </div>
             </div>
             <div style={{ textAlign: "center", padding: "0 4px" }}>
-              <div style={{ fontSize: "0.6rem", color: "#666" }}>
+              <div style={{ fontSize: "0.75rem", color: "#666" }}>
                 {turnCount > 0 ? `T${turnCount}` : "VS"}
               </div>
               <NeonText size="1rem" color="#f44">⚡</NeonText>
@@ -2984,7 +2984,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
                 <NeonText size="0.6rem" color="#f0f">{enemy?.name}</NeonText>
-                <span style={{ color: "#f0f", fontSize: "0.55rem" }}>{enemyHP}/100</span>
+                <span style={{ color: "#f0f", fontSize: "0.7rem" }}>{enemyHP}/100</span>
               </div>
               <div style={{ background: "#111", borderRadius: 4, height: 10, overflow: "hidden", border: "1px solid #222" }}>
                 <div style={{ width: `${enemyHP}%`, height: "100%", background: enemyHP > 50 ? "linear-gradient(90deg, #f0f, #c0f)" : enemyHP > 25 ? "linear-gradient(90deg, #fbbf24, #f90)" : "linear-gradient(90deg, #f44, #f00)", transition: "width 0.5s, background 0.5s", borderRadius: 4, boxShadow: `0 0 8px ${enemyHP > 50 ? "#f0f" : enemyHP > 25 ? "#f90" : "#f44"}50`, }} />
@@ -3030,7 +3030,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
           </>)}
         </div>
         {}
-        <div style={{ fontSize: "0.65rem", color: "#555", textAlign: "center", margin: "10px 0 6px" }}>
+        <div style={{ fontSize: "0.8rem", color: "#555", textAlign: "center", margin: "10px 0 6px" }}>
           {battleMode === "realtime" ? "⚡ ARENA BATTLE" : "🤖 AUTO-BATTLE"}
         </div>
         {}
@@ -3100,7 +3100,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
               {!canShoot && (
                 <div style={{
                   position: "absolute", bottom: 50, left: "50%", transform: "translateX(-50%)",
-                  color: "#f4480", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif",
+                  color: "#f4480", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
                 }}>RELOADING...</div>
               )}
             </div>
@@ -3134,9 +3134,9 @@ function PvPBattle({ playerWeapons, onComplete }) {
             boxShadow: selectedWeapon?.id === w.id ? `0 0 15px ${RARITY_COLORS[w.rarity]}30` : "none",
           }}>
             <div style={{ fontSize: "1.5rem" }}>{w.emoji}</div>
-            <div style={{ color: RARITY_COLORS[w.rarity], fontSize: "0.75rem" }}>{w.name}</div>
-            <div style={{ color: "#888", fontSize: "0.65rem" }}>DMG:{getWeaponStats(w).damage}{getWeaponStats(w).attack > 0 ? ` ATK:${getWeaponStats(w).attack}` : ""}{getWeaponStats(w).defense > 0 ? ` DEF:${getWeaponStats(w).defense}` : ""}</div>
-            <div style={{ color: "#0ff", fontSize: "0.55rem", marginTop: 2 }}>LVL {w.level || 1}</div>
+            <div style={{ color: RARITY_COLORS[w.rarity], fontSize: "0.9rem" }}>{w.name}</div>
+            <div style={{ color: "#888", fontSize: "0.8rem" }}>DMG:{getWeaponStats(w).damage}{getWeaponStats(w).attack > 0 ? ` ATK:${getWeaponStats(w).attack}` : ""}{getWeaponStats(w).defense > 0 ? ` DEF:${getWeaponStats(w).defense}` : ""}</div>
+            <div style={{ color: "#0ff", fontSize: "0.7rem", marginTop: 2 }}>LVL {w.level || 1}</div>
           </button>
         ))}
       </div>
@@ -3145,10 +3145,10 @@ function PvPBattle({ playerWeapons, onComplete }) {
         <div style={{ padding: "10px 14px", marginBottom: 12, borderRadius: 8, background: "#00ff0000", border: "1px solid #0f020", display: "flex", alignItems: "center", gap: 10, }}>
           <span style={{ fontSize: "1.2rem" }}>🛡</span>
           <div style={{ flex: 1 }}>
-            <div style={{ color: "#0f0", fontSize: "0.75rem" }}>
+            <div style={{ color: "#0f0", fontSize: "0.9rem" }}>
               DEFENSE ACTIVE: -{playerDefReduction} DMG per hit
             </div>
-            <div style={{ color: "#666", fontSize: "0.6rem" }}>
+            <div style={{ color: "#666", fontSize: "0.75rem" }}>
               From your best defense/both weapon in inventory
             </div>
           </div>
@@ -3168,7 +3168,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
             </button>
           ))}
         </div>
-        <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>
+        <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 6 }}>
           Auto = watch the battle. Real-time = top-down arena, dodge and shoot!
         </div>
       </div>
@@ -3186,7 +3186,7 @@ function PvPBattle({ playerWeapons, onComplete }) {
           <div style={{ color: miniBoss ? "#f44" : "#888", fontSize: "0.8rem" }}>
             {miniBoss ? "⚠️ MINI-BOSS MODE" : "NORMAL MODE"}
           </div>
-          <div style={{ color: "#666", fontSize: "0.6rem", marginTop: 2 }}>
+          <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 2 }}>
             {miniBoss ? "Harder enemy, 2x coin reward if you win!" : "Tap to enable mini-boss (harder, bigger reward)"}
           </div>
         </div>
@@ -4260,7 +4260,7 @@ export default function XPGrinder() {
     ...(user?.email === "tanuj.garg@gmail.com" ? [{ id: "admin", icon: "🔧", label: "ADMIN" }] : []),
   ];
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(180deg, #020108 0%, #0a0015 30%, #050510 100%)", color: "#f0f0f0", position: "relative", overflow: "hidden", fontSize: "0.95rem", }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(180deg, #020108 0%, #0a0015 30%, #050510 100%)", color: "#f0f0f0", position: "relative", overflow: "hidden", fontSize: "1.05rem", }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -4285,7 +4285,7 @@ export default function XPGrinder() {
           <div style={{ fontSize: "2rem", marginBottom: 6 }}>{showAchievement.icon}</div>
           <NeonText color="#fbbf24" size="0.7rem">🏆 ACHIEVEMENT UNLOCKED</NeonText>
           <NeonText color="#fff" size="1rem" style={{ margin: "6px 0" }}>{showAchievement.name}</NeonText>
-          <div style={{ color: "#888", fontSize: "0.7rem" }}>{showAchievement.desc}</div>
+          <div style={{ color: "#888", fontSize: "0.85rem" }}>{showAchievement.desc}</div>
           <NeonText color="#0f0" size="0.8rem" style={{ marginTop: 6 }}>+{showAchievement.reward.toLocaleString()} coins!</NeonText>
         </div>
       )}
@@ -4295,7 +4295,7 @@ export default function XPGrinder() {
           <NeonText color="#f0f" size="1.3rem" style={{ fontWeight: 900 }}>
             EXP GRINDER
           </NeonText>
-          <div style={{ fontSize: "0.65rem", color: "#555", letterSpacing: 2 }}>
+          <div style={{ fontSize: "0.8rem", color: "#555", letterSpacing: 2 }}>
             {user ? user.email?.split("@")[0] : "NEON ARENA v1.0"}
           </div>
           <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
@@ -4305,16 +4305,16 @@ export default function XPGrinder() {
         </div>
         <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "0.55rem", color: "#888" }}>TOTAL LVL</div>
+            <div style={{ fontSize: "0.7rem", color: "#888" }}>TOTAL LVL</div>
             <NeonText color="#0ff" size="1rem">{Math.floor(inventory.reduce((sum, w) => sum + (w.rarity === "pet" ? (6 + (w.merge || 1)) : (w.level || 1)), 0) / 2)}</NeonText>
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "0.55rem", color: "#888" }}>COINS</div>
+            <div style={{ fontSize: "0.7rem", color: "#888" }}>COINS</div>
             <NeonText color="#fbbf24" size="1rem">💰 {coins.toLocaleString()}</NeonText>
             {debt > 0 && <div style={{ fontSize: "0.5rem", color: "#f44" }}>DEBT: {debt.toLocaleString()}</div>}
           </div>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: "0.55rem", color: "#888" }}>GAMES</div>
+            <div style={{ fontSize: "0.7rem", color: "#888" }}>GAMES</div>
             <NeonText color={totalGamesLeft === 0 ? "#f44" : "#0ff"} size="1rem">{totalGamesLeft}/20</NeonText>
           </div>
         </div>
@@ -4324,7 +4324,7 @@ export default function XPGrinder() {
         <div style={{ background: "#111", borderRadius: 4, height: 6, overflow: "hidden" }}>
           <div style={{ width: `${(xp / xpNeeded) * 100}%`, height: "100%", background: "linear-gradient(90deg, #f0f, #0ff)", transition: "width 0.5s", }} />
         </div>
-        <div style={{ fontSize: "0.6rem", color: "#555", textAlign: "right" }}>{xp}/{xpNeeded} XP</div>
+        <div style={{ fontSize: "0.75rem", color: "#555", textAlign: "right" }}>{xp}/{xpNeeded} XP</div>
       </div>
       {}
       <div style={{ padding: "16px 20px", paddingBottom: 80 }}>
@@ -4352,7 +4352,7 @@ export default function XPGrinder() {
                 <NeonText size="0.85rem" color={dailyClaimed ? "#0f0" : "#fbbf24"}>
                   {dailyClaimed ? "CHECK-IN CLAIMED!" : "DAILY CHECK-IN"}
                 </NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 2 }}>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 2 }}>
                   {dailyClaimed ? "Come back tomorrow for more!" : "Tap to collect 1,000 free coins"}
                 </div>
               </div>
@@ -4371,7 +4371,7 @@ export default function XPGrinder() {
                     <span style={{ fontSize: "1.5rem" }}>{packResult.pet.emoji}</span>
                     <div>
                       <NeonText size="0.85rem" color="#ff69b4">{packResult.pet.name}</NeonText>
-                      <div style={{ color: "#888", fontSize: "0.65rem" }}>DMG: {packResult.pet.damage} • SPD: {packResult.pet.speed} • PET (can't level up)</div>
+                      <div style={{ color: "#888", fontSize: "0.8rem" }}>DMG: {packResult.pet.damage} • SPD: {packResult.pet.speed} • PET (can't level up)</div>
                     </div>
                   </div>
                 )}
@@ -4380,11 +4380,11 @@ export default function XPGrinder() {
                     <span style={{ fontSize: "1.5rem" }}>{packResult.weapon.emoji}</span>
                     <div>
                       <NeonText size="0.85rem" color={RARITY_COLORS[packResult.weapon.rarity]}>{packResult.weapon.name}</NeonText>
-                      <div style={{ color: "#888", fontSize: "0.65rem" }}>DMG: {packResult.weapon.damage} • SPD: {packResult.weapon.speed} • {packResult.weapon.rarity.toUpperCase()}</div>
+                      <div style={{ color: "#888", fontSize: "0.8rem" }}>DMG: {packResult.weapon.damage} • SPD: {packResult.weapon.speed} • {packResult.weapon.rarity.toUpperCase()}</div>
                     </div>
                   </div>
                 )}
-                <button onClick={() => setPackResult(null)} style={{ marginTop: 12, background: `${packResult.color}15`, border: `1px solid ${packResult.color}40`, color: packResult.color, padding: "8px 20px", borderRadius: 6, cursor: "pointer", fontSize: "0.75rem", }}>DISMISS</button>
+                <button onClick={() => setPackResult(null)} style={{ marginTop: 12, background: `${packResult.color}15`, border: `1px solid ${packResult.color}40`, color: packResult.color, padding: "8px 20px", borderRadius: 6, cursor: "pointer", fontSize: "0.9rem", }}>DISMISS</button>
               </div>
             ) : (
               <button onClick={openPack} disabled={coins < 3000 || packOpening} style={{
@@ -4401,7 +4401,7 @@ export default function XPGrinder() {
                   <NeonText size="0.85rem" color={coins < 3000 ? "#555" : "#c084fc"}>
                     {packOpening ? "OPENING..." : "ENERGY PACK"}
                   </NeonText>
-                  <div style={{ color: "#555", fontSize: "0.65rem", marginTop: 2 }}>
+                  <div style={{ color: "#555", fontSize: "0.8rem", marginTop: 2 }}>
                     {packOpening ? "Channeling energy..." : "60% bad • 15% refund • 10% pet • 15% good"}
                   </div>
                 </div>
@@ -4417,22 +4417,22 @@ export default function XPGrinder() {
               <Panel style={{ cursor: "pointer", textAlign: "center" }} onClick={() => setScreen("arena")}>
                 <div style={{ fontSize: "2rem" }}>🎮</div>
                 <NeonText size="0.8rem" color="#0ff">PLAY GAMES</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem" }}>Earn coins</div>
+                <div style={{ color: "#555", fontSize: "0.85rem" }}>Earn coins</div>
               </Panel>
               <Panel style={{ cursor: "pointer", textAlign: "center" }} onClick={() => setScreen("battle")}>
                 <div style={{ fontSize: "2rem" }}>⚔️</div>
                 <NeonText size="0.8rem" color="#f0f">PVP BATTLE</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem" }}>Fight players</div>
+                <div style={{ color: "#555", fontSize: "0.85rem" }}>Fight players</div>
               </Panel>
               <Panel style={{ cursor: "pointer", textAlign: "center" }} onClick={() => setScreen("shop")}>
                 <div style={{ fontSize: "2rem" }}>🛒</div>
                 <NeonText size="0.8rem" color="#fbbf24">WEAPON SHOP</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem" }}>{WEAPONS.length} weapons</div>
+                <div style={{ color: "#555", fontSize: "0.85rem" }}>{WEAPONS.length} weapons</div>
               </Panel>
               <Panel style={{ cursor: "pointer", textAlign: "center" }} onClick={() => setScreen("inventory")}>
                 <div style={{ fontSize: "2rem" }}>🎒</div>
                 <NeonText size="0.8rem" color="#6ee7b7">MY GEAR</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem" }}>{inventory.length} owned</div>
+                <div style={{ color: "#555", fontSize: "0.85rem" }}>{inventory.length} owned</div>
               </Panel>
             </div>
             {}
@@ -4446,7 +4446,7 @@ export default function XPGrinder() {
               <div style={{ width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center", background: "#fbbf2415", borderRadius: 10, border: "1px solid #fbbf2440", fontSize: "1.6rem", }}>🏆</div>
               <div style={{ flex: 1, textAlign: "left" }}>
                 <NeonText size="0.9rem" color="#fbbf24">ACHIEVEMENTS</NeonText>
-                <div style={{ color: "#888", fontSize: "0.65rem", marginTop: 2 }}>
+                <div style={{ color: "#888", fontSize: "0.8rem", marginTop: 2 }}>
                   {Object.keys(achievements).length}/{ACHIEVEMENTS.length} unlocked
                 </div>
               </div>
@@ -4458,7 +4458,7 @@ export default function XPGrinder() {
             <Panel style={{ marginTop: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                 <NeonText size="0.85rem" color="#ef4444">🎯 BOUNTY BOARD</NeonText>
-                <span style={{ color: "#555", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>DAILY TARGETS</span>
+                <span style={{ color: "#555", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>DAILY TARGETS</span>
               </div>
 
               {/* Active bounty fight */}
@@ -4473,8 +4473,8 @@ export default function XPGrinder() {
                   <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
-                        <span style={{ color: "#0ff", fontSize: "0.6rem" }}>YOU</span>
-                        <span style={{ color: "#0ff", fontSize: "0.55rem" }}>{bountyFightHP.player}/100</span>
+                        <span style={{ color: "#0ff", fontSize: "0.75rem" }}>YOU</span>
+                        <span style={{ color: "#0ff", fontSize: "0.7rem" }}>{bountyFightHP.player}/100</span>
                       </div>
                       <div style={{ background: "#111", borderRadius: 4, height: 8, overflow: "hidden" }}>
                         <div style={{ width: `${bountyFightHP.player}%`, height: "100%", background: bountyFightHP.player > 50 ? "#0ff" : bountyFightHP.player > 25 ? "#f90" : "#f44", transition: "width 0.3s", borderRadius: 4 }} />
@@ -4482,8 +4482,8 @@ export default function XPGrinder() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
-                        <span style={{ color: "#f0f", fontSize: "0.6rem" }}>{activeBounty.name}</span>
-                        <span style={{ color: "#f0f", fontSize: "0.55rem" }}>{bountyFightHP.enemy}/{bountyFightHP.enemyMax || 100}</span>
+                        <span style={{ color: "#f0f", fontSize: "0.75rem" }}>{activeBounty.name}</span>
+                        <span style={{ color: "#f0f", fontSize: "0.7rem" }}>{bountyFightHP.enemy}/{bountyFightHP.enemyMax || 100}</span>
                       </div>
                       <div style={{ background: "#111", borderRadius: 4, height: 8, overflow: "hidden" }}>
                         <div style={{ width: `${(bountyFightHP.enemy / (bountyFightHP.enemyMax || 100)) * 100}%`, height: "100%", background: bountyFightHP.enemy > (bountyFightHP.enemyMax || 100) * 0.5 ? "#f0f" : bountyFightHP.enemy > (bountyFightHP.enemyMax || 100) * 0.25 ? "#f90" : "#f44", transition: "width 0.3s", borderRadius: 4 }} />
@@ -4499,24 +4499,24 @@ export default function XPGrinder() {
                       <button onClick={() => { setActiveBounty(null); setBountyFightPhase(null); }} style={{
                         marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
                         background: "#0f020", border: "1px solid #0f050", color: "#0f0",
-                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                        fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif",
                       }}>COLLECT</button>
                     </div>
                   )}
                   {bountyFightPhase === "lost" && (
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ color: "#888", fontSize: "0.65rem" }}>Your best weapon lost 3 levels or you gained debt!</div>
+                      <div style={{ color: "#888", fontSize: "0.8rem" }}>Your best weapon lost 3 levels or you gained debt!</div>
                       <button onClick={() => { setActiveBounty(null); setBountyFightPhase(null); }} style={{
                         marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
                         background: "#f4420", border: "1px solid #f4450", color: "#f44",
-                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                        fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif",
                       }}>BACK</button>
                     </div>
                   )}
                 </div>
               ) : (
                 <>
-                  <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 10 }}>Defeat these targets for bonus rewards!</div>
+                  <div style={{ color: "#888", fontSize: "0.75rem", marginBottom: 10 }}>Defeat these targets for bonus rewards!</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {bounties.map(bounty => (
                       <div key={bounty.id} style={{
@@ -4534,20 +4534,20 @@ export default function XPGrinder() {
                           <div style={{ color: bounty.completed ? "#0f0" : "#ef4444", fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>
                             {bounty.completed ? `${bounty.name} ✓` : bounty.name}
                           </div>
-                          <div style={{ color: "#666", fontSize: "0.55rem" }}>
+                          <div style={{ color: "#666", fontSize: "0.7rem" }}>
                             {bounty.weapon.emoji} {bounty.weapon.name} LV{bounty.weapon.level} ({bounty.weapon.rarity}) • 💰 {bounty.reward.toLocaleString()}
                           </div>
                         </div>
                         {bounty.completed ? (
-                          <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>DONE</span>
+                          <span style={{ color: "#0f0", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>DONE</span>
                         ) : (bountyAttempts[bounty.id] || 0) >= 2 ? (
-                          <span style={{ color: "#f44", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>0 LEFT</span>
+                          <span style={{ color: "#f44", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>0 LEFT</span>
                         ) : (
                           <div style={{ textAlign: "center" }}>
                             <button onClick={() => startBountyFight(bounty)} style={{
                               padding: "6px 14px", borderRadius: 6, cursor: "pointer",
                               background: "#ef444420", border: "1px solid #ef444450",
-                              color: "#ef4444", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                              color: "#ef4444", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif",
                             }}>⚔️ FIGHT</button>
                             <div style={{ color: "#666", fontSize: "0.45rem", marginTop: 2 }}>{2 - (bountyAttempts[bounty.id] || 0)}/2</div>
                           </div>
@@ -4563,11 +4563,11 @@ export default function XPGrinder() {
             <Panel style={{ marginTop: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                 <NeonText size="0.85rem" color="#fbbf24">🪙 COIN FLIP</NeonText>
-                <span style={{ color: coinFlipsUsed >= 2 ? "#f44" : "#0f0", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif" }}>
+                <span style={{ color: coinFlipsUsed >= 2 ? "#f44" : "#0f0", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>
                   {coinFlipsUsed >= 2 ? "💰 2,000/flip" : `${2 - coinFlipsUsed} FREE LEFT`}
                 </span>
               </div>
-              <div style={{ color: "#888", fontSize: "0.6rem", marginBottom: 12 }}>
+              <div style={{ color: "#888", fontSize: "0.75rem", marginBottom: 12 }}>
                 Heads = double. Tails = lose all. Keep flipping to multiply or cash out!
               </div>
               {coinFlipPhase === "flipping" ? (
@@ -4579,7 +4579,7 @@ export default function XPGrinder() {
                 <div style={{ textAlign: "center", padding: "12px 0" }}>
                   <div style={{ fontSize: "2rem", marginBottom: 6 }}>🎉</div>
                   <NeonText size="1.2rem" color="#0f0">POT: {coinFlipPot.toLocaleString()} coins</NeonText>
-                  <div style={{ color: "#888", fontSize: "0.65rem", margin: "8px 0" }}>Double to {(coinFlipPot * 2).toLocaleString()} or cash out?</div>
+                  <div style={{ color: "#888", fontSize: "0.8rem", margin: "8px 0" }}>Double to {(coinFlipPot * 2).toLocaleString()} or cash out?</div>
                   <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 10 }}>
                     <button onClick={cashOutFlip} style={{
                       padding: "10px 20px", borderRadius: 8, cursor: "pointer",
@@ -4600,7 +4600,7 @@ export default function XPGrinder() {
                   <button onClick={() => setCoinFlipPhase("pick")} style={{
                     marginTop: 10, padding: "8px 20px", borderRadius: 6, cursor: "pointer",
                     background: "#fbbf2420", border: "1px solid #fbbf2440",
-                    color: "#fbbf24", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                    color: "#fbbf24", fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif",
                   }}>TRY AGAIN</button>
                 </div>
               ) : (
@@ -4628,15 +4628,15 @@ export default function XPGrinder() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 10 }}>
                 <div style={{ textAlign: "center" }}>
                   <NeonText size="1.2rem" color="#f0f">{Math.floor(inventory.reduce((sum, w) => sum + (w.rarity === "pet" ? (6 + (w.merge || 1)) : (w.level || 1)), 0) / 2)}</NeonText>
-                  <div style={{ color: "#555", fontSize: "0.65rem" }}>Total Level</div>
+                  <div style={{ color: "#555", fontSize: "0.8rem" }}>Total Level</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <NeonText size="1.2rem" color="#fbbf24">{coins.toLocaleString()}</NeonText>
-                  <div style={{ color: "#555", fontSize: "0.65rem" }}>Coins</div>
+                  <div style={{ color: "#555", fontSize: "0.8rem" }}>Coins</div>
                 </div>
                 <div style={{ textAlign: "center" }}>
                   <NeonText size="1.2rem" color="#0ff">{inventory.length}</NeonText>
-                  <div style={{ color: "#555", fontSize: "0.65rem" }}>Weapons</div>
+                  <div style={{ color: "#555", fontSize: "0.8rem" }}>Weapons</div>
                 </div>
               </div>
             </Panel>
@@ -4646,7 +4646,7 @@ export default function XPGrinder() {
                 <div style={{ fontSize: "1.3rem" }}>{streak >= 7 ? "🔥" : streak >= 3 ? "⚡" : "📅"}</div>
                 <div style={{ flex: 1 }}>
                   <NeonText size="0.75rem" color={streak >= 7 ? "#fbbf24" : "#0ff"}>{streak}-DAY STREAK!</NeonText>
-                  <div style={{ color: "#888", fontSize: "0.6rem" }}>
+                  <div style={{ color: "#888", fontSize: "0.75rem" }}>
                     Check-in bonus: +{streak >= 7 ? "5,000" : streak >= 5 ? "3,000" : streak >= 3 ? "2,000" : "0"} extra coins
                   </div>
                 </div>
@@ -4656,7 +4656,7 @@ export default function XPGrinder() {
             <div style={{ marginTop: 12, padding: 16, borderRadius: 12, background: "linear-gradient(135deg, #0a0a1a, #0d1117)", border: "1px solid #fbbf2430", }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                 <NeonText size="0.8rem" color="#fbbf24">🎡 LUCKY WHEEL</NeonText>
-                <span style={{ color: "#f44", fontSize: "0.55rem" }}>⚠ RISK & REWARD</span>
+                <span style={{ color: "#f44", fontSize: "0.7rem" }}>⚠ RISK & REWARD</span>
               </div>
               {wheelResult && !wheelSpinning ? (
                 <div style={{ textAlign: "center", padding: "8px 0" }}>
@@ -4689,7 +4689,7 @@ export default function XPGrinder() {
                 <NeonText size="0.8rem" color={coinDoubler ? "#0f0" : "#fbbf24"}>
                   {coinDoubler ? "DOUBLER ACTIVE!" : "COIN DOUBLER"}
                 </NeonText>
-                <div style={{ color: "#bbb", fontSize: "0.6rem", marginTop: 2 }}>
+                <div style={{ color: "#bbb", fontSize: "0.75rem", marginTop: 2 }}>
                   {coinDoubler ? "Your next game win pays 2x coins" : "Pay 2,000 to double next game earnings"}
                 </div>
               </div>
@@ -4698,7 +4698,7 @@ export default function XPGrinder() {
             {}
             <div style={{ marginTop: 12, padding: 16, borderRadius: 12, background: "linear-gradient(135deg, #0a0a1a, #0d1117)", border: "1px solid #6ee7b730", }}>
               <NeonText size="0.8rem" color="#6ee7b7">♻️ RECYCLER</NeonText>
-              <div style={{ color: "#bbb", fontSize: "0.6rem", margin: "6px 0 10px" }}>
+              <div style={{ color: "#bbb", fontSize: "0.75rem", margin: "6px 0 10px" }}>
                 Trade 3 weapons of the same tier → get 1 random weapon from the next tier up
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -4710,7 +4710,7 @@ export default function XPGrinder() {
                       background: count >= 3 ? `${RARITY_COLORS[r]}15` : "#0a0a1a",
                       border: `1px solid ${count >= 3 ? RARITY_COLORS[r] + "50" : "#222"}`,
                       color: count >= 3 ? RARITY_COLORS[r] : "#444",
-                      fontSize: "0.6rem",
+                      fontSize: "0.75rem",
                     }}>
                       {r.toUpperCase()} ({count}/3)
                     </button>
@@ -4725,7 +4725,7 @@ export default function XPGrinder() {
         {screen === "shop" && (
           <div>
             <NeonText size="1.2rem" color="#fbbf24">🛒 WEAPON SHOP</NeonText>
-            <p style={{ color: "#888", fontSize: "0.75rem", margin: "8px 0 16px" }}>
+            <p style={{ color: "#888", fontSize: "0.9rem", margin: "8px 0 16px" }}>
               {WEAPONS.length} weapons available. Buy, collect, dominate.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -4746,19 +4746,19 @@ export default function XPGrinder() {
                           <span style={{ fontSize: "1.3rem" }}>{w.emoji}</span>
                           <div style={{ flex: 1 }}>
                             <div style={{ color: RARITY_COLORS[rarity], fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif" }}>{w.name}</div>
-                            <div style={{ color: "#666", fontSize: "0.6rem" }}>
+                            <div style={{ color: "#666", fontSize: "0.75rem" }}>
                               DMG: {w.damage} • SPD: {w.speed}{(w.type === "defense" || w.type === "both") ? ` • DEF: ${w.type === "defense" ? 8 : 5}` : ""} • {w.type === "attack" ? "⚔ ATK" : w.type === "defense" ? "🛡 DEF" : "⚔🛡 BOTH"}
                             </div>
                           </div>
                           {owned ? (
-                            <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>OWNED</span>
+                            <span style={{ color: "#0f0", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>OWNED</span>
                           ) : (
                             <button onClick={() => buyWeapon(w)} disabled={coins < w.price} style={{
                               padding: "6px 12px", borderRadius: 6, cursor: coins >= w.price ? "pointer" : "not-allowed",
                               background: coins >= w.price ? `${RARITY_COLORS[rarity]}15` : "#111",
                               border: `1px solid ${coins >= w.price ? RARITY_COLORS[rarity] + "40" : "#222"}`,
                               color: coins >= w.price ? "#fbbf24" : "#333",
-                              fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
+                              fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif",
                             }}>💰 {w.price.toLocaleString()}</button>
                           )}
                         </div>
@@ -4782,7 +4782,7 @@ export default function XPGrinder() {
               <Panel style={{ textAlign: "center", padding: 30 }}>
                 <div style={{ fontSize: "2rem", marginBottom: 10 }}>🗡️</div>
                 <NeonText size="0.9rem" color="#888">You need a weapon to battle!</NeonText>
-                <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>Buy one from the Shop first.</div>
+                <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 6 }}>Buy one from the Shop first.</div>
               </Panel>
             ) : (
               <Panel>
@@ -4795,7 +4795,7 @@ export default function XPGrinder() {
         {screen === "craft" && (
           <div>
             <NeonText size="1.2rem" color="#f90">⚒️ CRAFTING FORGE</NeonText>
-            <p style={{ color: "#bbb", fontSize: "0.75rem", margin: "8px 0 16px" }}>
+            <p style={{ color: "#bbb", fontSize: "0.9rem", margin: "8px 0 16px" }}>
               Buy materials or earn them by winning mini-games!
             </p>
             {}
@@ -4822,7 +4822,7 @@ export default function XPGrinder() {
                     <span style={{ fontSize: "1.2rem" }}>{mat.emoji}</span>
                     <div style={{ flex: 1 }}>
                       <div style={{ color: mat.color, fontSize: "0.8rem" }}>{mat.name}</div>
-                      <div style={{ color: "#666", fontSize: "0.55rem" }}>{mat.desc}</div>
+                      <div style={{ color: "#666", fontSize: "0.7rem" }}>{mat.desc}</div>
                     </div>
                     <div style={{ display: "flex", gap: 4 }}>
                       {[1, 5, 10].map(qty => (
@@ -4831,7 +4831,7 @@ export default function XPGrinder() {
                           background: coins >= mat.price * qty ? `${mat.color}15` : "#111",
                           border: `1px solid ${coins >= mat.price * qty ? mat.color + "40" : "#222"}`,
                           color: coins >= mat.price * qty ? mat.color : "#333",
-                          fontSize: "0.55rem",
+                          fontSize: "0.7rem",
                         }}>
                           {qty}x 💰{(mat.price * qty).toLocaleString()}
                         </button>
@@ -4845,7 +4845,7 @@ export default function XPGrinder() {
             {/* Potion Crafting */}
             <Panel style={{ marginTop: 16 }}>
               <NeonText size="0.8rem" color="#c084fc">🧪 CRAFT POTIONS</NeonText>
-              <div style={{ color: "#bbb", fontSize: "0.6rem", margin: "6px 0 12px" }}>Craft potions, merge 2 of the same type to power up (max M5). Apply up to 2 per weapon.</div>
+              <div style={{ color: "#bbb", fontSize: "0.75rem", margin: "6px 0 12px" }}>Craft potions, merge 2 of the same type to power up (max M5). Apply up to 2 per weapon.</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {POTIONS.map(pot => {
                   const canCraftPot = Object.entries(pot.craft).every(([m, q]) => (materials[m] || 0) >= q);
@@ -4859,7 +4859,7 @@ export default function XPGrinder() {
                         <span style={{ fontSize: "1.4rem" }}>{pot.emoji}</span>
                         <div style={{ flex: 1 }}>
                           <NeonText size="0.8rem" color={pot.color}>{pot.name}</NeonText>
-                          <div style={{ color: "#888", fontSize: "0.55rem" }}>{pot.desc}</div>
+                          <div style={{ color: "#888", fontSize: "0.7rem" }}>{pot.desc}</div>
                         </div>
                       </div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 8 }}>
@@ -4868,7 +4868,7 @@ export default function XPGrinder() {
                           const have = materials[matId] || 0;
                           return (
                             <span key={matId} style={{
-                              padding: "2px 6px", borderRadius: 4, fontSize: "0.6rem",
+                              padding: "2px 6px", borderRadius: 4, fontSize: "0.75rem",
                               background: have >= qty ? "#0f010" : "#f4408",
                               border: `1px solid ${have >= qty ? "#0f030" : "#f4420"}`,
                               color: have >= qty ? "#0f0" : "#f44", fontFamily: "'Orbitron', sans-serif",
@@ -4888,7 +4888,7 @@ export default function XPGrinder() {
                         background: canCraftPot ? `${pot.color}20` : "#111",
                         border: `1px solid ${canCraftPot ? pot.color : "#222"}`,
                         color: canCraftPot ? pot.color : "#333",
-                        fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif", cursor: canCraftPot ? "pointer" : "not-allowed",
+                        fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif", cursor: canCraftPot ? "pointer" : "not-allowed",
                       }}>🧪 CRAFT {pot.name.toUpperCase()}</button>
                     </div>
                   );
@@ -4914,7 +4914,7 @@ export default function XPGrinder() {
                           <span style={{ fontSize: "1.3rem" }}>{potion.emoji}</span>
                           <div style={{ flex: 1 }}>
                             <NeonText size="0.75rem" color={potion.color}>{potion.name} M{pot.merge}{pot.merge >= 5 ? " (MAX)" : ""}</NeonText>
-                            <div style={{ color: "#888", fontSize: "0.55rem" }}>
+                            <div style={{ color: "#888", fontSize: "0.7rem" }}>
                               {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
                             </div>
                           </div>
@@ -4923,7 +4923,7 @@ export default function XPGrinder() {
                               const other = potions.findIndex((p, i) => i !== idx && p.id === pot.id);
                               if (other >= 0) mergePotion(idx, other);
                             }} style={{
-                              padding: "4px 10px", borderRadius: 4, fontSize: "0.55rem",
+                              padding: "4px 10px", borderRadius: 4, fontSize: "0.7rem",
                               background: `${potion.color}15`, border: `1px solid ${potion.color}40`,
                               color: potion.color, cursor: "pointer", fontFamily: "'Orbitron', sans-serif",
                             }}>🔀 MERGE → M{Math.min(pot.merge + 1, 5)}</button>
@@ -4938,20 +4938,20 @@ export default function XPGrinder() {
                 {inventory.filter(w => w.rarity !== "pet").length > 0 && (
                   <div style={{ marginTop: 12, padding: 10, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e" }}>
                     <NeonText size="0.7rem" color="#888">APPLY POTION TO WEAPON</NeonText>
-                    <div style={{ color: "#666", fontSize: "0.55rem", margin: "4px 0 8px" }}>Max 2 per weapon. Same type can't stack.</div>
+                    <div style={{ color: "#666", fontSize: "0.7rem", margin: "4px 0 8px" }}>Max 2 per weapon. Same type can't stack.</div>
                     {potions.map((pot, pIdx) => {
                       const potion = POTIONS.find(p => p.id === pot.id);
                       const eligible = inventory.filter(w => w.rarity !== "pet" && ((w.potions || []).length < 2) && !(w.potions || []).find(p => p.id === pot.id));
                       if (eligible.length === 0) return null;
                       return (
                         <div key={pIdx} style={{ marginBottom: 8 }}>
-                          <div style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif", marginBottom: 4 }}>
+                          <div style={{ color: potion.color, fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif", marginBottom: 4 }}>
                             {potion.emoji} {potion.name} M{pot.merge} →
                           </div>
                           <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                             {eligible.map(w => (
                               <button key={w.id} onClick={() => applyPotion(pIdx, w.id)} style={{
-                                padding: "4px 8px", borderRadius: 4, fontSize: "0.55rem",
+                                padding: "4px 8px", borderRadius: 4, fontSize: "0.7rem",
                                 background: `${RARITY_COLORS[w.rarity]}10`, border: `1px solid ${RARITY_COLORS[w.rarity]}30`,
                                 color: RARITY_COLORS[w.rarity], cursor: "pointer", fontFamily: "'Orbitron', sans-serif",
                               }}>{w.emoji} {w.name}</button>
@@ -4982,8 +4982,8 @@ export default function XPGrinder() {
                     onClick={() => { if (left <= 0) return; if (g.id === "math" || g.id === "trivia" || g.id === "word" || g.id === "memory") { startGame(g.id, "custom"); } else { setSelectedGame(g.id); } }}>
                     <div style={{ fontSize: "2rem", margin: "8px 0" }}>{g.icon}</div>
                     <NeonText size="0.8rem" color={g.color}>{g.name}</NeonText>
-                    <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 4 }}>{g.desc}</div>
-                    <div style={{ marginTop: 6, fontSize: "0.6rem", color: left === 0 ? "#f44" : left <= 1 ? "#fbbf24" : "#0ff", }}>{left === 0 ? "NO GAMES LEFT" : `${left}/5 remaining`}</div>
+                    <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 4 }}>{g.desc}</div>
+                    <div style={{ marginTop: 6, fontSize: "0.75rem", color: left === 0 ? "#f44" : left <= 1 ? "#fbbf24" : "#0ff", }}>{left === 0 ? "NO GAMES LEFT" : `${left}/5 remaining`}</div>
                   </Panel>
                   );
                 })}
@@ -4991,7 +4991,7 @@ export default function XPGrinder() {
             )}
             {selectedGame && !difficulty && (
               <div>
-                <GlowButton onClick={() => setSelectedGame(null)} color="#888" style={{ marginBottom: 16, fontSize: "0.7rem" }}>← BACK</GlowButton>
+                <GlowButton onClick={() => setSelectedGame(null)} color="#888" style={{ marginBottom: 16, fontSize: "0.85rem" }}>← BACK</GlowButton>
                 <NeonText size="1rem" color="#fff">SELECT DIFFICULTY</NeonText>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
                   {difficulties.map(d => (
@@ -4999,7 +4999,7 @@ export default function XPGrinder() {
                       onClick={() => startGame(selectedGame, d.id)}>
                       <div>
                         <NeonText size="0.9rem" color={d.color}>{d.label}</NeonText>
-                        <div style={{ color: "#555", fontSize: "0.7rem" }}>{d.coins}</div>
+                        <div style={{ color: "#555", fontSize: "0.85rem" }}>{d.coins}</div>
                       </div>
                       <NeonText size="1.2rem" color={d.color}>→</NeonText>
                     </Panel>
@@ -5024,9 +5024,9 @@ export default function XPGrinder() {
         {screen === "achievements" && (
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-              <button onClick={() => setScreen("hub")} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", }}>← HUB</button>
+              <button onClick={() => setScreen("hub")} style={{ background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px", borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", }}>← HUB</button>
               <NeonText size="1.2rem" color="#fbbf24">🏆 ACHIEVEMENTS</NeonText>
-              <span style={{ color: "#888", fontSize: "0.7rem" }}>
+              <span style={{ color: "#888", fontSize: "0.85rem" }}>
                 {Object.keys(achievements).length}/{ACHIEVEMENTS.length}
               </span>
             </div>
@@ -5045,7 +5045,7 @@ export default function XPGrinder() {
                     <div style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem", borderRadius: 8, background: unlocked ? "#fbbf2415" : "#111", border: `1px solid ${unlocked ? "#fbbf2440" : "#222"}`, }}>{unlocked ? ach.icon : "🔒"}</div>
                     <div style={{ flex: 1 }}>
                       <div style={{ color: unlocked ? "#fff" : "#555", fontSize: "0.85rem", }}>{ach.name}</div>
-                      <div style={{ color: unlocked ? "#ccc" : "#666", fontSize: "0.65rem", marginTop: 2 }}>{ach.desc}</div>
+                      <div style={{ color: unlocked ? "#ccc" : "#666", fontSize: "0.8rem", marginTop: 2 }}>{ach.desc}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
                       {unlocked ? (
@@ -5083,7 +5083,7 @@ export default function XPGrinder() {
                 <div>
                   <button onClick={() => { setSelectedGearId(null); setConfirmSell(false); setMergeMode(false); }} style={{
                     background: "none", border: "1px solid #333", color: "#888", padding: "6px 14px",
-                    borderRadius: 6, cursor: "pointer", fontSize: "0.7rem", marginBottom: 16,
+                    borderRadius: 6, cursor: "pointer", fontSize: "0.85rem", marginBottom: 16,
                   }}>← BACK</button>
                   <Panel style={{ textAlign: "center" }}>
                     <div style={{
@@ -5096,51 +5096,51 @@ export default function XPGrinder() {
                     <NeonText size="1.2rem" color={RARITY_COLORS[w.rarity]}>{w.name}</NeonText>
                     <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 8 }}>
                       <span style={{
-                        fontSize: "0.6rem", color: RARITY_COLORS[w.rarity], padding: "2px 8px",
+                        fontSize: "0.75rem", color: RARITY_COLORS[w.rarity], padding: "2px 8px",
                         border: `1px solid ${RARITY_COLORS[w.rarity]}40`, borderRadius: 4,
                         textTransform: "uppercase",
                       }}>{w.rarity}</span>
                       {w.rarity === "pet" ? (
                         <span style={{
-                          fontSize: "0.6rem", color: "#ff69b4", padding: "2px 8px",
+                          fontSize: "0.75rem", color: "#ff69b4", padding: "2px 8px",
                           background: "#ff69b410", border: "1px solid #ff69b440", borderRadius: 4,
                         }}>MERGE {w.merge || 1}</span>
                       ) : (
                         <span style={{
-                          fontSize: "0.6rem", color: "#0ff", padding: "2px 8px",
+                          fontSize: "0.75rem", color: "#0ff", padding: "2px 8px",
                           background: "#0ff10", border: "1px solid #0ff40", borderRadius: 4,
                         }}>LVL {w.level}</span>
                       )}
                       <span style={{
-                        fontSize: "0.6rem", color: "#888", padding: "2px 8px",
+                        fontSize: "0.75rem", color: "#888", padding: "2px 8px",
                         border: "1px solid #333", borderRadius: 4,
                       }}>{w.type === "attack" ? "⚔ ATK" : w.type === "defense" ? "🛡 DEF" : "⚔🛡 BOTH"}</span>
                     </div>
 
                     <div style={{ display: "grid", gridTemplateColumns: (stats.attack > 0 && stats.defense > 0) ? "1fr 1fr" : (stats.defense > 0 || stats.attack > 0) ? "1fr 1fr 1fr" : "1fr 1fr", gap: 12, margin: "20px 0" }}>
                       <div style={{ background: "#0a0a2a", borderRadius: 8, padding: "14px 10px", border: "1px solid #1a1a3e" }}>
-                        <div style={{ color: "#888", fontSize: "0.6rem" }}>DAMAGE</div>
+                        <div style={{ color: "#888", fontSize: "0.75rem" }}>DAMAGE</div>
                         <NeonText size="1.4rem" color="#f44">{stats.damage}</NeonText>
-                        {w.rarity === "pet" && (w.merge || 1) > 1 && <div style={{ color: "#ff69b4", fontSize: "0.6rem" }}>+{stats.damage - w.damage} from merges</div>}
-                        {w.rarity !== "pet" && w.level > 1 && <div style={{ color: "#0f0", fontSize: "0.6rem" }}>+{stats.damage - w.damage} from upgrades</div>}
+                        {w.rarity === "pet" && (w.merge || 1) > 1 && <div style={{ color: "#ff69b4", fontSize: "0.75rem" }}>+{stats.damage - w.damage} from merges</div>}
+                        {w.rarity !== "pet" && w.level > 1 && <div style={{ color: "#0f0", fontSize: "0.75rem" }}>+{stats.damage - w.damage} from upgrades</div>}
                       </div>
                       <div style={{ background: "#0a0a2a", borderRadius: 8, padding: "14px 10px", border: "1px solid #1a1a3e" }}>
-                        <div style={{ color: "#888", fontSize: "0.6rem" }}>SPEED</div>
+                        <div style={{ color: "#888", fontSize: "0.75rem" }}>SPEED</div>
                         <NeonText size="1.4rem" color="#0ff">{stats.speed}</NeonText>
-                        {w.level > 1 && <div style={{ color: "#0f0", fontSize: "0.6rem" }}>+{stats.speed - w.speed} from upgrades</div>}
+                        {w.level > 1 && <div style={{ color: "#0f0", fontSize: "0.75rem" }}>+{stats.speed - w.speed} from upgrades</div>}
                       </div>
                       {stats.attack > 0 && (
                         <div style={{ background: "#0a0a2a", borderRadius: 8, padding: "14px 10px", border: "1px solid #1a1a3e" }}>
-                          <div style={{ color: "#888", fontSize: "0.6rem" }}>ATTACK</div>
+                          <div style={{ color: "#888", fontSize: "0.75rem" }}>ATTACK</div>
                           <NeonText size="1.4rem" color="#f90">{stats.attack}</NeonText>
-                          <div style={{ color: "#666", fontSize: "0.55rem" }}>+{stats.attack} bonus DMG</div>
+                          <div style={{ color: "#666", fontSize: "0.7rem" }}>+{stats.attack} bonus DMG</div>
                         </div>
                       )}
                       {stats.defense > 0 && (
                         <div style={{ background: "#0a0a2a", borderRadius: 8, padding: "14px 10px", border: "1px solid #1a1a3e" }}>
-                          <div style={{ color: "#888", fontSize: "0.6rem" }}>DEFENSE</div>
+                          <div style={{ color: "#888", fontSize: "0.75rem" }}>DEFENSE</div>
                           <NeonText size="1.4rem" color="#0f0">{stats.defense}</NeonText>
-                          <div style={{ color: "#666", fontSize: "0.55rem" }}>-{stats.defense} DMG per hit</div>
+                          <div style={{ color: "#666", fontSize: "0.7rem" }}>-{stats.defense} DMG per hit</div>
                         </div>
                       )}
                     </div>
@@ -5157,8 +5157,8 @@ export default function XPGrinder() {
                               <div key={pot.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 8px", background: `${potion.color}08`, borderRadius: 6, border: `1px solid ${potion.color}30` }}>
                                 <span style={{ fontSize: "1.1rem" }}>{potion.emoji}</span>
                                 <div style={{ flex: 1 }}>
-                                  <span style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
-                                  <div style={{ color: "#888", fontSize: "0.55rem" }}>
+                                  <span style={{ color: potion.color, fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
+                                  <div style={{ color: "#888", fontSize: "0.7rem" }}>
                                     {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
                                   </div>
                                 </div>
@@ -5192,12 +5192,12 @@ export default function XPGrinder() {
                               }}>
                                 <span style={{ fontSize: "1.1rem" }}>{potion.emoji}</span>
                                 <div style={{ flex: 1 }}>
-                                  <span style={{ color: potion.color, fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
+                                  <span style={{ color: potion.color, fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif" }}>{potion.name} M{pot.merge}</span>
                                   <div style={{ color: "#888", fontSize: "0.5rem" }}>
                                     {eff.burnDmg ? `+${eff.burnDmg} burn/turn` : eff.slowPct ? `-${eff.slowPct}% enemy DMG` : eff.stunPct ? `${eff.stunPct}% stun` : `+${eff.poisonDmg} stack/turn`}
                                   </div>
                                 </div>
-                                <span style={{ color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif" }}>+ ADD</span>
+                                <span style={{ color: "#0f0", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>+ ADD</span>
                               </button>
                             );
                           })}
@@ -5206,7 +5206,7 @@ export default function XPGrinder() {
                     )}
                     {w.rarity !== "pet" && (w.potions || []).length < 2 && potions.length === 0 && (
                       <div style={{ marginBottom: 16, padding: 10, background: "#0a0a2a", borderRadius: 8, border: "1px solid #1a1a3e", textAlign: "center" }}>
-                        <div style={{ color: "#555", fontSize: "0.6rem" }}>🧪 No potions in inventory. Craft them in the CRAFT tab!</div>
+                        <div style={{ color: "#555", fontSize: "0.75rem" }}>🧪 No potions in inventory. Craft them in the CRAFT tab!</div>
                       </div>
                     )}
 
@@ -5214,8 +5214,8 @@ export default function XPGrinder() {
                     {w.rarity !== "pet" && (
                     <div style={{ marginBottom: 16 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                        <span style={{ color: "#888", fontSize: "0.65rem" }}>LEVEL PROGRESS</span>
-                        <span style={{ color: "#0ff", fontSize: "0.65rem" }}>{w.level}/50</span>
+                        <span style={{ color: "#888", fontSize: "0.8rem" }}>LEVEL PROGRESS</span>
+                        <span style={{ color: "#0ff", fontSize: "0.8rem" }}>{w.level}/50</span>
                       </div>
                       <div style={{ background: "#111", borderRadius: 6, height: 10, overflow: "hidden", border: "1px solid #222" }}>
                         <div style={{
@@ -5237,8 +5237,8 @@ export default function XPGrinder() {
                           {/* Merge progress */}
                           <div style={{ marginBottom: 16 }}>
                             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                              <span style={{ color: "#ff69b4", fontSize: "0.65rem" }}>MERGE PROGRESS</span>
-                              <span style={{ color: "#ff69b4", fontSize: "0.65rem" }}>{w.merge || 1}/50</span>
+                              <span style={{ color: "#ff69b4", fontSize: "0.8rem" }}>MERGE PROGRESS</span>
+                              <span style={{ color: "#ff69b4", fontSize: "0.8rem" }}>{w.merge || 1}/50</span>
                             </div>
                             <div style={{ background: "#111", borderRadius: 6, height: 10, overflow: "hidden", border: "1px solid #222" }}>
                               <div style={{
@@ -5255,7 +5255,7 @@ export default function XPGrinder() {
                               border: "1px solid #ff69b430",
                             }}>
                               <NeonText size="0.85rem" color="#ff69b4">🐾 PET MERGE</NeonText>
-                              <div style={{ color: "#666", fontSize: "0.7rem", margin: "6px 0 12px" }}>
+                              <div style={{ color: "#666", fontSize: "0.85rem", margin: "6px 0 12px" }}>
                                 Sacrifice another pet to increase merge level. +10% DMG per merge.
                               </div>
                               {canMerge ? (
@@ -5267,7 +5267,7 @@ export default function XPGrinder() {
                                   <NeonText size="0.9rem" color="#ff69b4">⭐ MAX MERGE ⭐</NeonText>
                                 </div>
                               ) : (
-                                <div style={{ color: "#555", fontSize: "0.7rem", textAlign: "center" }}>
+                                <div style={{ color: "#555", fontSize: "0.85rem", textAlign: "center" }}>
                                   No other pets to merge with. Open Energy Packs to get more!
                                 </div>
                               )}
@@ -5281,10 +5281,10 @@ export default function XPGrinder() {
                                 <NeonText size="0.85rem" color="#ff69b4">SELECT SACRIFICE</NeonText>
                                 <button onClick={() => setMergeMode(false)} style={{
                                   background: "none", border: "1px solid #333", color: "#888", padding: "4px 10px",
-                                  borderRadius: 4, cursor: "pointer", fontSize: "0.65rem",
+                                  borderRadius: 4, cursor: "pointer", fontSize: "0.8rem",
                                 }}>CANCEL</button>
                               </div>
-                              <div style={{ color: "#888", fontSize: "0.65rem", marginBottom: 10 }}>
+                              <div style={{ color: "#888", fontSize: "0.8rem", marginBottom: 10 }}>
                                 The sacrificed pet will be destroyed permanently.
                               </div>
                               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -5297,9 +5297,9 @@ export default function XPGrinder() {
                                     <span style={{ fontSize: "1.3rem" }}>{p.emoji}</span>
                                     <div style={{ flex: 1, textAlign: "left" }}>
                                       <div style={{ color: "#ff69b4", fontSize: "0.8rem" }}>{p.name}</div>
-                                      <div style={{ color: "#666", fontSize: "0.6rem" }}>Merge {p.merge || 1} • DMG: {getWeaponStats(p).damage}</div>
+                                      <div style={{ color: "#666", fontSize: "0.75rem" }}>Merge {p.merge || 1} • DMG: {getWeaponStats(p).damage}</div>
                                     </div>
-                                    <span style={{ color: "#f44", fontSize: "0.65rem" }}>SACRIFICE</span>
+                                    <span style={{ color: "#f44", fontSize: "0.8rem" }}>SACRIFICE</span>
                                   </button>
                                 ))}
                               </div>
@@ -5315,7 +5315,7 @@ export default function XPGrinder() {
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
                           <div>
                             <NeonText size="0.8rem" color="#fbbf24">UPGRADE TO LVL {w.level + 1}</NeonText>
-                            <div style={{ color: "#888", fontSize: "0.65rem", marginTop: 2 }}>
+                            <div style={{ color: "#888", fontSize: "0.8rem", marginTop: 2 }}>
                               +{Math.floor(w.damage * 0.08)} DMG boost
                             </div>
                           </div>
@@ -5332,7 +5332,7 @@ export default function XPGrinder() {
                         border: "1px solid #0ff30", textAlign: "center",
                       }}>
                         <NeonText size="1rem" color="#0ff">⭐ MAX LEVEL ⭐</NeonText>
-                        <div style={{ color: "#666", fontSize: "0.75rem", marginTop: 4 }}>This weapon is fully upgraded!</div>
+                        <div style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>This weapon is fully upgraded!</div>
                       </div>
                     )}
 
@@ -5351,9 +5351,9 @@ export default function XPGrinder() {
                             }}>
                               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                                 <NeonText size="0.8rem" color="#0ff">🔀 WEAPON MERGE</NeonText>
-                                <span style={{ color: "#0ff", fontSize: "0.65rem" }}>+{boost} LEVELS</span>
+                                <span style={{ color: "#0ff", fontSize: "0.8rem" }}>+{boost} LEVELS</span>
                               </div>
-                              <div style={{ color: "#666", fontSize: "0.65rem", marginBottom: 10 }}>
+                              <div style={{ color: "#666", fontSize: "0.8rem", marginBottom: 10 }}>
                                 Merge with a same-tier weapon. LVL 1-4: +2 levels. LVL 5+: +3 levels. You choose which to keep!
                               </div>
                               <GlowButton onClick={() => { setMergeMode(true); setMergeTargetId(null); }} color="#0ff" style={{ width: "100%", fontSize: "0.8rem" }}>
@@ -5369,7 +5369,7 @@ export default function XPGrinder() {
                                 <NeonText size="0.8rem" color="#0ff">SELECT PARTNER</NeonText>
                                 <button onClick={() => setMergeMode(false)} style={{
                                   background: "none", border: "1px solid #333", color: "#888", padding: "4px 10px",
-                                  borderRadius: 4, cursor: "pointer", fontSize: "0.65rem",
+                                  borderRadius: 4, cursor: "pointer", fontSize: "0.8rem",
                                 }}>CANCEL</button>
                               </div>
                               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -5384,7 +5384,7 @@ export default function XPGrinder() {
                                       <span style={{ fontSize: "1.3rem" }}>{m.emoji}</span>
                                       <div style={{ flex: 1, textAlign: "left" }}>
                                         <div style={{ color: RARITY_COLORS[m.rarity], fontSize: "0.8rem" }}>{m.name}</div>
-                                        <div style={{ color: "#666", fontSize: "0.6rem" }}>LVL {m.level} • DMG: {mStats.damage} • {m.type === "attack" ? "ATK" : m.type === "defense" ? "DEF" : "BOTH"}</div>
+                                        <div style={{ color: "#666", fontSize: "0.75rem" }}>LVL {m.level} • DMG: {mStats.damage} • {m.type === "attack" ? "ATK" : m.type === "defense" ? "DEF" : "BOTH"}</div>
                                       </div>
                                       <NeonText size="0.7rem" color="#0ff">SELECT</NeonText>
                                     </button>
@@ -5401,10 +5401,10 @@ export default function XPGrinder() {
                                 <NeonText size="0.85rem" color="#0ff">CHOOSE WHICH TO KEEP</NeonText>
                                 <button onClick={() => { setMergeTargetId(null); setMergeMode(false); }} style={{
                                   background: "none", border: "1px solid #333", color: "#888", padding: "4px 10px",
-                                  borderRadius: 4, cursor: "pointer", fontSize: "0.65rem",
+                                  borderRadius: 4, cursor: "pointer", fontSize: "0.8rem",
                                 }}>CANCEL</button>
                               </div>
-                              <div style={{ color: "#888", fontSize: "0.65rem", marginBottom: 12, textAlign: "center" }}>
+                              <div style={{ color: "#888", fontSize: "0.8rem", marginBottom: 12, textAlign: "center" }}>
                                 The kept weapon gains +{boost} levels. The other is destroyed.
                               </div>
                               <div style={{ display: "flex", gap: 10 }}>
@@ -5418,15 +5418,15 @@ export default function XPGrinder() {
                                       cursor: "pointer", textAlign: "center", transition: "all 0.3s",
                                     }}>
                                       <div style={{ fontSize: "1.8rem", marginBottom: 6 }}>{wpn.emoji}</div>
-                                      <div style={{ color: RARITY_COLORS[wpn.rarity], fontSize: "0.75rem" }}>{wpn.name}</div>
-                                      <div style={{ color: "#888", fontSize: "0.6rem", margin: "4px 0" }}>
+                                      <div style={{ color: RARITY_COLORS[wpn.rarity], fontSize: "0.9rem" }}>{wpn.name}</div>
+                                      <div style={{ color: "#888", fontSize: "0.75rem", margin: "4px 0" }}>
                                         LVL {wpn.level} → <span style={{ color: "#0f0" }}>LVL {Math.min(wpn.level + wpnBoost, 50)}</span>
                                       </div>
-                                      <div style={{ color: "#666", fontSize: "0.55rem" }}>DMG: {wpnStats.damage} • SPD: {wpnStats.speed}</div>
+                                      <div style={{ color: "#666", fontSize: "0.7rem" }}>DMG: {wpnStats.damage} • SPD: {wpnStats.speed}</div>
                                       <div style={{
                                         marginTop: 8, padding: "6px 0", background: "#0f015",
                                         border: "1px solid #0f040", borderRadius: 6,
-                                        color: "#0f0", fontSize: "0.7rem",
+                                        color: "#0f0", fontSize: "0.85rem",
                                       }}>✓ KEEP THIS</div>
                                     </button>
                                   );
@@ -5444,7 +5444,7 @@ export default function XPGrinder() {
                         <button onClick={() => setConfirmSell(true)} style={{
                           width: "100%", background: "none", border: "1px solid #f4430",
                           color: "#f44", padding: "10px", borderRadius: 8, cursor: "pointer",
-                          fontSize: "0.75rem",
+                          fontSize: "0.9rem",
                           transition: "all 0.3s",
                         }}>
                           💰 SELL FOR {getSellPrice(w).toLocaleString()} COINS
@@ -5455,14 +5455,14 @@ export default function XPGrinder() {
                           border: "1px solid #f4440",
                         }}>
                           <NeonText size="0.85rem" color="#f44">ARE YOU SURE?</NeonText>
-                          <div style={{ color: "#888", fontSize: "0.7rem", margin: "8px 0" }}>
+                          <div style={{ color: "#888", fontSize: "0.85rem", margin: "8px 0" }}>
                             You'll get 💰{getSellPrice(w).toLocaleString()} back (half of total investment). This cannot be undone.
                           </div>
                           <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-                            <GlowButton onClick={() => sellWeapon(w.id)} color="#f44" style={{ flex: 1, fontSize: "0.75rem" }}>
+                            <GlowButton onClick={() => sellWeapon(w.id)} color="#f44" style={{ flex: 1, fontSize: "0.9rem" }}>
                               CONFIRM SELL
                             </GlowButton>
-                            <GlowButton onClick={() => setConfirmSell(false)} color="#888" style={{ flex: 1, fontSize: "0.75rem" }}>
+                            <GlowButton onClick={() => setConfirmSell(false)} color="#888" style={{ flex: 1, fontSize: "0.9rem" }}>
                               CANCEL
                             </GlowButton>
                           </div>
@@ -5493,25 +5493,25 @@ export default function XPGrinder() {
                       </div>
                       <div style={{ flex: 1 }}>
                         <NeonText size="0.9rem" color={RARITY_COLORS[w.rarity]}>{w.name}</NeonText>
-                        <div style={{ color: "#888", fontSize: "0.75rem", marginTop: 4 }}>
+                        <div style={{ color: "#888", fontSize: "0.9rem", marginTop: 4 }}>
                           ⚔ DMG: {stats.damage}{stats.attack > 0 ? " | 🗡 ATK: " + stats.attack : ""}{stats.defense > 0 ? " | 🛡 DEF: " + stats.defense : ""} &nbsp; ⚡ SPD: {stats.speed}
                         </div>
                         {(w.potions || []).length > 0 && (
                           <div style={{ display: "flex", gap: 4, marginTop: 3 }}>
                             {w.potions.map(p => {
                               const pot = POTIONS.find(pp => pp.id === p.id);
-                              return <span key={p.id} style={{ fontSize: "0.55rem", padding: "1px 5px", borderRadius: 3, background: `${pot?.color}15`, border: `1px solid ${pot?.color}30`, color: pot?.color }}>{pot?.emoji} M{p.merge}</span>;
+                              return <span key={p.id} style={{ fontSize: "0.7rem", padding: "1px 5px", borderRadius: 3, background: `${pot?.color}15`, border: `1px solid ${pot?.color}30`, color: pot?.color }}>{pot?.emoji} M{p.merge}</span>;
                             })}
                           </div>
                         )}
                         <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
                           <span style={{
-                            fontSize: "0.55rem", color: RARITY_COLORS[w.rarity], padding: "2px 6px",
+                            fontSize: "0.7rem", color: RARITY_COLORS[w.rarity], padding: "2px 6px",
                             border: `1px solid ${RARITY_COLORS[w.rarity]}40`, borderRadius: 4,
                             textTransform: "uppercase",
                           }}>{w.rarity}</span>
                           <span style={{
-                            fontSize: "0.55rem", color: w.rarity === "pet" ? "#ff69b4" : "#0ff", padding: "2px 6px",
+                            fontSize: "0.7rem", color: w.rarity === "pet" ? "#ff69b4" : "#0ff", padding: "2px 6px",
                             background: w.rarity === "pet" ? "#ff69b410" : "#0ff10",
                             border: `1px solid ${w.rarity === "pet" ? "#ff69b440" : "#0ff40"}`, borderRadius: 4,
                           }}>{w.rarity === "pet" ? `MERGE ${w.merge || 1}` : `LVL ${w.level}`}</span>
@@ -5534,10 +5534,10 @@ export default function XPGrinder() {
               <button onClick={loadAdminData} disabled={adminLoading} style={{
                 padding: "8px 16px", borderRadius: 6, cursor: "pointer",
                 background: "#f9020", border: "1px solid #f9050",
-                color: "#f90", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                color: "#f90", fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif",
               }}>{adminLoading ? "LOADING..." : "🔄 REFRESH"}</button>
             </div>
-            <div style={{ color: "#888", fontSize: "0.75rem", marginBottom: 16 }}>
+            <div style={{ color: "#888", fontSize: "0.9rem", marginBottom: 16 }}>
               {adminPlayers.length} registered players
             </div>
             {adminPlayers.length === 0 && !adminLoading && (
@@ -5563,7 +5563,7 @@ export default function XPGrinder() {
                       }}>{rank.icon}</div>
                       <div style={{ flex: 1 }}>
                         <div style={{ color: "#fff", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif" }}>{p.email}</div>
-                        <div style={{ color: "#888", fontSize: "0.65rem", marginTop: 2 }}>
+                        <div style={{ color: "#888", fontSize: "0.8rem", marginTop: 2 }}>
                           {rank.name} • ⚡{power} • 💰{(s.coins || 0).toLocaleString()} coins • LVL {s.level || 1} • {inv.length} weapons
                         </div>
                       </div>
@@ -5602,7 +5602,7 @@ export default function XPGrinder() {
                                   flex: 1, textAlign: "center", padding: "6px 4px", borderRadius: 6,
                                   background: "#05050f", border: `1px solid ${left > 0 ? "#0ff30" : "#f4430"}`,
                                 }}>
-                                  <div style={{ color: "#888", fontSize: "0.55rem", textTransform: "uppercase" }}>{game}</div>
+                                  <div style={{ color: "#888", fontSize: "0.7rem", textTransform: "uppercase" }}>{game}</div>
                                   <NeonText size="0.8rem" color={left > 0 ? "#0ff" : "#f44"}>{left}/5</NeonText>
                                 </div>
                               ))}
@@ -5613,15 +5613,15 @@ export default function XPGrinder() {
                         {/* Streak & daily info */}
                         <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
                           <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
-                            <div style={{ color: "#888", fontSize: "0.55rem" }}>STREAK</div>
+                            <div style={{ color: "#888", fontSize: "0.7rem" }}>STREAK</div>
                             <NeonText size="0.85rem" color="#fbbf24">🔥 {s.streak || 0} days</NeonText>
                           </div>
                           <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
-                            <div style={{ color: "#888", fontSize: "0.55rem" }}>LAST LOGIN</div>
+                            <div style={{ color: "#888", fontSize: "0.7rem" }}>LAST LOGIN</div>
                             <NeonText size="0.7rem" color="#888" glow={false}>{s.lastLoginDate || "N/A"}</NeonText>
                           </div>
                           <div style={{ flex: 1, padding: "8px 10px", borderRadius: 6, background: "#05050f", border: "1px solid #1a1a3e" }}>
-                            <div style={{ color: "#888", fontSize: "0.55rem" }}>ACHIEVEMENTS</div>
+                            <div style={{ color: "#888", fontSize: "0.7rem" }}>ACHIEVEMENTS</div>
                             <NeonText size="0.85rem" color="#fbbf24">{Object.keys(s.achievements || {}).length}/{ACHIEVEMENTS.length}</NeonText>
                           </div>
                         </div>
@@ -5629,7 +5629,7 @@ export default function XPGrinder() {
                         {/* Weapons inventory */}
                         <NeonText size="0.7rem" color="#6ee7b7">🎒 WEAPONS ({inv.length})</NeonText>
                         {inv.length === 0 ? (
-                          <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 6 }}>No weapons yet</div>
+                          <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 6 }}>No weapons yet</div>
                         ) : (
                           <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 6 }}>
                             {inv.map((w, wi) => {
@@ -5641,10 +5641,10 @@ export default function XPGrinder() {
                                 }}>
                                   <span style={{ fontSize: "1.1rem" }}>{w.emoji}</span>
                                   <div style={{ flex: 1 }}>
-                                    <span style={{ color: RARITY_COLORS[w.rarity], fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>
+                                    <span style={{ color: RARITY_COLORS[w.rarity], fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif" }}>
                                       {w.name}
                                     </span>
-                                    <span style={{ color: "#888", fontSize: "0.6rem", marginLeft: 8 }}>
+                                    <span style={{ color: "#888", fontSize: "0.75rem", marginLeft: 8 }}>
                                       {w.rarity === "pet" ? `M${w.merge || 1}` : `LV${w.level || 1}`} • DMG:{stats.damage} SPD:{stats.speed}
                                       {stats.defense > 0 ? ` DEF:${stats.defense}` : ""}
                                       {stats.attack > 0 ? ` ATK:${stats.attack}` : ""}
@@ -5652,7 +5652,7 @@ export default function XPGrinder() {
                                   </div>
                                   {(w.potions || []).map(pot => {
                                     const potion = POTIONS.find(pp => pp.id === pot.id);
-                                    return <span key={pot.id} style={{ fontSize: "0.75rem" }}>{potion?.emoji}M{pot.merge}</span>;
+                                    return <span key={pot.id} style={{ fontSize: "0.9rem" }}>{potion?.emoji}M{pot.merge}</span>;
                                   })}
                                   <span style={{
                                     fontSize: "0.5rem", color: RARITY_COLORS[w.rarity], padding: "2px 6px",
@@ -5674,13 +5674,13 @@ export default function XPGrinder() {
                                 if (qty === 0) return null;
                                 return (
                                   <span key={mat.id} style={{
-                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.65rem",
+                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.8rem",
                                     background: `${mat.color}10`, border: `1px solid ${mat.color}30`, color: mat.color,
                                   }}>{mat.emoji} {qty}</span>
                                 );
                               })}
                               {Object.values(s.materials || {}).every(v => v === 0) && (
-                                <span style={{ color: "#555", fontSize: "0.65rem" }}>None</span>
+                                <span style={{ color: "#555", fontSize: "0.8rem" }}>None</span>
                               )}
                             </div>
                           </div>
@@ -5695,7 +5695,7 @@ export default function XPGrinder() {
                                 const potion = POTIONS.find(pp => pp.id === pot.id);
                                 return (
                                   <span key={pi} style={{
-                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.65rem",
+                                    padding: "3px 8px", borderRadius: 4, fontSize: "0.8rem",
                                     background: `${potion?.color}10`, border: `1px solid ${potion?.color}30`, color: potion?.color,
                                   }}>{potion?.emoji} {potion?.name} M{pot.merge}</span>
                                 );
@@ -5711,7 +5711,7 @@ export default function XPGrinder() {
                             <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
                               {s.bounties.map((b, bi) => (
                                 <span key={bi} style={{
-                                  padding: "3px 8px", borderRadius: 4, fontSize: "0.6rem",
+                                  padding: "3px 8px", borderRadius: 4, fontSize: "0.75rem",
                                   background: b.completed ? "#0f010" : "#f4410",
                                   border: `1px solid ${b.completed ? "#0f030" : "#f4430"}`,
                                   color: b.completed ? "#0f0" : "#f44",
@@ -5721,7 +5721,7 @@ export default function XPGrinder() {
                           </div>
                         )}
 
-                        <div style={{ marginTop: 12, color: "#444", fontSize: "0.55rem" }}>
+                        <div style={{ marginTop: 12, color: "#444", fontSize: "0.7rem" }}>
                           Registered: {new Date(p.created_at).toLocaleDateString()}
                         </div>
                       </div>
@@ -5746,7 +5746,7 @@ export default function XPGrinder() {
                   background: socialTab === tab.id ? "#c084fc20" : "#05050f",
                   border: `1px solid ${socialTab === tab.id ? "#c084fc" : "#1a1a3e"}`,
                   color: socialTab === tab.id ? "#c084fc" : "#666",
-                  fontSize: "0.65rem", fontFamily: "'Orbitron', sans-serif",
+                  fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif",
                 }}>{tab.label}</button>
               ))}
             </div>
@@ -5765,7 +5765,7 @@ export default function XPGrinder() {
                     }}>{getRank(myPower).icon}</div>
                     <div style={{ flex: 1 }}>
                       <NeonText size="1rem" color={getRank(myPower).color}>{getRank(myPower).name}</NeonText>
-                      <div style={{ color: "#888", fontSize: "0.65rem" }}>⚡ Power: {myPower.toLocaleString()}</div>
+                      <div style={{ color: "#888", fontSize: "0.8rem" }}>⚡ Power: {myPower.toLocaleString()}</div>
                     </div>
                   </div>
                 </Panel>
@@ -5789,8 +5789,8 @@ export default function XPGrinder() {
                         borderRadius: 4, border: `1px solid ${t.color}20`,
                       }}>
                         <span style={{ fontSize: "0.9rem" }}>{t.icon}</span>
-                        <span style={{ color: t.color, fontSize: "0.65rem", fontFamily: "'Orbitron', sans-serif", flex: 1 }}>{t.rank}</span>
-                        <span style={{ color: "#555", fontSize: "0.55rem" }}>{t.min.toLocaleString()}+</span>
+                        <span style={{ color: t.color, fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif", flex: 1 }}>{t.rank}</span>
+                        <span style={{ color: "#555", fontSize: "0.7rem" }}>{t.min.toLocaleString()}+</span>
                       </div>
                     ))}
                   </div>
@@ -5803,11 +5803,11 @@ export default function XPGrinder() {
                     <button onClick={() => loadLeaderboard(true)} style={{
                       padding: "4px 10px", borderRadius: 4, cursor: "pointer",
                       background: "#0ff15", border: "1px solid #0ff40",
-                      color: "#0ff", fontSize: "0.55rem", fontFamily: "'Orbitron', sans-serif",
+                      color: "#0ff", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif",
                     }}>🔄 REFRESH</button>
                   </div>
                   {leaderboard.length === 0 ? (
-                    <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 10, textAlign: "center", padding: 20 }}>
+                    <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 10, textAlign: "center", padding: 20 }}>
                       Loading rankings...
                     </div>
                   ) : (
@@ -5828,12 +5828,12 @@ export default function XPGrinder() {
                             }}>{medal}</div>
                             <span style={{ fontSize: "1rem" }}>{rank.icon}</span>
                             <div style={{ flex: 1, minWidth: 0 }}>
-                              <div style={{ color: isMe ? "#fbbf24" : "#eee", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                              <div style={{ color: isMe ? "#fbbf24" : "#eee", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                                 {p.email}{isMe ? " (YOU)" : ""}
                               </div>
-                              <div style={{ color: rank.color, fontSize: "0.55rem" }}>{rank.name} • {p.weapons} weapon{p.weapons !== 1 ? "s" : ""}</div>
+                              <div style={{ color: rank.color, fontSize: "0.7rem" }}>{rank.name} • {p.weapons} weapon{p.weapons !== 1 ? "s" : ""}</div>
                             </div>
-                            <div style={{ color: "#fbbf24", fontSize: "0.7rem", fontFamily: "'Orbitron', sans-serif" }}>⚡ {p.power.toLocaleString()}</div>
+                            <div style={{ color: "#fbbf24", fontSize: "0.85rem", fontFamily: "'Orbitron', sans-serif" }}>⚡ {p.power.toLocaleString()}</div>
                           </div>
                         );
                       })}
@@ -5861,7 +5861,7 @@ export default function XPGrinder() {
                     <button onClick={sendFriendRequest} disabled={socialLoading || !friendEmail.trim()} style={{
                       padding: "10px 16px", borderRadius: 6, cursor: "pointer",
                       background: "#c084fc20", border: "1px solid #c084fc50",
-                      color: "#c084fc", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
+                      color: "#c084fc", fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif",
                     }}>SEND</button>
                   </div>
                   {emailSuggestions.length > 0 && (
@@ -5881,7 +5881,7 @@ export default function XPGrinder() {
                 <Panel>
                   <NeonText size="0.75rem" color="#0f0">MY FRIENDS ({friends.length})</NeonText>
                   {friends.length === 0 ? (
-                    <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 10, textAlign: "center", padding: 20 }}>
+                    <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 10, textAlign: "center", padding: 20 }}>
                       No friends yet. Send a request above!
                     </div>
                   ) : (
@@ -5899,13 +5899,13 @@ export default function XPGrinder() {
                               background: "#0f015", border: "1px solid #0f040", fontSize: "1rem",
                             }}>👤</div>
                             <div style={{ flex: 1 }}>
-                              <div style={{ color: "#0f0", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>{fEmail}</div>
+                              <div style={{ color: "#0f0", fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif" }}>{fEmail}</div>
                               <div style={{ color: "#555", fontSize: "0.5rem" }}>Friend</div>
                             </div>
                             <button onClick={() => loadChat(f)} style={{
                               padding: "6px 12px", borderRadius: 6, cursor: "pointer",
                               background: "#c084fc15", border: "1px solid #c084fc40",
-                              color: "#c084fc", fontSize: "0.65rem", fontFamily: "'Orbitron', sans-serif",
+                              color: "#c084fc", fontSize: "0.8rem", fontFamily: "'Orbitron', sans-serif",
                             }}>💬 CHAT</button>
                           </div>
                         );
@@ -5924,9 +5924,9 @@ export default function XPGrinder() {
                           display: "flex", alignItems: "center", gap: 10, padding: "8px 12px",
                           background: "#05050f", borderRadius: 6, border: "1px solid #fbbf2420",
                         }}>
-                          <span style={{ color: "#fbbf24", fontSize: "0.7rem" }}>⏳</span>
-                          <span style={{ color: "#ccc", fontSize: "0.7rem", flex: 1 }}>{r.receiver_email}</span>
-                          <span style={{ color: "#666", fontSize: "0.55rem" }}>Pending</span>
+                          <span style={{ color: "#fbbf24", fontSize: "0.85rem" }}>⏳</span>
+                          <span style={{ color: "#ccc", fontSize: "0.85rem", flex: 1 }}>{r.receiver_email}</span>
+                          <span style={{ color: "#666", fontSize: "0.7rem" }}>Pending</span>
                         </div>
                       ))}
                     </div>
@@ -5940,7 +5940,7 @@ export default function XPGrinder() {
               <Panel>
                 <NeonText size="0.75rem" color="#fbbf24">INCOMING REQUESTS ({pendingRequests.length})</NeonText>
                 {pendingRequests.length === 0 ? (
-                  <div style={{ color: "#555", fontSize: "0.7rem", marginTop: 10, textAlign: "center", padding: 20 }}>
+                  <div style={{ color: "#555", fontSize: "0.85rem", marginTop: 10, textAlign: "center", padding: 20 }}>
                     No pending requests.
                   </div>
                 ) : (
@@ -5956,18 +5956,18 @@ export default function XPGrinder() {
                           background: "#fbbf2415", border: "1px solid #fbbf2440", fontSize: "1rem",
                         }}>👤</div>
                         <div style={{ flex: 1 }}>
-                          <div style={{ color: "#fbbf24", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif" }}>{r.sender_email}</div>
+                          <div style={{ color: "#fbbf24", fontSize: "0.9rem", fontFamily: "'Orbitron', sans-serif" }}>{r.sender_email}</div>
                           <div style={{ color: "#555", fontSize: "0.5rem" }}>wants to be friends</div>
                         </div>
                         <button onClick={() => respondToRequest(r.id, true)} style={{
                           padding: "6px 10px", borderRadius: 4, cursor: "pointer",
                           background: "#0f020", border: "1px solid #0f050",
-                          color: "#0f0", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif",
+                          color: "#0f0", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
                         }}>✓ ACCEPT</button>
                         <button onClick={() => respondToRequest(r.id, false)} style={{
                           padding: "6px 10px", borderRadius: 4, cursor: "pointer",
                           background: "#f4415", border: "1px solid #f4430",
-                          color: "#f44", fontSize: "0.6rem", fontFamily: "'Orbitron', sans-serif",
+                          color: "#f44", fontSize: "0.75rem", fontFamily: "'Orbitron', sans-serif",
                         }}>✕</button>
                       </div>
                     ))}
@@ -5982,7 +5982,7 @@ export default function XPGrinder() {
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <button onClick={() => setSocialTab("friends")} style={{
                     background: "none", border: "1px solid #333", color: "#888",
-                    padding: "4px 10px", borderRadius: 4, cursor: "pointer", fontSize: "0.6rem",
+                    padding: "4px 10px", borderRadius: 4, cursor: "pointer", fontSize: "0.75rem",
                   }}>←</button>
                   <NeonText size="0.75rem" color="#c084fc">💬 {chatFriend.friendEmail}</NeonText>
                 </div>
@@ -5993,7 +5993,7 @@ export default function XPGrinder() {
                   background: "#020108", border: "1px solid #1a1a3e", marginBottom: 10,
                 }}>
                   {chatMessages.length === 0 ? (
-                    <div style={{ color: "#555", fontSize: "0.7rem", textAlign: "center", paddingTop: 100 }}>
+                    <div style={{ color: "#555", fontSize: "0.85rem", textAlign: "center", paddingTop: 100 }}>
                       No messages yet. Say hello!
                     </div>
                   ) : chatMessages.map((msg, i) => {
@@ -6010,7 +6010,7 @@ export default function XPGrinder() {
                           borderBottomRightRadius: isMe ? 2 : 12,
                           borderBottomLeftRadius: isMe ? 12 : 2,
                         }}>
-                          <div style={{ color: "#eee", fontSize: "0.75rem", wordBreak: "break-word" }}>{msg.content}</div>
+                          <div style={{ color: "#eee", fontSize: "0.9rem", wordBreak: "break-word" }}>{msg.content}</div>
                           <div style={{ color: "#555", fontSize: "0.45rem", marginTop: 4, textAlign: isMe ? "right" : "left" }}>
                             {new Date(msg.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                           </div>
@@ -6061,7 +6061,7 @@ export default function XPGrinder() {
             }}>
             <div style={{ fontSize: "1.2rem" }}>{nav.icon}</div>
             <div style={{
-              fontSize: "0.55rem", letterSpacing: 1,
+              fontSize: "0.7rem", letterSpacing: 1,
               color: screen === nav.id ? "#0ff" : "#aaa",
               textShadow: screen === nav.id ? "0 0 10px #0ff" : "none",
             }}>{nav.label}</div>
