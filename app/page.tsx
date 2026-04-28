@@ -28,7 +28,7 @@ export default function LoginPage() {
     if (password.length < 6) { setError("Password must be at least 6 characters!"); setLoading(false); return; }
     const { error } = await supabase.auth.signUp({ email, password });
     if (error) setError(error.message);
-    else setSignupSuccess(true);
+    else { window.location.href = "/login"; }
     setLoading(false);
   };
 
