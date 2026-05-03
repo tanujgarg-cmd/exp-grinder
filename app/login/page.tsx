@@ -3881,7 +3881,23 @@ export default function XPGrinder() {
     } catch (e) { console.error("Failed to load state:", e); }
   }, []);
 
-  // Auto-save every 30 seconds
+  // Save on page close/refresh
+  useEffect(() => {
+    const saveBeforeLeave = () => {
+      if (!onSave) return;
+      const state = {
+        coins: coinsRef.current, debt: debtRef.current, xp, level, inventory, gamesLeft, streak,
+        lastClaimDate, lastLoginDate,
+        achievements, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened,
+        materials, potions, bounties, bountyDate, bountyAttempts,
+      };
+      onSave(JSON.stringify(state));
+    };
+    window.addEventListener("beforeunload", saveBeforeLeave);
+    return () => window.removeEventListener("beforeunload", saveBeforeLeave);
+  }, [xp, level, inventory, gamesLeft, streak, achievements, materials, potions, totalCoinsEarned, totalPvPWins, totalGamesWon, packsOpened]);
+
+  // Auto-save every 10 seconds
   useEffect(() => {
     if (!onSave) return;
     const saveInterval = setInterval(() => {
@@ -3892,7 +3908,7 @@ export default function XPGrinder() {
         materials, potions, bounties, bountyDate, bountyAttempts,
       };
       onSave(JSON.stringify(state));
-    }, 30000);
+    }, 10000);
     return () => clearInterval(saveInterval);
   }, [coins, debt, xp, level, inventory, gamesLeft, streak, achievements, materials, potions]);
   const ACHIEVEMENTS = [
