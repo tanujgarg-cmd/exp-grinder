@@ -3212,6 +3212,7 @@ export default function XPGrinder() {
         setUser(data.user);
         sbAuth.from("players").select("game_state").eq("user_id", data.user.id).single().then(({ data: pData }) => {
           if (pData?.game_state) setInitialState(pData.game_state);
+          else setStateLoaded(true);
           setAuthLoading(false);
         });
       } else {
@@ -3251,6 +3252,7 @@ export default function XPGrinder() {
   const [notification, setNotification] = useState(null);
   const [lastClaimDate, setLastClaimDate] = useState(null);
   const [lastLoginDate, setLastLoginDate] = useState(getToday());
+  const [stateLoaded, setStateLoaded] = useState(false);
   const [streak, setStreak] = useState(1);
   const [coinDoubler, setCoinDoubler] = useState(false);
   const [wheelSpun, setWheelSpun] = useState(false);
@@ -3258,6 +3260,7 @@ export default function XPGrinder() {
   const [wheelSpinning, setWheelSpinning] = useState(false);
   const dailyClaimed = lastClaimDate === getToday();
   useEffect(() => {
+    if (!stateLoaded) return;
     const checkReset = () => {
       const today = getToday();
       if (lastLoginDate !== today) {
@@ -3274,7 +3277,7 @@ export default function XPGrinder() {
     checkReset();
     const interval = setInterval(checkReset, 30000);
     return () => clearInterval(interval);
-  }, [lastLoginDate]);
+  }, [lastLoginDate, stateLoaded]);
 
   const [packResult, setPackResult] = useState(null);
   const [packOpening, setPackOpening] = useState(false);
@@ -3878,7 +3881,8 @@ export default function XPGrinder() {
       if (s.bounties) setBounties(s.bounties);
       if (s.bountyDate) setBountyDate(s.bountyDate);
       if (s.bountyAttempts) setBountyAttempts(s.bountyAttempts);
-    } catch (e) { console.error("Failed to load state:", e); }
+      setStateLoaded(true);
+    } catch (e) { console.error("Failed to load state:", e); setStateLoaded(true); }
   }, []);
 
   // Save on page close/refresh
